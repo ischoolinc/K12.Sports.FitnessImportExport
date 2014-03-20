@@ -103,7 +103,8 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 // 判斷此筆資料是否已在DB
                 foreach(DAO.StudentFitnessRecord rec in fitnessRecList)
                 {
-                    if (rec.SchoolYear == SchoolYear && rec.StudentID == StudentID && rec.TestDate == TestDate)
+                    //modified by Cloud 2014.2.20
+                    if (rec.SchoolYear == SchoolYear && rec.StudentID == StudentID)
                     {
                         isInsert = false;
                         fitnessRec = rec;
@@ -154,8 +155,11 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 else
                 {
                     #region 處理更新資料
-                    // "學號/座號", "學年度", "測驗日期" 無法更新
+                    // "學號/座號", "學年度" 無法更新
 
+                    // 測驗日期
+                    if (_Option.SelectedFields.Contains("測驗日期"))
+                        fitnessRec.TestDate = DateTime.Parse(Utility.GetIRowValueString(row, "測驗日期"));
                     // 學校類別
                     if (_Option.SelectedFields.Contains("學校類別"))
                         fitnessRec.SchoolCategory = Utility.GetIRowValueString(row, "學校類別");

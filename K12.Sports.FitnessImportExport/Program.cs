@@ -12,7 +12,7 @@ namespace K12.Sports.FitnessImportExport
 {
     public class Program
     {
-        
+
         [FISCA.MainMethod]
         public static void Main()
         {
@@ -41,7 +41,7 @@ namespace K12.Sports.FitnessImportExport
                 //Actions.FrmFitnessExport wizard = new Actions.FrmFitnessExport(exporter.Text, exporter.Image);
                 //exporter.InitializeExport(wizard);
                 //wizard.ShowDialog();
-                if(NLDPanels.Student.SelectedSource.Count > 0)
+                if (NLDPanels.Student.SelectedSource.Count > 0)
                 {
                     ImportExport.FrmFitnessExportBaseForm frm = new ImportExport.FrmFitnessExportBaseForm();
                     frm.ShowDialog();

@@ -11,6 +11,8 @@ namespace K12.Sports.FitnessImportExport
         public const string KeyFitnessExport = "K12.Sports.Fitness.Export.cs";
         public const string KeyFitnessImport = "K12.Sports.Fitness.Import.cs";
         public const string KeyFitnessContent = "K12.Sports.Fitness.Content.cs";
+        public const string KeyFitnessShortCut = "K12.Sports.Fitness.Content.cs.ShortCut";
+
         public static bool IsEnableFitnessExport
         {
             get
@@ -40,6 +42,14 @@ namespace K12.Sports.FitnessImportExport
             get
             {
                 return FISCA.Permission.UserAcl.Current[KeyFitnessContent].Viewable;
+            }
+        }
+
+        public static bool IsEnableFitnessShortCut
+        {
+            get
+            {
+                return FISCA.Permission.UserAcl.Current[KeyFitnessShortCut].Executable;
             }
         }
     }

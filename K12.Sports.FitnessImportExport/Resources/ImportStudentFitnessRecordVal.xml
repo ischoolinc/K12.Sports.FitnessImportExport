@@ -4,7 +4,6 @@
   <DuplicateDetection>
     <Detector Name="PrimaryKey1">
       <Field Name="學年度" />
-      <Field Name="測驗日期" />
       <Field Name="學號" />
     </Detector>
   </DuplicateDetection>

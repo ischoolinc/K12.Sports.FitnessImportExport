@@ -34,26 +34,32 @@
     <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus, Version=2.0.0.16, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus.DocumentValidator, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.DocumentValidator.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Import, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Import.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Validator, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Validator.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Windows, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Windows.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,50 +68,62 @@
     <Reference Include="FISCA, Version=2.1.4.8, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Authentication, Version=1.9.0.16, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.Authentication.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Data, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAClient, Version=1.0.1.16, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.DSAClient.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAUtil, Version=3.9.0.10, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.LogAgent, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission, Version=1.2.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.Permission.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Presentation, Version=1.1.0.19, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.UDT, Version=1.0.2.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="K12.Data, Version=2.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="K12.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Presentation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SmartSchool.API.PlugIn, Version=0.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\SmartSchool.API.PlugIn.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -193,7 +211,9 @@
     <Content Include="Library\Campus.DocumentValidator.xml" />
     <Content Include="Library\Campus.Import.dll" />
     <Content Include="Library\Campus.Import.pdb" />
-    <Content Include="Library\Campus.Import.xml" />
+    <Content Include="Library\Campus.Import.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Library\Campus.pdb" />
     <Content Include="Library\Campus.Validator.dll" />
     <Content Include="Library\Campus.Validator.pdb" />
@@ -216,10 +236,14 @@
     <Content Include="Library\FISCA.DSAClient.xml" />
     <Content Include="Library\FISCA.DSAUtil.dll" />
     <Content Include="Library\FISCA.DSAUtil.pdb" />
-    <Content Include="Library\FISCA.DSAUtil.xml" />
+    <Content Include="Library\FISCA.DSAUtil.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Library\FISCA.LogAgent.dll" />
     <Content Include="Library\FISCA.LogAgent.pdb" />
-    <Content Include="Library\FISCA.LogAgent.xml" />
+    <Content Include="Library\FISCA.LogAgent.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Library\FISCA.pdb" />
     <Content Include="Library\FISCA.Permission.dll" />
     <Content Include="Library\FISCA.Permission.pdb" />

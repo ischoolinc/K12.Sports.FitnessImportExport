@@ -31,10 +31,16 @@ namespace K12.Sports.FitnessImportExport.Forms
             _actType = actType;
             _LogTransfer = new Log.LogTransfer();
 
-            if(_actType == accessType.Edit)
-                this.TitleText = _FrmTitleEdit;
+            if (_actType == accessType.Edit)
+            {
+                this.Text = _FrmTitleEdit;
+                //修改模式無法變更學年度
+                this.integerInput1.Enabled = false;
+            }
             else
-                this.TitleText = _FrmTitleAdd;
+            {
+                this.Text = _FrmTitleAdd;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -55,18 +61,22 @@ namespace K12.Sports.FitnessImportExport.Forms
             Utility.SetLogData(_LogTransfer, _fitnessRec);
 
             string studStr = "學號:" + _studRec.StudentNumber + ",姓名:" + _studRec.Name + ",";
-            if(_actType == accessType.Insert)
+            if (_actType == accessType.Insert)
             {
-                // 檢查是否有重複 (SchoolYear+TestDate+studentID)
+                // 檢查是否有重複 (SchoolYear+studentID)
                 bool isPass = true;
                 List<DAO.StudentFitnessRecord> recList = DAO.StudentFitness.SelectByStudentIDAndSchoolYear(_fitnessRec.StudentID, _fitnessRec.SchoolYear);
-                foreach(DAO.StudentFitnessRecord rec in recList)
+
+                foreach (DAO.StudentFitnessRecord rec in recList)
                 {
-                    if(rec.TestDate == _fitnessRec.TestDate)
+                    if (rec.SchoolYear == _fitnessRec.SchoolYear)
                         isPass = false;
+
+                    //if(rec.TestDate == _fitnessRec.TestDate)
+                    //    isPass = false;
                 }
 
-                if(isPass == true)
+                if (isPass == true)
                 {
                     _LogTransfer.SaveInsertLog("學生.體適能-新增", "新增", studStr, "", "student", _studRec.ID);
                     // insert data
@@ -75,7 +85,7 @@ namespace K12.Sports.FitnessImportExport.Forms
                 else
                 {
                     // data duplicate
-                    FISCA.Presentation.Controls.MsgBox.Show("已有相同的學年度跟測驗日期，無法新增。");
+                    FISCA.Presentation.Controls.MsgBox.Show("已有相同的學年度，無法新增。");
                     return;
                 }
             }
@@ -96,7 +106,7 @@ namespace K12.Sports.FitnessImportExport.Forms
 
             if (_studRec.Class != null)
             {
-                if(_studRec.Class.GradeYear.HasValue)
+                if (_studRec.Class.GradeYear.HasValue)
                     lbClassGradeYear.Text = _studRec.Class.GradeYear.Value.ToString();
                 lbClassName.Text = _studRec.Class.Name;
             }
