@@ -24,7 +24,8 @@ namespace K12.Sports.FitnessImportExport
             #endregion
 
             // 把"體適能資料"加入資料項目
-            K12.Presentation.NLDPanels.Student.AddDetailBulider<DetailContents.StudentFitnessContent>();
+            if (FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Editable || FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Viewable)
+                K12.Presentation.NLDPanels.Student.AddDetailBulider<DetailContents.StudentFitnessContent>();
 
             // 加入"匯出"按鈕以及圖示
             NLDPanels.Student.RibbonBarItems["體適能"]["匯出"].Image = Properties.Resources.Export_Image;
