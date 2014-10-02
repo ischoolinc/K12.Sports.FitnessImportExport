@@ -17,7 +17,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
     public partial class FrmFitnessExportBaseForm : BaseForm
     {
         private readonly string _Title = "匯出體適能";
-        
+
         private readonly int _MAX_ROW_COUNT = 65535;
         private readonly int _START_ROW = 16;
 
@@ -77,10 +77,19 @@ namespace K12.Sports.FitnessImportExport.ImportExport
 
             // 取得學生的體適能資料
             List<DAO.StudentFitnessRecord> FitnessRecords = DAO.StudentFitness.SelectByStudentIDListAndSchoolYear(studentIDList, SchoolYear);
-            
+
+            Dictionary<string, DAO.StudentFitnessRecord> FitnessRecordsDic = new Dictionary<string, DAO.StudentFitnessRecord>();
+            foreach (DAO.StudentFitnessRecord each in FitnessRecords)
+            {
+                if (!FitnessRecordsDic.ContainsKey(each.StudentID))
+                {
+                    FitnessRecordsDic.Add(each.StudentID, each);
+                }
+            }
+
             // Excel的表頭
             string[] ExcelColumnNames;
-            if(ExportDegree == true)
+            if (ExportDegree == true)
                 ExcelColumnNames = Global._ExcelDataDegreeTitle;
             else
                 ExcelColumnNames = Global._ExcelDataTitle;
@@ -93,16 +102,23 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             // 學生
             foreach (DAO.StudentInfo student in studentRecords)
             {
-                foreach (DAO.StudentFitnessRecord fitnessRecord in FitnessRecords)
+                if (FitnessRecordsDic.ContainsKey(student.Student_ID))
                 {
-                    if (fitnessRecord.StudentID == student.Student_ID)
-                    {
-                        // 設定輸出的欄位
-                        ExcelRowRecord rec = new ExcelRowRecord(ExcelColumnNames);
-                        // 設定每個欄位的值
-                        rec.SetDataForExport(student, fitnessRecord, ExportDegree);
-                        excelRowRecords.Add(rec);
-                    }
+                    DAO.StudentFitnessRecord fitnessRecord = FitnessRecordsDic[student.Student_ID];
+
+                    // 設定輸出的欄位
+                    ExcelRowRecord rec = new ExcelRowRecord(ExcelColumnNames);
+                    // 設定每個欄位的值
+                    rec.SetDataForExport(student, fitnessRecord, ExportDegree);
+                    excelRowRecords.Add(rec);
+                }
+                else
+                {
+                    // 設定輸出的欄位
+                    ExcelRowRecord rec = new ExcelRowRecord(ExcelColumnNames);
+                    // 設定每個欄位的值
+                    rec.SetDataForExport(student, null, ExportDegree);
+                    excelRowRecords.Add(rec);
                 }
 
             }   // end of foreach (StudentRecord student in studentRecords)
@@ -280,14 +296,14 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             public ExcelRowRecord(string[] columns)
             {
                 _Columns = columns;
-                _ColumnValue = new Dictionary<string,string>();
+                _ColumnValue = new Dictionary<string, string>();
 
-                foreach(string columnName in _Columns)
+                foreach (string columnName in _Columns)
                 {
                     _ColumnValue.Add(columnName, "");
                 }
 
-                _OthersValue = new Dictionary<string,string>();
+                _OthersValue = new Dictionary<string, string>();
             }
 
             /// <summary>
@@ -297,7 +313,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             /// <param name="columnValue"></param>
             public void SetColumnValue(string columnName, string columnValue)
             {
-                if(_ColumnValue.ContainsKey(columnName))
+                if (_ColumnValue.ContainsKey(columnName))
                 {
                     _ColumnValue[columnName] = columnValue;
                 }
@@ -310,7 +326,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             /// <returns></returns>
             public string GetColumnValue(string columnName)
             {
-                if(_ColumnValue.ContainsKey(columnName))
+                if (_ColumnValue.ContainsKey(columnName))
                 {
                     return _ColumnValue[columnName];
                 }
@@ -353,104 +369,39 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             /// <summary>
             /// 主要是給匯出時用的
             /// </summary>
-            /// <param name="classRecord"></param>
-            /// <param name="studentRecord"></param>
-            /// <param name="fitnessRecord"></param>
-            public void SetDataForExport(ClassRecord classRecord, StudentRecord studentRecord, DAO.StudentFitnessRecord fitnessRecord, bool isExportDegree)
-            {
-                
-                // 測驗日期
-                SetColumnValue("測驗日期", Utility.ConvertDateTimeToChineseDateTime(fitnessRecord.TestDate));
-
-                // 學校類別
-                SetColumnValue("學校類別", fitnessRecord.SchoolCategory);
-
-                if (classRecord != null)
-                {
-                    // 年級
-                    if (classRecord.GradeYear.HasValue)
-                        SetColumnValue("年級", classRecord.GradeYear.Value.ToString());
-
-                    // 班級名稱
-                    SetColumnValue("班級名稱", classRecord.Name);
-
-                    // 班級序號 for sort
-                    SetOthersValue("班級序號", classRecord.DisplayOrder);
-                }
-
-                // 學號/座號
-                SetColumnValue("學號/座號", studentRecord.StudentNumber);
-
-                // 性別
-                SetColumnValue("性別", Utility.ConvertDBGenderToOutGender(studentRecord.Gender));
-
-                // 身分證字號
-                SetColumnValue("身分證字號", studentRecord.IDNumber);
-
-                // 生日
-                SetColumnValue("生日", Utility.ConvertDateTimeToChineseDateTime(studentRecord.Birthday));
-
-                // 身高
-                SetColumnValue("身高", fitnessRecord.Height);
-
-                // 體重
-                SetColumnValue("體重", fitnessRecord.Weight);
-
-                // 坐姿體前彎
-                SetColumnValue("坐姿體前彎", fitnessRecord.SitAndReach);
-
-                // 立定跳遠
-                SetColumnValue("立定跳遠", fitnessRecord.StandingLongJump);
-
-                // 仰臥起坐
-                SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
-
-                // 心肺適能
-                SetColumnValue("心肺適能", fitnessRecord.Cardiorespiratory);
-
-
-                // 姓名 for sort
-                SetOthersValue("姓名", studentRecord.Name);
-
-                if(isExportDegree == true)
-                {
-                    // 身高常模
-                    SetColumnValue("身高常模", fitnessRecord.HeightDegree);
-
-                    // 體重常模
-                    SetColumnValue("體重常模", fitnessRecord.WeightDegree);
-
-                    // 坐姿體前彎常模
-                    SetColumnValue("坐姿體前彎常模", fitnessRecord.SitAndReachDegree);
-
-                    // 立定跳遠常模
-                    SetColumnValue("立定跳遠常模", fitnessRecord.StandingLongJumpDegree);
-
-                    // 仰臥起坐常模
-                    SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
-
-                    // 心肺適能常模
-                    SetColumnValue("心肺適能常模", fitnessRecord.CardiorespiratoryDegree);
-                }
-            }
-            
-            /// <summary>
-            /// 主要是給匯出時用的
-            /// </summary>
-            /// <param name="studentRecord"></param>
-            /// <param name="fitnessRecord"></param>
-            /// <param name="isExportDegree"></param>
             public void SetDataForExport(DAO.StudentInfo studentRecord, DAO.StudentFitnessRecord fitnessRecord, bool isExportDegree)
             {
-
-                // 測驗日期
-                SetColumnValue("測驗日期", Utility.ConvertDateTimeToChineseDateTime(fitnessRecord.TestDate));
+                if (fitnessRecord != null)
+                {
+                    // 測驗日期
+                    SetColumnValue("測驗日期", Utility.ConvertDateTimeToChineseDateTime(fitnessRecord.TestDate));
+                }
+                else
+                {
+                    // 測驗日期
+                    SetColumnValue("測驗日期", string.Empty);
+                }
 
                 // 學校類別
-                SetColumnValue("學校類別", fitnessRecord.SchoolCategory);
+                SetColumnValue("學校類別", "國中");
 
                 // 年級
-                SetColumnValue("年級", studentRecord.Class_Grade_Year);
+                if (studentRecord.Class_Grade_Year == "1")
+                {
+                    SetColumnValue("年級", "7");
+                }
+                else if (studentRecord.Class_Grade_Year == "2")
+                {
+                    SetColumnValue("年級", "8");
+                }
+                else if (studentRecord.Class_Grade_Year == "3")
+                {
+                    SetColumnValue("年級", "9");
+                }
+                else
+                {
+                    SetColumnValue("年級", studentRecord.Class_Grade_Year);
+                }
 
                 // 班級名稱
                 SetColumnValue("班級名稱", studentRecord.Class_Class_Name);
@@ -470,47 +421,95 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 // 生日
                 SetColumnValue("生日", studentRecord.Student_Birthday);
 
-                // 身高
-                SetColumnValue("身高", fitnessRecord.Height);
-
-                // 體重
-                SetColumnValue("體重", fitnessRecord.Weight);
-
-                // 坐姿體前彎
-                SetColumnValue("坐姿體前彎", fitnessRecord.SitAndReach);
-
-                // 立定跳遠
-                SetColumnValue("立定跳遠", fitnessRecord.StandingLongJump);
-
-                // 仰臥起坐
-                SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
-
-                // 心肺適能
-                SetColumnValue("心肺適能", fitnessRecord.Cardiorespiratory);
-
-
-                // 姓名 for sort
-                SetOthersValue("姓名", studentRecord.Student_Name);
-
-                if (isExportDegree == true)
+                if (fitnessRecord != null)
                 {
-                    // 身高常模
-                    SetColumnValue("身高常模", fitnessRecord.HeightDegree);
+                    // 身高
+                    SetColumnValue("身高", fitnessRecord.Height);
 
-                    // 體重常模
-                    SetColumnValue("體重常模", fitnessRecord.WeightDegree);
+                    // 體重
+                    SetColumnValue("體重", fitnessRecord.Weight);
 
-                    // 坐姿體前彎常模
-                    SetColumnValue("坐姿體前彎常模", fitnessRecord.SitAndReachDegree);
+                    // 坐姿體前彎
+                    SetColumnValue("坐姿體前彎", fitnessRecord.SitAndReach);
 
-                    // 立定跳遠常模
-                    SetColumnValue("立定跳遠常模", fitnessRecord.StandingLongJumpDegree);
+                    // 立定跳遠
+                    SetColumnValue("立定跳遠", fitnessRecord.StandingLongJump);
 
-                    // 仰臥起坐常模
-                    SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
+                    // 仰臥起坐
+                    SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
 
-                    // 心肺適能常模
-                    SetColumnValue("心肺適能常模", fitnessRecord.CardiorespiratoryDegree);
+                    // 心肺適能
+                    SetColumnValue("心肺適能", fitnessRecord.Cardiorespiratory);
+
+
+                    // 姓名 for sort
+                    SetOthersValue("姓名", studentRecord.Student_Name);
+
+                    if (isExportDegree == true)
+                    {
+                        // 身高常模
+                        SetColumnValue("身高常模", fitnessRecord.HeightDegree);
+
+                        // 體重常模
+                        SetColumnValue("體重常模", fitnessRecord.WeightDegree);
+
+                        // 坐姿體前彎常模
+                        SetColumnValue("坐姿體前彎常模", fitnessRecord.SitAndReachDegree);
+
+                        // 立定跳遠常模
+                        SetColumnValue("立定跳遠常模", fitnessRecord.StandingLongJumpDegree);
+
+                        // 仰臥起坐常模
+                        SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
+
+                        // 心肺適能常模
+                        SetColumnValue("心肺適能常模", fitnessRecord.CardiorespiratoryDegree);
+                    }
+                }
+                else
+                {
+                    // 身高
+                    SetColumnValue("身高", string.Empty);
+
+                    // 體重
+                    SetColumnValue("體重", string.Empty);
+
+                    // 坐姿體前彎
+                    SetColumnValue("坐姿體前彎", string.Empty);
+
+                    // 立定跳遠
+                    SetColumnValue("立定跳遠", string.Empty);
+
+                    // 仰臥起坐
+                    SetColumnValue("仰臥起坐", string.Empty);
+
+                    // 心肺適能
+                    SetColumnValue("心肺適能", string.Empty);
+
+
+                    // 姓名 for sort
+                    SetOthersValue("姓名", studentRecord.Student_Name);
+
+                    if (isExportDegree == true)
+                    {
+                        // 身高常模
+                        SetColumnValue("身高常模", string.Empty);
+
+                        // 體重常模
+                        SetColumnValue("體重常模", string.Empty);
+
+                        // 坐姿體前彎常模
+                        SetColumnValue("坐姿體前彎常模", string.Empty);
+
+                        // 立定跳遠常模
+                        SetColumnValue("立定跳遠常模", string.Empty);
+
+                        // 仰臥起坐常模
+                        SetColumnValue("仰臥起坐常模", string.Empty);
+
+                        // 心肺適能常模
+                        SetColumnValue("心肺適能常模", string.Empty);
+                    }
                 }
             }
         }

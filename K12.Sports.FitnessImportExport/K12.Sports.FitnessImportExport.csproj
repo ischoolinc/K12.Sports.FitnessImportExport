@@ -36,6 +36,11 @@
       <HintPath>Library\Aspose.Cells.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Aspose.Words.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Campus, Version=2.0.0.16, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.dll</HintPath>
@@ -49,6 +54,11 @@
     <Reference Include="Campus.Import, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Import.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Report, Version=1.0.0.11, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Report.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Validator, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -170,6 +180,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Report\FitnessProveSingle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FitnessProveSingle.Designer.cs">
+      <DependentUpon>FitnessProveSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\StudentRSRecord.cs" />
+    <Compile Include="tool.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="ValidationRule\FitnessRowValidatorFactory.cs" />
     <Compile Include="ValidationRule\RowValidator\StudCheckStudentNumberVal.cs" />
@@ -188,9 +206,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\FitnessProveSingle.resx">
+      <DependentUpon>FitnessProveSingle.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\102學年度體適能資料上傳格式.xls" />
+    <None Include="Resources\體適能個人證明單_功能變數總表.doc" />
+    <None Include="Resources\體適能證明單_範本.doc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImportStudentFitnessRecordVal.xml" />
@@ -205,6 +228,8 @@
   <ItemGroup>
     <Content Include="Library\Aspose.Cells.dll" />
     <Content Include="Library\Aspose.Cells.xml" />
+    <Content Include="Library\Aspose.Words.dll" />
+    <Content Include="Library\Aspose.Words.xml" />
     <Content Include="Library\Campus.dll" />
     <Content Include="Library\Campus.DocumentValidator.dll" />
     <Content Include="Library\Campus.DocumentValidator.pdb" />
@@ -215,6 +240,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Library\Campus.pdb" />
+    <Content Include="Library\Campus.Report.dll" />
+    <Content Include="Library\Campus.Report.pdb" />
     <Content Include="Library\Campus.Validator.dll" />
     <Content Include="Library\Campus.Validator.pdb" />
     <Content Include="Library\Campus.Validator.xml" />
@@ -261,6 +288,7 @@
     <Content Include="Library\K12.Presentation.dll" />
     <Content Include="Library\K12.Presentation.xml" />
     <Content Include="Library\SmartSchool.API.PlugIn.dll" />
+    <None Include="Resources\paste_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

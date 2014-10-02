@@ -7,6 +7,7 @@ using K12.Presentation;
 using System.ComponentModel;
 using FISCA.Permission;
 using Campus.DocumentValidator;
+using K12.Sports.FitnessImportExport.Report;
 
 namespace K12.Sports.FitnessImportExport
 {
@@ -20,7 +21,9 @@ namespace K12.Sports.FitnessImportExport
             CheckUDTExist();
 
             #region 自訂驗證規則
+
             FactoryProvider.RowFactory.Add(new ValidationRule.FitnessRowValidatorFactory());
+
             #endregion
 
             // 把"體適能資料"加入資料項目
@@ -30,6 +33,14 @@ namespace K12.Sports.FitnessImportExport
             // 加入"匯出"按鈕以及圖示
             NLDPanels.Student.RibbonBarItems["體適能"]["匯出"].Image = Properties.Resources.Export_Image;
             NLDPanels.Student.RibbonBarItems["體適能"]["匯出"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+
+            // 加入"匯出"按鈕以及圖示
+            NLDPanels.Student.RibbonBarItems["體適能"]["匯入"].Image = Properties.Resources.Import_Image;
+            NLDPanels.Student.RibbonBarItems["體適能"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+
+            NLDPanels.Student.RibbonBarItems["體適能"]["報表"].Image = Properties.Resources.paste_64;
+            NLDPanels.Student.RibbonBarItems["體適能"]["報表"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
+
 
             // 加入"匯出體適能"按鈕
             FISCA.Presentation.MenuButton btnExport = NLDPanels.Student.RibbonBarItems["體適能"]["匯出"]["匯出體適能"];
@@ -53,10 +64,6 @@ namespace K12.Sports.FitnessImportExport
                 }
             };
 
-            // 加入"匯出"按鈕以及圖示
-            NLDPanels.Student.RibbonBarItems["體適能"]["匯入"].Image = Properties.Resources.Import_Image;
-            NLDPanels.Student.RibbonBarItems["體適能"]["匯入"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
-
             // 加入"匯入體適能"按鈕
             FISCA.Presentation.MenuButton btnImport = NLDPanels.Student.RibbonBarItems["體適能"]["匯入"]["匯入體適能"];
             // 設定權限
@@ -74,6 +81,23 @@ namespace K12.Sports.FitnessImportExport
             };
 
 
+            FISCA.Presentation.MenuButton btnReport = NLDPanels.Student.RibbonBarItems["體適能"]["報表"]["體適能證明單"];
+            btnReport.Enable = Permissions.IsEnableFitnessProveSingle;
+            btnReport.Click += delegate
+            {
+
+                if (NLDPanels.Student.SelectedSource.Count > 0)
+                {
+                    FitnessProveSingle fps = new FitnessProveSingle();
+                    fps.ShowDialog();
+                }
+                else
+                {
+                    FISCA.Presentation.Controls.MsgBox.Show("請先選擇學生!");
+                }
+            };
+
+
             // 在權限畫面出現"體適能資料項目"權限
             Catalog catalog1 = RoleAclSource.Instance["學生"]["資料項目"];
             catalog1.Add(new DetailItemFeature(Permissions.KeyFitnessContent, "體適能"));
@@ -85,6 +109,10 @@ namespace K12.Sports.FitnessImportExport
             // 在權限畫面出現"匯入體適能"權限
             Catalog catalog3 = RoleAclSource.Instance["學生"]["功能按鈕"];
             catalog3.Add(new RibbonFeature(Permissions.KeyFitnessImport, "匯入體適能"));
+
+            // 在權限畫面出現"匯出體適能"權限
+            Catalog catalog4 = RoleAclSource.Instance["學生"]["報表"];
+            catalog4.Add(new RibbonFeature(Permissions.KeyFitnessProveSingle, "體適能證明單"));
         }
 
         private static void CheckUDTExist()
