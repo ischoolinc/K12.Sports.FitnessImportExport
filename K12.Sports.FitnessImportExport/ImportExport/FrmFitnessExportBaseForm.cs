@@ -315,7 +315,14 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             {
                 if (_ColumnValue.ContainsKey(columnName))
                 {
-                    _ColumnValue[columnName] = columnValue;
+                     if (columnValue == "免測")
+                     {
+                          _ColumnValue[columnName] = "";
+                     }
+                     else
+                     {
+                          _ColumnValue[columnName] = columnValue;
+                     }
                 }
             }
 
