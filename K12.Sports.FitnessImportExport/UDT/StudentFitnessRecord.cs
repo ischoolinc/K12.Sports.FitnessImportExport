@@ -13,6 +13,14 @@ namespace K12.Sports.FitnessImportExport.DAO
     [TableName("ischool_student_fitness")]
     public class StudentFitnessRecord : ActiveRecord
     {
+         /// <summary>
+         /// 淺層複製CLUBRecord
+         /// </summary>
+         public StudentFitnessRecord CopyExtension()
+         {
+              return (StudentFitnessRecord)this.MemberwiseClone();
+         }
+
         /// <summary>
         ///  學生系統編號
         /// </summary>

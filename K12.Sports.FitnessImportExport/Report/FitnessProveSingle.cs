@@ -170,17 +170,17 @@ namespace K12.Sports.FitnessImportExport.Report
                         row[string.Format("體重{0}", y)] = Fitness.Weight;
                         row[string.Format("體重常模{0}", y)] = Fitness.WeightDegree;
 
-                        row[string.Format("坐姿體前彎{0}", y)] = Fitness.Weight;
-                        row[string.Format("坐姿體前彎常模{0}", y)] = Fitness.WeightDegree;
+                        row[string.Format("坐姿體前彎{0}", y)] = Fitness.SitAndReach;
+                        row[string.Format("坐姿體前彎常模{0}", y)] = Fitness.SitAndReachDegree;
 
-                        row[string.Format("立定跳遠{0}", y)] = Fitness.Weight;
-                        row[string.Format("立定跳遠常模{0}", y)] = Fitness.WeightDegree;
+                        row[string.Format("立定跳遠{0}", y)] = Fitness.StandingLongJump;
+                        row[string.Format("立定跳遠常模{0}", y)] = Fitness.StandingLongJumpDegree;
 
-                        row[string.Format("仰臥起坐{0}", y)] = Fitness.Weight;
-                        row[string.Format("仰臥起坐常模{0}", y)] = Fitness.WeightDegree;
+                        row[string.Format("仰臥起坐{0}", y)] = Fitness.SitUp;
+                        row[string.Format("仰臥起坐常模{0}", y)] = Fitness.SitUpDegree;
 
-                        row[string.Format("心肺適能{0}", y)] = Fitness.Weight;
-                        row[string.Format("心肺適能常模{0}", y)] = Fitness.WeightDegree;
+                        row[string.Format("心肺適能{0}", y)] = Fitness.Cardiorespiratory;
+                        row[string.Format("心肺適能常模{0}", y)] = Fitness.CardiorespiratoryDegree;
                         y++;
                     }
                 }

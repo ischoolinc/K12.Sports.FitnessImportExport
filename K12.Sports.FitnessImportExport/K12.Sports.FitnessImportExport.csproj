@@ -146,13 +146,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\StudentInfo.cs" />
-    <Compile Include="Forms\FrmFitnessRecord.cs">
+    <Compile Include="Forms\Comparison\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmFitnessRecord.Designer.cs">
+    <Compile Include="Forms\Comparison\InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Comparison\ViewParse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Comparison\ViewParse.Designer.cs">
+      <DependentUpon>ViewParse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\StudentInfo.cs" />
+    <Compile Include="Forms\Comparison\ComparisonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Comparison\ComparisonForm.Designer.cs">
+      <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailContents\FrmFitnessRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailContents\FrmFitnessRecord.Designer.cs">
       <DependentUpon>FrmFitnessRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Comparison\KeyBoStudent.cs" />
+    <Compile Include="Forms\Comparison\SuperComparison.cs" />
     <Compile Include="ImportExport\FrmFitnessExportBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,9 +180,9 @@
       <DependentUpon>FrmFitnessExportBaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportExport\ImportStudentFitness.cs" />
-    <Compile Include="DAO\FDQuery.cs" />
-    <Compile Include="DAO\StudentFitness.cs" />
-    <Compile Include="DAO\StudentFitnessRecord.cs" />
+    <Compile Include="UDT\FDQuery.cs" />
+    <Compile Include="UDT\StudentFitness.cs" />
+    <Compile Include="UDT\StudentFitnessRecord.cs" />
     <Compile Include="DetailContents\StudentFitnessContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,8 +213,17 @@
     <Compile Include="ValidationRule\RowValidator\StudCheckStudentNumberVal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\FrmFitnessRecord.resx">
+    <EmbeddedResource Include="Forms\Comparison\ComparisonForm.resx">
+      <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Comparison\InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailContents\FrmFitnessRecord.resx">
       <DependentUpon>FrmFitnessRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Comparison\ViewParse.resx">
+      <DependentUpon>ViewParse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportExport\FrmFitnessExportBaseForm.resx">
       <DependentUpon>FrmFitnessExportBaseForm.cs</DependentUpon>
@@ -288,6 +317,10 @@
     <Content Include="Library\K12.Presentation.dll" />
     <Content Include="Library\K12.Presentation.xml" />
     <Content Include="Library\SmartSchool.API.PlugIn.dll" />
+    <None Include="Resources\Sports.Fitness.Comparison.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\amplify_wave_64.png" />
     <None Include="Resources\paste_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

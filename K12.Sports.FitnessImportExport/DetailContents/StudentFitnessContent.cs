@@ -21,6 +21,8 @@ namespace K12.Sports.FitnessImportExport.DetailContents
         bool _isBusy = false;
         List<DAO.StudentFitnessRecord> _FitnessRecList = new List<DAO.StudentFitnessRecord>();
 
+        string EventCode = "Fitness.now.Comparison";
+
         public StudentFitnessContent()
         {
             InitializeComponent();
@@ -45,6 +47,12 @@ namespace K12.Sports.FitnessImportExport.DetailContents
                 this.btnInsert.Enabled = false;
                 this.btnUpdate.Enabled = false;
             }
+
+            FISCA.InteractionService.SubscribeEvent(EventCode, (sender, args) =>
+            {
+                 this.Loading = true;
+                 _BGRun();
+            });
         }
 
         // 切換學生時

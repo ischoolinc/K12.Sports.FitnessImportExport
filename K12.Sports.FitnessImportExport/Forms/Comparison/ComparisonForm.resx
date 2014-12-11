@@ -117,32 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Export_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Export.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lbHelp2.Text" xml:space="preserve">
+    <value>說明:
+1.本功能會取得學生的體適能測驗資料,透過對照表取得該項目之常模資料
+換算之欄位共有:仰臥起坐60秒(次)/坐姿體前彎(cm)/立定跳遠(cm)/心肺適能(秒)
+
+2.當學生身上之測驗資料非為換算之單位資料,系統將略過不予處理
+
+3.欄位當填入免測時,常模將不予換算並填入免測字樣
+
+4.心肺適能接受資料格式為:3.20(分.秒),200(秒),3'20"(分 ' 秒 " )
+3'20(分 ' 秒 ),3'20'(分 ' 秒 ' )3'20''(分 ' 秒 ' ' )
+
+5.資料若無測驗日期,因無法換算年齡,因此不予處理</value>
   </data>
-  <data name="ImportStudentFitnessRecordVal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImportStudentFitnessRecordVal.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Import_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Import.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="paste_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paste_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="體適能個人證明單_功能變數總表" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\體適能個人證明單_功能變數總表.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="體適能證明單_範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\體適能證明單_範本.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="體適能資料上傳格式" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\102學年度體適能資料上傳格式.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="amplify_wave_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\amplify_wave_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sports_Fitness_Comparison" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sports.Fitness.Comparison.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="labelX1.Text" xml:space="preserve">
+    <value>年齡說明:
+(一)體適能檢測之年齡計算方式，以7個月為界，檢測年月與出生年月相減，
+所得月分達7個月以上，則進升一歲。舉例如下：
+
+1.民國88年3月出生，於民國101年10月進行檢測，年齡計算為101(年)-88(年)=13；
+10(月)-3(月)=7，因達7個月，故進升1歲，其年齡為14歲。
+
+2.民國88年5月出生，於民國101年10月進行檢測，年齡計算為101(年)-88(年)=13；
+10(月)-5(月)=5，因未達7個月，故其年齡為13歲。</value>
   </data>
 </root>

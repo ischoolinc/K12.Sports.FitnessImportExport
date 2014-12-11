@@ -15,6 +15,16 @@ namespace K12.Sports.FitnessImportExport
 
         public const string KeyFitnessProveSingle = "K12.Sports.Fitness.Report.cs.ProveSingle";
 
+        public const string 體適能常模轉換 = "K12.Sports.FitnessImportExport.ComparisonForm.cs";
+
+        public static bool 體適能常模轉換權限
+        {
+             get
+             {
+                  return FISCA.Permission.UserAcl.Current[體適能常模轉換].Executable;
+             }
+        }
+
         public static bool IsEnableFitnessExport
         {
             get

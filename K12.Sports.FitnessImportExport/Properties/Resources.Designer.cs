@@ -63,6 +63,16 @@ namespace K12.Sports.FitnessImportExport.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap amplify_wave_64 {
+            get {
+                object obj = ResourceManager.GetObject("amplify_wave_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap Export_Image {
             get {
                 object obj = ResourceManager.GetObject("Export_Image", resourceCulture);
@@ -108,6 +118,24 @@ namespace K12.Sports.FitnessImportExport.Properties {
             get {
                 object obj = ResourceManager.GetObject("paste_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 &lt;Content&gt;
+        ///  &lt;boy&gt;
+        ///    &lt;仰臥起坐&gt;
+        ///      &lt;_7  請加強=&quot;0,12&quot; 中等=&quot;13,18&quot; 銅牌=&quot;19,23&quot; 銀牌=&quot;24,26&quot; 金牌=&quot;27,99&quot;&gt;&lt;/_7&gt;
+        ///      &lt;_8  請加強=&quot;0,15&quot; 中等=&quot;16,20&quot; 銅牌=&quot;21,26&quot; 銀牌=&quot;27,28&quot; 金牌=&quot;29,99&quot;&gt;&lt;/_8&gt;
+        ///      &lt;_9  請加強=&quot;0,18&quot; 中等=&quot;19,24&quot; 銅牌=&quot;25,29&quot; 銀牌=&quot;30,32&quot; 金牌=&quot;33,99&quot;&gt;&lt;/_9&gt;
+        ///      &lt;_10 請加強=&quot;0,17&quot; 中等=&quot;18,24&quot; 銅牌=&quot;25,29&quot; 銀牌=&quot;30,31&quot; 金牌=&quot;32,99&quot;&gt;&lt;/_10&gt;
+        ///      &lt;_11 請加強=&quot;0,20&quot; 中等=&quot;21,26&quot; 銅牌=&quot;27,31&quot; 銀牌=&quot;32,33&quot; 金牌=&quot;34,99&quot;&gt;&lt;/_11&gt;
+        ///      &lt;_12 請加強=&quot;0,24&quot; 中等=&quot;25,29&quot; 銅牌=&quot;30,34&quot; 銀牌=&quot;35,37&quot; 金牌=&quot;38,99&quot;&gt;&lt;/_12&gt;
+        ///      &lt;_13 請加強=&quot;0,27&quot; 中等=&quot;28,32&quot; 銅牌=&quot;33 [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
+        /// </summary>
+        internal static string Sports_Fitness_Comparison {
+            get {
+                return ResourceManager.GetString("Sports_Fitness_Comparison", resourceCulture);
             }
         }
         
