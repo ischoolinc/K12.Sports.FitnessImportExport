@@ -240,7 +240,7 @@ namespace K12.Sports.FitnessImportExport
                          if (sfr1.StandingLongJumpDegree != sfr_log.StandingLongJumpDegree)
                               sb_123.AppendLine(string.Format("立定跳遠「{0}」由「{1}」換算為「{2}」", sfr1.StandingLongJump, sfr_log.StandingLongJumpDegree, sfr1.StandingLongJumpDegree));
 
-                         if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
+                         if (sfr1.CardiorespiratoryDegree != sfr_log.CardiorespiratoryDegree)
                               sb_123.AppendLine(string.Format("心肺適能「{0}」由「{1}」換算為「{2}」", sfr1.Cardiorespiratory, sfr_log.CardiorespiratoryDegree, sfr1.CardiorespiratoryDegree));
 
                          sb_123.AppendLine("");
