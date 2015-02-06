@@ -12,9 +12,6 @@ namespace K12.Sports.FitnessImportExport
         /// <summary>
         /// 透過輸入的欄位名稱, 取的匯入資料的值
         /// </summary>
-        /// <param name="row"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public static string GetIRowValueString(IRowStream row, string name)
         {
             if(row.Contains(name))

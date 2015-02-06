@@ -146,23 +146,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Comparison\InfoForm.cs">
+    <Compile Include="常模轉換\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Comparison\InfoForm.Designer.cs">
+    <Compile Include="常模轉換\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Comparison\ViewParse.cs">
+    <Compile Include="常模轉換\ViewParse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Comparison\ViewParse.Designer.cs">
+    <Compile Include="常模轉換\ViewParse.Designer.cs">
       <DependentUpon>ViewParse.cs</DependentUpon>
     </Compile>
     <Compile Include="UDT\StudentInfo.cs" />
-    <Compile Include="Forms\Comparison\ComparisonForm.cs">
+    <Compile Include="常模轉換\ComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Comparison\ComparisonForm.Designer.cs">
+    <Compile Include="常模轉換\ComparisonForm.Designer.cs">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailContents\FrmFitnessRecord.cs">
@@ -171,8 +171,8 @@
     <Compile Include="DetailContents\FrmFitnessRecord.Designer.cs">
       <DependentUpon>FrmFitnessRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Comparison\KeyBoStudent.cs" />
-    <Compile Include="Forms\Comparison\SuperComparison.cs" />
+    <Compile Include="常模轉換\KeyBoStudent.cs" />
+    <Compile Include="常模轉換\SuperComparison.cs" />
     <Compile Include="ImportExport\FrmFitnessExportBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,16 +213,16 @@
     <Compile Include="ValidationRule\RowValidator\StudCheckStudentNumberVal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Comparison\ComparisonForm.resx">
+    <EmbeddedResource Include="常模轉換\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Comparison\InfoForm.resx">
+    <EmbeddedResource Include="常模轉換\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailContents\FrmFitnessRecord.resx">
       <DependentUpon>FrmFitnessRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Comparison\ViewParse.resx">
+    <EmbeddedResource Include="常模轉換\ViewParse.resx">
       <DependentUpon>ViewParse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportExport\FrmFitnessExportBaseForm.resx">

@@ -4,7 +4,7 @@
   <DuplicateDetection>
     <Detector Name="PrimaryKey1">
       <Field Name="學年度" />
-      <Field Name="學號" />
+      <Field Name="身分證字號" />
     </Detector>
   </DuplicateDetection>
   <FieldList>
@@ -16,9 +16,8 @@
       <Validate AutoCorrect="False" Description="「測驗日期」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
       <Validate AutoCorrect="True" Description="「測驗日期」格式錯誤。" ErrorType="Error" Validator="合法日期" When=""/>
     </Field>
-    <Field Required="True" Name="學號">
-      <Validate AutoCorrect="False" Description="「學號」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
-      <Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。 " ErrorType="Error" Validator="文字12" When="" />
+    <Field Required="True" Name="身分證字號">
+      <Validate AutoCorrect="False" Description="「身分證字號」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
     </Field>
     <Field Required="False" Name="學校類別">
       <Validate AutoCorrect="False" Description="「學校類別」空白。" ErrorType="Warning" Validator="不可空白" When="" />
@@ -80,7 +79,7 @@
       <Item Value="男" />
       <Item Value="女" />
     </FieldValidator>
-    <RowValidator Name="學號是否存在" Type="K12SPORTFITNESSCHECKSTUDENTNUMBER"/>
+    <RowValidator Name="身分證字號是否存在" Type="K12SPORTFITNESSCHECKSTUDENTNUMBER"/>
     <FieldValidator Name="合法日期" Type="MixDate">
       <!-- Gregorian | Taiwan-->
       <!-- Pattern 中需要 Year,Month,Day 三個 Group。-->
@@ -105,7 +104,7 @@
     </FieldValidator>
   </ValidatorList>
   <RowValidate>
-    <Validate AutoCorrect="False" Description="「學號」不存在系統內或是非一般生。" ErrorType="Error" Validator="學號是否存在" When=""/>  
+    <Validate AutoCorrect="False" Description="「身分證字號」不存在系統內。" ErrorType="Error" Validator="身分證字號是否存在" When=""/>  
   </RowValidate>
   <ConditionList/>
 </ValidateRule>

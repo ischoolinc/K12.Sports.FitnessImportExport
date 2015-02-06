@@ -8,12 +8,26 @@ namespace K12.Sports.FitnessImportExport
 {
     class Global
     {
+        /// <summary>
+        /// 資料項目名稱
+        /// </summary>
         public static readonly string _ModuleName = "體適能";
+
+        /// <summary>
+        /// Sheet名稱
+        /// </summary>
         public static readonly string _SheetName = "體適能資料";
+
+        /// <summary>
+        /// 不匯出常模
+        /// </summary>
         public static readonly string[] _ExcelDataTitle =
             { "測驗日期", "學校類別", "年級", "班級名稱", "學號/座號",
                 "性別", "身分證字號", "生日", "身高", "體重", "坐姿體前彎", "立定跳遠", "仰臥起坐", "心肺適能" };
 
+        /// <summary>
+        /// 是否匯出常模
+        /// </summary>
         public static readonly string[] _ExcelDataDegreeTitle =
             { "測驗日期", "學校類別", "年級", "班級名稱", "學號/座號",
                 "性別", "身分證字號", "生日", "身高", "身高常模", "體重", "體重常模",
@@ -23,6 +37,11 @@ namespace K12.Sports.FitnessImportExport
         /// 所有學生學號與ID的暫存 key:StudentNumber; value:StudentID
         /// </summary>
         public static Dictionary<string, string> _AllStudentNumberIDTemp = new Dictionary<string, string>();
+
+        /// <summary>
+        /// 所有學生身分證號與ID的暫存 key:ID_Number; value:StudentID
+        /// </summary>
+        public static Dictionary<string, string> _AllStudentIDNumberIDTemp = new Dictionary<string, string>();
 
         /// <summary>
         /// 當有錯誤訊息

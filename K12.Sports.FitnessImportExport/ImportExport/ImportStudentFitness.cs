@@ -47,17 +47,17 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             _UpdateRecList.Clear();
 
             // 取得 Rows內學號, 學年度
-            List<string> StudentNumberList = new List<string>();
+            List<string> IDNumberList = new List<string>();
             Dictionary<string, string> SchoolYearDic = new Dictionary<string, string>();
             foreach (IRowStream row in Rows)
             {
-                string StudentNumber = Utility.GetIRowValueString(row, "學號");
+                string IDNumber = Utility.GetIRowValueString(row, "身分證字號");
                 string SchoolYear = Utility.GetIRowValueString(row, "學年度");
                 
-                if (string.IsNullOrEmpty(StudentNumber)) continue;
+                if (string.IsNullOrEmpty(IDNumber)) continue;
                 if (string.IsNullOrEmpty(SchoolYear)) continue;
 
-                StudentNumberList.Add(StudentNumber);
+                IDNumberList.Add(IDNumber);
 
                 if (!SchoolYearDic.ContainsKey(SchoolYear))
                 {
@@ -65,11 +65,22 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 }
             }
 
-            // 透過學號去取得學生ID
-            Dictionary<string, string> StudNumDict = DAO.FDQuery.GetStudenIdDictByStudentNumber(StudentNumberList);
+            // 透過身分證字號去取得學生ID
+            Dictionary<string, string> IDNumDict = DAO.FDQuery.GetStudenByIDNumber(IDNumberList);
             
             // 根據學年度, 學生ID取得體適能的資料
-            List<DAO.StudentFitnessRecord> fitnessRecList = DAO.StudentFitness.SelectByStudentIDListAndSchoolYear(StudNumDict.Values.ToList<string>(), SchoolYearDic.Keys.ToList<string>());
+            List<DAO.StudentFitnessRecord> fitnessRecList = DAO.StudentFitness.SelectByStudentIDListAndSchoolYear(IDNumDict.Values.ToList(), SchoolYearDic.Keys.ToList());
+            Dictionary<string, List<DAO.StudentFitnessRecord>> fitnessRecDic = new Dictionary<string, List<DAO.StudentFitnessRecord>>();
+            foreach (DAO.StudentFitnessRecord each in fitnessRecList)
+            {
+                if (!fitnessRecDic.ContainsKey(each.StudentID))
+                {
+                    fitnessRecDic.Add(each.StudentID, new List<DAO.StudentFitnessRecord>());
+                }
+
+                fitnessRecDic[each.StudentID].Add(each);
+            }
+
 
             int totalCount = 0;
             // 判斷每一筆資料是要新增還是更新
@@ -79,20 +90,20 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 this.ImportProgress = totalCount;
                 bool isInsert = true;   // 用來判斷此筆資料是否要新增
                 DAO.StudentFitnessRecord fitnessRec = new DAO.StudentFitnessRecord();
-                string StudentNumber = Utility.GetIRowValueString(row, "學號");
+                string IDNumber = Utility.GetIRowValueString(row, "身分證字號");
                 int? SchoolYear = Utility.GetIRowValueInt(row, "學年度");
                 DateTime? TestDate = Utility.GetIRowValueDateTime(row, "測驗日期");
 
                 // 如果"學號"或"學年度"或"測驗日期"沒有資料, 換到下一筆
-                if(string.IsNullOrEmpty(StudentNumber)) continue;
+                if(string.IsNullOrEmpty(IDNumber)) continue;
                 if(!SchoolYear.HasValue) continue;
                 if(!TestDate.HasValue) continue;
 
                 // 透過學號換成學生ID
                 string StudentID = "";
-                if(StudNumDict.ContainsKey(StudentNumber))
+                if(IDNumDict.ContainsKey(IDNumber))
                 {
-                    StudentID = StudNumDict[StudentNumber];
+                    StudentID = IDNumDict[IDNumber];
                 }
                 else
                 {
@@ -101,16 +112,21 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 }
 
                 // 判斷此筆資料是否已在DB
-                foreach(DAO.StudentFitnessRecord rec in fitnessRecList)
+                if (fitnessRecDic.ContainsKey(StudentID))
                 {
-                    //modified by Cloud 2014.2.20
-                    if (rec.SchoolYear == SchoolYear && rec.StudentID == StudentID)
+                    foreach (DAO.StudentFitnessRecord rec in fitnessRecDic[StudentID])
                     {
-                        isInsert = false;
-                        fitnessRec = rec;
-
-                        break;
+                        if (rec.SchoolYear == SchoolYear)
+                        {
+                            isInsert = false;
+                            fitnessRec = rec;
+                            break;
+                        }
                     }
+                }
+                else
+                {
+                    //沒有取得資料,不需動作
                 }
 
                 // 新增資料

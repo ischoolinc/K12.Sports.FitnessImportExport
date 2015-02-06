@@ -23,9 +23,9 @@ namespace K12.Sports.FitnessImportExport.ValidationRule.RowValidator
         public bool Validate(IRowStream row)
         {
             bool retVal = false;
-            string key = Utility.GetIRowValueString(row, "學號");
+            string key = Utility.GetIRowValueString(row, "身分證字號");
 
-            if (Global._AllStudentNumberIDTemp.ContainsKey(key))
+            if (Global._AllStudentIDNumberIDTemp.ContainsKey(key))
                 retVal = true;
 
             return retVal;

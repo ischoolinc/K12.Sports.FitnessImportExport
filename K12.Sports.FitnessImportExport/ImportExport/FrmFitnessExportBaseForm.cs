@@ -16,7 +16,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
 {
     public partial class FrmFitnessExportBaseForm : BaseForm
     {
-        private readonly string _Title = "匯出體適能";
+        private readonly string _Title = "匯出體適能上傳檔";
 
         private readonly int _MAX_ROW_COUNT = 65535;
         private readonly int _START_ROW = 16;

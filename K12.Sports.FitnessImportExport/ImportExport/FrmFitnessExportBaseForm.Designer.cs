@@ -39,17 +39,18 @@
             // 
             // labelX1
             // 
+            this.labelX1.AutoSize = true;
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(77, 48);
+            this.labelX1.Location = new System.Drawing.Point(24, 34);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(56, 23);
+            this.labelX1.Size = new System.Drawing.Size(87, 21);
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "學年度";
+            this.labelX1.Text = "請選擇學年度";
             // 
             // integerInput1
             // 
@@ -60,20 +61,24 @@
             this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput1.Location = new System.Drawing.Point(139, 48);
+            this.integerInput1.Location = new System.Drawing.Point(131, 32);
+            this.integerInput1.MaxValue = 999;
+            this.integerInput1.MinValue = 90;
             this.integerInput1.Name = "integerInput1";
             this.integerInput1.ShowUpDown = true;
-            this.integerInput1.Size = new System.Drawing.Size(80, 25);
+            this.integerInput1.Size = new System.Drawing.Size(116, 25);
             this.integerInput1.TabIndex = 1;
+            this.integerInput1.Value = 90;
             // 
             // btnExport
             // 
             this.btnExport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExport.AutoSize = true;
             this.btnExport.BackColor = System.Drawing.Color.Transparent;
             this.btnExport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExport.Location = new System.Drawing.Point(161, 110);
+            this.btnExport.Location = new System.Drawing.Point(185, 125);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.Size = new System.Drawing.Size(75, 25);
             this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnExport.TabIndex = 2;
             this.btnExport.Text = "匯出";
@@ -82,11 +87,12 @@
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.AutoSize = true;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(242, 110);
+            this.btnClose.Location = new System.Drawing.Point(266, 125);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(75, 25);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "取消";
@@ -94,17 +100,18 @@
             // 
             // labelX2
             // 
+            this.labelX2.AutoSize = true;
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(13, 13);
+            this.labelX2.Location = new System.Drawing.Point(24, 64);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 23);
+            this.labelX2.Size = new System.Drawing.Size(288, 21);
             this.labelX2.TabIndex = 4;
-            this.labelX2.Text = "匯出體適能";
+            this.labelX2.Text = "本功能匯出可上傳於體適能官方網站的資料格式";
             // 
             // ckExportDegree
             // 
@@ -114,7 +121,7 @@
             // 
             this.ckExportDegree.BackgroundStyle.Class = "";
             this.ckExportDegree.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ckExportDegree.Location = new System.Drawing.Point(12, 81);
+            this.ckExportDegree.Location = new System.Drawing.Point(12, 127);
             this.ckExportDegree.Name = "ckExportDegree";
             this.ckExportDegree.Size = new System.Drawing.Size(114, 23);
             this.ckExportDegree.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -125,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 145);
+            this.ClientSize = new System.Drawing.Size(353, 162);
             this.Controls.Add(this.ckExportDegree);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.btnClose);
@@ -138,6 +145,7 @@
             this.Load += new System.EventHandler(this.FrmFitnessExportBaseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
