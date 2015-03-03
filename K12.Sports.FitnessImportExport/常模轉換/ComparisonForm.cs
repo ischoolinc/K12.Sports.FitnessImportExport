@@ -13,412 +13,424 @@ using System.Xml;
 
 namespace K12.Sports.FitnessImportExport
 {
-     public partial class ComparisonForm : BaseForm
-     {
-          BackgroundWorker BGW = new BackgroundWorker();
+    public partial class ComparisonForm : BaseForm
+    {
+        BackgroundWorker BGW = new BackgroundWorker();
 
-          //事件物件
-          EventHandler eh;
-          //事件代碼
-          string EventCode = "Fitness.now.Comparison";
+        //事件物件
+        EventHandler eh;
+        //事件代碼
+        string EventCode = "Fitness.now.Comparison";
 
-          bool CheckCover = false;
+        bool CheckCover = false;
 
-          List<FitInfo> FitInfoList { get; set; }
+        List<FitInfo> FitInfoList { get; set; }
 
-          public ComparisonForm()
-          {
-               InitializeComponent();
-          }
+        public ComparisonForm()
+        {
+            InitializeComponent();
+        }
 
-          private void ComparisonForm_Load(object sender, EventArgs e)
-          {
-               BGW.RunWorkerCompleted += BGW_RunWorkerCompleted;
-               BGW.DoWork += BGW_DoWork;
+        private void ComparisonForm_Load(object sender, EventArgs e)
+        {
+            BGW.RunWorkerCompleted += BGW_RunWorkerCompleted;
+            BGW.DoWork += BGW_DoWork;
 
-               //透過代碼,取得事件引發器
-               eh = FISCA.InteractionService.PublishEvent(EventCode);
+            //透過代碼,取得事件引發器
+            eh = FISCA.InteractionService.PublishEvent(EventCode);
 
-               intSchoolYear.Value = int.Parse(K12.Data.School.DefaultSchoolYear);
-          }
+            intSchoolYear.Value = int.Parse(K12.Data.School.DefaultSchoolYear);
+        }
 
-          private void btnStart_Click(object sender, EventArgs e)
-          {
-               if (!BGW.IsBusy)
-               {
-                    CheckCover = cbCover.Checked;
-                    btnStart.Enabled = false;
-                    BGW.RunWorkerAsync();
-               }
-               else
-               {
-                    MsgBox.Show("系統忙碌中,稍後再試!");
-               }
-          }
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            if (!BGW.IsBusy)
+            {
+                CheckCover = cbCover.Checked;
+                btnStart.Enabled = false;
+                BGW.RunWorkerAsync();
+            }
+            else
+            {
+                MsgBox.Show("系統忙碌中,稍後再試!");
+            }
+        }
 
-          void BGW_DoWork(object sender, DoWorkEventArgs e)
-          {
-               //取得學生資料
-               Dictionary<string, KeyBoStudent> _student = tool.GetStudentList(K12.Presentation.NLDPanels.Student.SelectedSource);
+        void BGW_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //取得學生資料
+            Dictionary<string, KeyBoStudent> _student = tool.GetStudentList(K12.Presentation.NLDPanels.Student.SelectedSource);
 
-               FitInfoList = new List<FitInfo>();
+            FitInfoList = new List<FitInfo>();
 
-               //取得體適能資料
-               List<StudentFitnessRecord> SFitnessList = tool._A.Select<StudentFitnessRecord>(string.Format("ref_student_id in ('{0}') and school_year={1}", string.Join("','", K12.Presentation.NLDPanels.Student.SelectedSource), intSchoolYear.Value.ToString()));
-               foreach (StudentFitnessRecord each in SFitnessList)
-               {
-                    #region 每一筆資料
+            //取得體適能資料
+            List<StudentFitnessRecord> SFitnessList = tool._A.Select<StudentFitnessRecord>(string.Format("ref_student_id in ('{0}') and school_year={1}", string.Join("','", K12.Presentation.NLDPanels.Student.SelectedSource), intSchoolYear.Value.ToString()));
+            foreach (StudentFitnessRecord each in SFitnessList)
+            {
+                #region 每一筆資料
 
-                    if (_student.ContainsKey(each.StudentID))
-                    {
-                         KeyBoStudent student = _student[each.StudentID];
-                         student.sfr = each; //記錄LOG
-                         student.sfr_Log = each.CopyExtension(); //記錄LOG
+                if (_student.ContainsKey(each.StudentID))
+                {
+                    KeyBoStudent student = _student[each.StudentID];
+                    student.sfr = each; //記錄LOG
+                    student.sfr_Log = each.CopyExtension(); //記錄LOG
 
-                         #region 說明
+                    #region 說明
 
-                         //換算實際監測日期的年齡
-                         //(一)體適能檢測之年齡計算方式，以7個月為界，
-                         //檢測年月與出生年月相減，所得月分達7個月以上，則進升一歲。
-                         //舉例如下：
-                         //1.民國88年3月出生，於民國101年10月進行檢測，
-                         //年齡計算為101(年)-88(年)=13；10(月)-3(月)=7，因達7個月，故進升1歲，其年齡為14歲。
-                         //2.民國88年5月出生，於民國101年10月進行檢測，
-                         //年齡計算為101(年)-88(年)=13；10(月)-5(月)=5，因未達7個月，故其年齡為13歲。
-                         //(二)受測學生超過16歲者，以16歲之門檻標準計分 
-
-                         #endregion
-
-                         if (each.TestDate != null)
-                         {
-                              if (student.Birthdate.HasValue)
-                              {
-
-                                   student.Age = each.TestDate.Year - student.Birthdate.Value.Year;
-                                   int Month = each.TestDate.Month - student.Birthdate.Value.Month;
-                                   if (Month >= 7)
-                                   {
-                                        //大於7個月則年齡加一
-                                        student.Age++;
-                                   }
-                                   else
-                                   {
-                                        //小於7個月則不予處理
-                                   }
-                              }
-                              else
-                              {
-                                   //沒有年齡,表示該體適能資料無法換算
-                                   FitInfo info = new FitInfo(student);
-                                   info._info = "沒有生日!";
-                                   FitInfoList.Add(info);
-                              }
-                         }
-                         else
-                         {
-                              //沒有測驗日期
-                              //沒有年齡,表示該體適能資料無法換算
-                              FitInfo info = new FitInfo(student);
-                              info._info = "未輸入體適能測驗日期!!";
-                              FitInfoList.Add(info);
-                         }
-                    }
+                    //換算實際監測日期的年齡
+                    //(一)體適能檢測之年齡計算方式，以7個月為界，
+                    //檢測年月與出生年月相減，所得月分達7個月以上，則進升一歲。
+                    //舉例如下：
+                    //1.民國88年3月出生，於民國101年10月進行檢測，
+                    //年齡計算為101(年)-88(年)=13；10(月)-3(月)=7，因達7個月，故進升1歲，其年齡為14歲。
+                    //2.民國88年5月出生，於民國101年10月進行檢測，
+                    //年齡計算為101(年)-88(年)=13；10(月)-5(月)=5，因未達7個月，故其年齡為13歲。
+                    //(二)受測學生超過16歲者，以16歲之門檻標準計分
+                    //(2015/2/26 new)
+                    //3.未滿13歲者均以13歲之常模進行鑑測
 
                     #endregion
-               }
 
-               List<StudentFitnessRecord> UpdateList = new List<StudentFitnessRecord>();
-
-
-               //取得對照表,整理為可對照清單
-               XmlElement xml = DSXmlHelper.LoadXml(Properties.Resources.Sports_Fitness_Comparison);
-
-               SuperComparison _sc = new SuperComparison(xml);
-
-               foreach (StudentFitnessRecord sfr in SFitnessList)
-               {
-                    //包含這位學生
-                    if (_student.ContainsKey(sfr.StudentID))
+                    if (each.TestDate != null)
                     {
-                         KeyBoStudent student = _student[sfr.StudentID];
+                        if (student.Birthdate.HasValue)
+                        {
 
-                         if (!student.Age.HasValue)
-                         {
-                              continue;
-                         }
+                            student.Age = each.TestDate.Year - student.Birthdate.Value.Year;
 
-                         if (student.Gender == "男")
-                         {
-                              if (CheckCover) //進行覆蓋
-                              {
-                                   sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-                                   sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
-                                   sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
-                                   sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
-                              }
-                              else //如果有內容,則不予處理
-                              {
-                                   if (string.IsNullOrEmpty(sfr.SitUpDegree))
-                                        sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-
-                                   if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
-                                        sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
-
-                                   if (string.IsNullOrEmpty(sfr.StandingLongJumpDegree))
-                                        sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
-
-                                   if (string.IsNullOrEmpty(sfr.CardiorespiratoryDegree))
-                                        sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
-                              }
-
-                              UpdateList.Add(sfr);
-                         }
-                         else if (student.Gender == "女")
-                         {
-                              if (CheckCover) //進行覆蓋
-                              {
-                                   sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
-                                   sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
-                                   sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
-                                   sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
-                              }
-                              else
-                              {
-                                   if (string.IsNullOrEmpty(sfr.SitUpDegree))
-                                        sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
-
-                                   if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
-                                        sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
-
-                                   if (string.IsNullOrEmpty(sfr.StandingLongJumpDegree))
-                                        sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
-
-                                   if (string.IsNullOrEmpty(sfr.CardiorespiratoryDegree))
-                                        sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
-                              }
-
-                              UpdateList.Add(sfr);
-                         }
-                         else
-                         {
-                              //性別未定將不予處理
-                              FitInfo info = new FitInfo(student);
-                              info._info = "學生沒有設定性別!!";
-                              FitInfoList.Add(info);
-                         }
-                    }
-               }
-
-               #region Log處理
-
-               StringBuilder sbLog = new StringBuilder();
-               if (CheckCover)
-                    sbLog.AppendLine("體適能常模轉換:(使用者設定為「常模有值覆蓋」)");
-               else
-                    sbLog.AppendLine("體適能常模轉換:(使用者設定為「常模有值略過」)");
-
-               foreach (string each in _student.Keys)
-               {
-                    KeyBoStudent student = _student[each];
-
-                    StudentFitnessRecord sfr1 = student.sfr;
-                    StudentFitnessRecord sfr_log = student.sfr_Log;
-
-                    if (sfr1 != null && sfr_log != null)
-                    {
-                         StringBuilder sb_123 = new StringBuilder();
-
-                         StringBuilder sb_name = new StringBuilder();
-                         sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」", student.ClassName, student.SeatNo, student.Name));
-
-                         if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
-                              sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
-
-                         if (sfr1.SitAndReachDegree != sfr_log.SitAndReachDegree)
-                              sb_123.AppendLine(string.Format("坐姿體前彎「{0}」由「{1}」換算為「{2}」", sfr1.SitAndReach, sfr_log.SitAndReachDegree, sfr1.SitAndReachDegree));
-
-                         if (sfr1.StandingLongJumpDegree != sfr_log.StandingLongJumpDegree)
-                              sb_123.AppendLine(string.Format("立定跳遠「{0}」由「{1}」換算為「{2}」", sfr1.StandingLongJump, sfr_log.StandingLongJumpDegree, sfr1.StandingLongJumpDegree));
-
-                         if (sfr1.CardiorespiratoryDegree != sfr_log.CardiorespiratoryDegree)
-                              sb_123.AppendLine(string.Format("心肺適能「{0}」由「{1}」換算為「{2}」", sfr1.Cardiorespiratory, sfr_log.CardiorespiratoryDegree, sfr1.CardiorespiratoryDegree));
-
-                         sb_123.AppendLine("");
-
-                         sbLog.AppendLine(sb_name.ToString() + sb_123.ToString());
-
+                            //凡未滿13歲均以13歲為基準進行換算
+                            if (student.Age < 13)
+                            {
+                                student.Age = 13;
+                            }
+                            else
+                            {
+                                //大於13歲則繼續判斷月份
+                                int Month = each.TestDate.Month - student.Birthdate.Value.Month;
+                                if (Month >= 7)
+                                {
+                                    //大於7個月則年齡加一
+                                    student.Age++;
+                                }
+                                else
+                                {
+                                    //小於7個月則不予處理
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //沒有年齡,表示該體適能資料無法換算
+                            FitInfo info = new FitInfo(student);
+                            info._info = "沒有生日!";
+                            FitInfoList.Add(info);
+                        }
                     }
                     else
                     {
-
-                         FitInfo info = new FitInfo(student);
-                         info._info = "沒有體適能資料!";
-                         FitInfoList.Add(info);
+                        //沒有測驗日期
+                        //沒有年齡,表示該體適能資料無法換算
+                        FitInfo info = new FitInfo(student);
+                        info._info = "未輸入體適能測驗日期!!";
+                        FitInfoList.Add(info);
                     }
-               }
+                }
 
-               #endregion
+                #endregion
+            }
 
-               if (UpdateList.Count > 0)
-               {
-                    tool._A.UpdateValues(UpdateList);
-                    FISCA.LogAgent.ApplicationLog.Log("體適能", "常模換算", sbLog.ToString());
-               }
+            List<StudentFitnessRecord> UpdateList = new List<StudentFitnessRecord>();
 
-               e.Result = FitInfoList;
-          }
 
-          /// <summary>
-          /// 心肺適能換算
-          /// 傳入字串,並且依據是否有小數點
-          /// 來決定是否進行秒數換算
-          /// </summary>
-          private string dotorsec(string _value)
-          {
-               if (_value.Contains("."))
-               {
-                    string[] dot = _value.Split('.');
-                    int x, y, z;
-                    int.TryParse(dot[0], out x); //分
-                    int.TryParse(dot[1], out y); //秒
-                    z = x * 60 + y;
-                    return z.ToString();
-               }
-               else if (_value.Contains("'")) //3.20 or 200 or 3'20 or 3'20'' or 3'20"
-               {
-                    string[] dot = _value.Split('\'');
-                    string[] dot2;
-                    if (dot[1].Contains("\'"))
+            //取得對照表,整理為可對照清單
+            XmlElement xml = DSXmlHelper.LoadXml(Properties.Resources.Sports_Fitness_Comparison);
+
+            SuperComparison _sc = new SuperComparison(xml);
+
+            foreach (StudentFitnessRecord sfr in SFitnessList)
+            {
+                //包含這位學生
+                if (_student.ContainsKey(sfr.StudentID))
+                {
+                    KeyBoStudent student = _student[sfr.StudentID];
+
+                    if (!student.Age.HasValue)
                     {
-                         dot2 = dot[1].Split('\'');
+                        continue;
                     }
-                    else if (dot[1].Contains('\"'))
+
+                    if (student.Gender == "男")
                     {
-                         dot2 = dot[1].Split('\"');
+                        if (CheckCover) //進行覆蓋
+                        {
+                            sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
+                            sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
+                            sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
+                        }
+                        else //如果有內容,則不予處理
+                        {
+                            if (string.IsNullOrEmpty(sfr.SitUpDegree))
+                                sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+
+                            if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
+                                sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
+
+                            if (string.IsNullOrEmpty(sfr.StandingLongJumpDegree))
+                                sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
+
+                            if (string.IsNullOrEmpty(sfr.CardiorespiratoryDegree))
+                                sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
+                        }
+
+                        UpdateList.Add(sfr);
+                    }
+                    else if (student.Gender == "女")
+                    {
+                        if (CheckCover) //進行覆蓋
+                        {
+                            sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
+                            sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
+                            sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(sfr.SitUpDegree))
+                                sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+
+                            if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
+                                sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
+
+                            if (string.IsNullOrEmpty(sfr.StandingLongJumpDegree))
+                                sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
+
+                            if (string.IsNullOrEmpty(sfr.CardiorespiratoryDegree))
+                                sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
+                        }
+
+                        UpdateList.Add(sfr);
                     }
                     else
                     {
-                         dot2 = dot[1].Split('\'');
+                        //性別未定將不予處理
+                        FitInfo info = new FitInfo(student);
+                        info._info = "學生沒有設定性別!!";
+                        FitInfoList.Add(info);
                     }
+                }
+            }
 
-                    int x, y, z;
-                    int.TryParse(dot[0], out x); //分
-                    int.TryParse(dot2[0], out y); //秒
-                    z = x * 60 + y;
-                    return z.ToString();
-               }
-               else
-               {
-                    return _value;
-               }
-          }
+            #region Log處理
 
+            StringBuilder sbLog = new StringBuilder();
+            if (CheckCover)
+                sbLog.AppendLine("體適能常模轉換:(使用者設定為「常模有值覆蓋」)");
+            else
+                sbLog.AppendLine("體適能常模轉換:(使用者設定為「常模有值略過」)");
 
-          private string GetMeValue(string fitValue, string fitname, KeyBoStudent student, Dictionary<int, Dictionary<int, string>> dic)
-          {
-               if (fitValue == "免測")
-                    return "免測";
+            foreach (string each in _student.Keys)
+            {
+                KeyBoStudent student = _student[each];
 
+                StudentFitnessRecord sfr1 = student.sfr;
+                StudentFitnessRecord sfr_log = student.sfr_Log;
 
-               if (student.Age.HasValue)
-               {
-                    if (dic.ContainsKey(student.Age.Value))
-                    {
-                         int fitParseIntValue;
-                         if (int.TryParse(fitValue, out fitParseIntValue))
-                         {
-                              if (dic[student.Age.Value].ContainsKey(fitParseIntValue))
-                              {
-                                   return dic[student.Age.Value][fitParseIntValue];
-                              }
-                              else
-                              {
-                                   FitInfo info = new FitInfo(student);
-                                   info._info = string.Format("{0}:「{1}」不在表定範圍!!", fitname, fitValue);
-                                   FitInfoList.Add(info);
-                              }
-                         }
-                         else
-                         {
-                              FitInfo info = new FitInfo(student);
-                              info._info = string.Format("{0}:「{1}」並非數字!!", fitname, fitValue);
-                              FitInfoList.Add(info);
-                         }
-                    }
-                    else
-                    {
-                         FitInfo info = new FitInfo(student);
-                         info._info = string.Format("{0}:年齡未落在「7~23歲」範圍內", fitname);
-                         FitInfoList.Add(info);
-                    }
-               }
-               else
-               {
+                if (sfr1 != null && sfr_log != null)
+                {
+                    StringBuilder sb_123 = new StringBuilder();
+
+                    StringBuilder sb_name = new StringBuilder();
+                    sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」", student.ClassName, student.SeatNo, student.Name));
+
+                    if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
+                        sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
+
+                    if (sfr1.SitAndReachDegree != sfr_log.SitAndReachDegree)
+                        sb_123.AppendLine(string.Format("坐姿體前彎「{0}」由「{1}」換算為「{2}」", sfr1.SitAndReach, sfr_log.SitAndReachDegree, sfr1.SitAndReachDegree));
+
+                    if (sfr1.StandingLongJumpDegree != sfr_log.StandingLongJumpDegree)
+                        sb_123.AppendLine(string.Format("立定跳遠「{0}」由「{1}」換算為「{2}」", sfr1.StandingLongJump, sfr_log.StandingLongJumpDegree, sfr1.StandingLongJumpDegree));
+
+                    if (sfr1.CardiorespiratoryDegree != sfr_log.CardiorespiratoryDegree)
+                        sb_123.AppendLine(string.Format("心肺適能「{0}」由「{1}」換算為「{2}」", sfr1.Cardiorespiratory, sfr_log.CardiorespiratoryDegree, sfr1.CardiorespiratoryDegree));
+
+                    sb_123.AppendLine("");
+
+                    sbLog.AppendLine(sb_name.ToString() + sb_123.ToString());
+
+                }
+                else
+                {
+
                     FitInfo info = new FitInfo(student);
-                    info._info = string.Format("{0}:沒有年齡資料!!", fitname);
+                    info._info = "沒有體適能資料!";
                     FitInfoList.Add(info);
-               }
+                }
+            }
 
-               return "";
-          }
+            #endregion
 
-          void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-          {
-               btnStart.Enabled = true;
+            if (UpdateList.Count > 0)
+            {
+                tool._A.UpdateValues(UpdateList);
+                FISCA.LogAgent.ApplicationLog.Log("體適能", "常模換算", sbLog.ToString());
+            }
 
-               if (!e.Cancelled)
-               {
-                    if (e.Error == null)
+            e.Result = FitInfoList;
+        }
+
+        /// <summary>
+        /// 心肺適能換算
+        /// 傳入字串,並且依據是否有小數點
+        /// 來決定是否進行秒數換算
+        /// </summary>
+        private string dotorsec(string _value)
+        {
+            if (_value.Contains("."))
+            {
+                string[] dot = _value.Split('.');
+                int x, y, z;
+                int.TryParse(dot[0], out x); //分
+                int.TryParse(dot[1], out y); //秒
+                z = x * 60 + y;
+                return z.ToString();
+            }
+            else if (_value.Contains("'")) //3.20 or 200 or 3'20 or 3'20'' or 3'20"
+            {
+                string[] dot = _value.Split('\'');
+                string[] dot2;
+                if (dot[1].Contains("\'"))
+                {
+                    dot2 = dot[1].Split('\'');
+                }
+                else if (dot[1].Contains('\"'))
+                {
+                    dot2 = dot[1].Split('\"');
+                }
+                else
+                {
+                    dot2 = dot[1].Split('\'');
+                }
+
+                int x, y, z;
+                int.TryParse(dot[0], out x); //分
+                int.TryParse(dot2[0], out y); //秒
+                z = x * 60 + y;
+                return z.ToString();
+            }
+            else
+            {
+                return _value;
+            }
+        }
+
+
+        private string GetMeValue(string fitValue, string fitname, KeyBoStudent student, Dictionary<int, Dictionary<int, string>> dic)
+        {
+            if (fitValue == "免測")
+                return "免測";
+
+
+            if (student.Age.HasValue)
+            {
+                if (dic.ContainsKey(student.Age.Value))
+                {
+                    int fitParseIntValue;
+                    if (int.TryParse(fitValue, out fitParseIntValue))
                     {
-                         List<FitInfo> FitInfoList = (List<FitInfo>)e.Result;
-
-                         eh(null, EventArgs.Empty);
-
-                         if (FitInfoList.Count > 0)
-                         {
-                              DialogResult dr = MsgBox.Show("常模轉換作業已完成!\n您是否要檢視詳細訊息!", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
-
-                              if (dr == System.Windows.Forms.DialogResult.Yes)
-                              {
-                                   InfoForm _if = new InfoForm(FitInfoList);
-                                   _if.ShowDialog();
-                              }
-                         }
-                         else
-                         {
-                              MsgBox.Show("常模轉換作業已完成!");
-                         }
+                        if (dic[student.Age.Value].ContainsKey(fitParseIntValue))
+                        {
+                            return dic[student.Age.Value][fitParseIntValue];
+                        }
+                        else
+                        {
+                            FitInfo info = new FitInfo(student);
+                            info._info = string.Format("{0}:「{1}」不在表定範圍!!", fitname, fitValue);
+                            FitInfoList.Add(info);
+                        }
                     }
                     else
                     {
-                         MsgBox.Show("常模轉換作業發生錯誤!!\n" + e.Error.Message);
+                        FitInfo info = new FitInfo(student);
+                        info._info = string.Format("{0}:「{1}」並非數字!!", fitname, fitValue);
+                        FitInfoList.Add(info);
                     }
-               }
-               else
-               {
-                    MsgBox.Show("常模轉換作業已取消!!");
-               }
+                }
+                else
+                {
+                    FitInfo info = new FitInfo(student);
+                    info._info = string.Format("{0}:年齡未落在「13~23歲」範圍內", fitname);
+                    FitInfoList.Add(info);
+                }
+            }
+            else
+            {
+                FitInfo info = new FitInfo(student);
+                info._info = string.Format("{0}:沒有年齡資料!!", fitname);
+                FitInfoList.Add(info);
+            }
 
-          }
+            return "";
+        }
 
-          private void btnExit_Click(object sender, EventArgs e)
-          {
-               this.Close();
-          }
+        void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnStart.Enabled = true;
 
-          //private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-          //{
-          //     DialogResult dr = MsgBox.Show("您確定要開啟體適能官方網站?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
-          //     if (dr == System.Windows.Forms.DialogResult.Yes)
-          //     {
-          //          System.Diagnostics.Process.Start("http://www.fitness.org.tw/");
-          //     }
-          //}
+            if (!e.Cancelled)
+            {
+                if (e.Error == null)
+                {
+                    List<FitInfo> FitInfoList = (List<FitInfo>)e.Result;
 
-          private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-          {
-               ViewParse vp = new ViewParse();
-               vp.ShowDialog();
-          }
-     }
+                    eh(null, EventArgs.Empty);
+
+                    if (FitInfoList.Count > 0)
+                    {
+                        DialogResult dr = MsgBox.Show("常模轉換作業已完成!\n您是否要檢視詳細訊息!", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
+
+                        if (dr == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            InfoForm _if = new InfoForm(FitInfoList);
+                            _if.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        MsgBox.Show("常模轉換作業已完成!");
+                    }
+                }
+                else
+                {
+                    MsgBox.Show("常模轉換作業發生錯誤!!\n" + e.Error.Message);
+                }
+            }
+            else
+            {
+                MsgBox.Show("常模轉換作業已取消!!");
+            }
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //     DialogResult dr = MsgBox.Show("您確定要開啟體適能官方網站?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
+        //     if (dr == System.Windows.Forms.DialogResult.Yes)
+        //     {
+        //          System.Diagnostics.Process.Start("http://www.fitness.org.tw/");
+        //     }
+        //}
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ViewParse vp = new ViewParse();
+            vp.ShowDialog();
+        }
+    }
 }
