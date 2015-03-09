@@ -74,7 +74,7 @@ namespace K12.Sports.FitnessImportExport
                };
 
                // 加入"匯入體適能"按鈕
-               FISCA.Presentation.MenuButton btnImport = FitnessBar["匯入"]["匯出體適能上傳檔"];
+               FISCA.Presentation.MenuButton btnImport = FitnessBar["匯入"]["匯入體適能上傳檔"];
                // 設定權限
                btnImport.Enable = Permissions.IsEnableFitnessImport;
                // 設定動作

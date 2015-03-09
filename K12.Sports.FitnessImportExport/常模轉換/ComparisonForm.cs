@@ -87,7 +87,7 @@ namespace K12.Sports.FitnessImportExport
                     //年齡計算為101(年)-88(年)=13；10(月)-5(月)=5，因未達7個月，故其年齡為13歲。
                     //(二)受測學生超過16歲者，以16歲之門檻標準計分
                     //(2015/2/26 new)
-                    //3.未滿13歲者均以13歲之常模進行鑑測
+                    //3.未滿13歲者均以13歲之常模進行鑑測(103+學年度之資料)
 
                     #endregion
 
@@ -95,26 +95,36 @@ namespace K12.Sports.FitnessImportExport
                     {
                         if (student.Birthdate.HasValue)
                         {
-
                             student.Age = each.TestDate.Year - student.Birthdate.Value.Year;
 
-                            //凡未滿13歲均以13歲為基準進行換算
-                            if (student.Age < 13)
+                            //當資料學年度,是大於102時
+                            //採用13足歲之規則
+                            if (each.SchoolYear >= 103)
                             {
-                                student.Age = 13;
+                                //凡未滿13歲均以13歲為基準進行換算
+                                if (student.Age < 13)
+                                {
+                                    student.Age = 13;
+                                }
+                                else
+                                {
+                                    //大於13歲則繼續判斷月份
+                                    int Month = each.TestDate.Month - student.Birthdate.Value.Month;
+                                    if (Month >= 7)
+                                    {
+                                        //大於7個月則年齡加一
+                                        student.Age++;
+                                    }
+                                }
                             }
                             else
                             {
-                                //大於13歲則繼續判斷月份
+                                //102之前資料處理做法
                                 int Month = each.TestDate.Month - student.Birthdate.Value.Month;
                                 if (Month >= 7)
                                 {
                                     //大於7個月則年齡加一
                                     student.Age++;
-                                }
-                                else
-                                {
-                                    //小於7個月則不予處理
                                 }
                             }
                         }
@@ -144,7 +154,6 @@ namespace K12.Sports.FitnessImportExport
 
             //取得對照表,整理為可對照清單
             XmlElement xml = DSXmlHelper.LoadXml(Properties.Resources.Sports_Fitness_Comparison);
-
             SuperComparison _sc = new SuperComparison(xml);
 
             foreach (StudentFitnessRecord sfr in SFitnessList)

@@ -245,7 +245,9 @@
     <None Include="Resources\體適能證明單_範本.doc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ImportStudentFitnessRecordVal.xml" />
+    <None Include="Resources\ImportStudentFitnessRecordVal.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Export.Image.png" />
@@ -317,6 +319,7 @@
     <Content Include="Library\K12.Presentation.dll" />
     <Content Include="Library\K12.Presentation.xml" />
     <Content Include="Library\SmartSchool.API.PlugIn.dll" />
+    <None Include="Resources\Sports.Fitness.Comparison_103.xml" />
     <None Include="Resources\Sports.Fitness.Comparison.xml">
       <SubType>Designer</SubType>
     </None>
