@@ -83,50 +83,69 @@ namespace K12.Sports.FitnessImportExport
                     //舉例如下：
                     //1.民國88年3月出生，於民國101年10月進行檢測，
                     //年齡計算為101(年)-88(年)=13；10(月)-3(月)=7，因達7個月，故進升1歲，其年齡為14歲。
+
                     //2.民國88年5月出生，於民國101年10月進行檢測，
                     //年齡計算為101(年)-88(年)=13；10(月)-5(月)=5，因未達7個月，故其年齡為13歲。
+
                     //(二)受測學生超過16歲者，以16歲之門檻標準計分
                     //(2015/2/26 new)
                     //3.未滿13歲者均以13歲之常模進行鑑測(103+學年度之資料)
 
                     #endregion
 
+
+                    //DateTime dt1 = new DateTime(1999, 11, 2); //生日
+                    //DateTime dt2 = new DateTime(2014, 12, 12); //測驗
+
+                    //student.Birthdate = dt1;
+                    //each.TestDate = dt2;
+
                     if (each.TestDate != null)
                     {
                         if (student.Birthdate.HasValue)
                         {
-                            student.Age = each.TestDate.Year - student.Birthdate.Value.Year;
-
-                            //當資料學年度,是大於102時
-                            //採用13足歲之規則
-                            if (each.SchoolYear >= 103)
+                            if (each.TestDate > student.Birthdate)
                             {
-                                //凡未滿13歲均以13歲為基準進行換算
-                                if (student.Age < 13)
+                                #region 邏輯核心
+
+                                student.Age = getAge2(student.Birthdate.Value, each.TestDate);
+
+                                //當資料學年度,是大於102時
+                                //採用13足歲之規則
+                                if (each.SchoolYear >= 103)
                                 {
-                                    student.Age = 13;
+                                    //new - 凡未滿13歲均以13歲為基準進行換算
+                                    if (student.Age.年 < 13)
+                                    {
+                                        student.Age.年 = 13;
+                                    }
+                                    else
+                                    {
+                                        if (student.Age.月 >= 7)
+                                        {
+                                            //大於7個月則年齡加一
+                                            student.Age.年++;
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    //大於13歲則繼續判斷月份
-                                    int Month = each.TestDate.Month - student.Birthdate.Value.Month;
-                                    if (Month >= 7)
+                                    if (student.Age.月 >= 7)
                                     {
                                         //大於7個月則年齡加一
-                                        student.Age++;
+                                        student.Age.年++;
                                     }
                                 }
                             }
                             else
                             {
-                                //102之前資料處理做法
-                                int Month = each.TestDate.Month - student.Birthdate.Value.Month;
-                                if (Month >= 7)
-                                {
-                                    //大於7個月則年齡加一
-                                    student.Age++;
-                                }
+                                //沒有年齡,表示該體適能資料無法換算
+                                FitInfo info = new FitInfo(student);
+                                info._info = "測驗日期不可能在出生之前!";
+                                FitInfoList.Add(info);
                             }
+
+                                #endregion
                         }
                         else
                         {
@@ -162,11 +181,6 @@ namespace K12.Sports.FitnessImportExport
                 if (_student.ContainsKey(sfr.StudentID))
                 {
                     KeyBoStudent student = _student[sfr.StudentID];
-
-                    if (!student.Age.HasValue)
-                    {
-                        continue;
-                    }
 
                     if (student.Gender == "男")
                     {
@@ -250,7 +264,14 @@ namespace K12.Sports.FitnessImportExport
                     StringBuilder sb_123 = new StringBuilder();
 
                     StringBuilder sb_name = new StringBuilder();
-                    sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」", student.ClassName, student.SeatNo, student.Name));
+                    string AgeString = "";
+
+                    if (student.Age != null)
+                        AgeString = string.Format("{0}歲{1}個月又{2}天", student.Age.年, student.Age.月, student.Age.日);
+                    else
+                        AgeString = "無相關資訊";
+
+                    sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」鑑測年齡「{3}」", student.ClassName, student.SeatNo, student.Name, AgeString));
 
                     if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
                         sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
@@ -287,6 +308,22 @@ namespace K12.Sports.FitnessImportExport
             }
 
             e.Result = FitInfoList;
+        }
+
+        private TestAge getAge2(DateTime 生日, DateTime 測驗日期)
+        {
+
+            TestAge ta = new TestAge();
+
+            double a = (測驗日期 - 生日).TotalDays;
+            ta.年 = int.Parse(Math.Floor(a / 365).ToString());
+
+            double C = a % 365;
+            ta.月 = int.Parse(Math.Floor(C / 30).ToString());
+
+            ta.日 = int.Parse(Math.Floor(C % 30).ToString());
+
+            return ta;
         }
 
         /// <summary>
@@ -341,16 +378,16 @@ namespace K12.Sports.FitnessImportExport
                 return "免測";
 
 
-            if (student.Age.HasValue)
+            if (student.Age != null)
             {
-                if (dic.ContainsKey(student.Age.Value))
+                if (dic.ContainsKey(student.Age.年))
                 {
                     int fitParseIntValue;
                     if (int.TryParse(fitValue, out fitParseIntValue))
                     {
-                        if (dic[student.Age.Value].ContainsKey(fitParseIntValue))
+                        if (dic[student.Age.年].ContainsKey(fitParseIntValue))
                         {
-                            return dic[student.Age.Value][fitParseIntValue];
+                            return dic[student.Age.年][fitParseIntValue];
                         }
                         else
                         {

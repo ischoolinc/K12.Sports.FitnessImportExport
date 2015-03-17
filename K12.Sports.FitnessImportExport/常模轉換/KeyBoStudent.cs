@@ -66,7 +66,7 @@ namespace K12.Sports.FitnessImportExport
           /// <summary>
           /// 年齡
           /// </summary>
-          public int? Age { get; set; }
+          public TestAge Age { get; set; }
 
           /// <summary>
           /// 性別
