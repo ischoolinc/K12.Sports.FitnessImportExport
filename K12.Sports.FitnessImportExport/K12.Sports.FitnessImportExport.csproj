@@ -146,7 +146,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestAge.cs" />
+    <Compile Include="常模轉換\TestAge.cs" />
     <Compile Include="常模轉換\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>

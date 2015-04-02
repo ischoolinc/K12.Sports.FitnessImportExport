@@ -117,14 +117,14 @@ namespace K12.Sports.FitnessImportExport
                                     //new - 凡未滿13歲均以13歲為基準進行換算
                                     if (student.Age.年 < 13)
                                     {
-                                        student.Age.年 = 13;
+                                        student.Age.鑑測年齡 = 13;
                                     }
                                     else
                                     {
                                         if (student.Age.月 >= 7)
                                         {
                                             //大於7個月則年齡加一
-                                            student.Age.年++;
+                                            student.Age.鑑測年齡++;
                                         }
                                     }
                                 }
@@ -133,7 +133,7 @@ namespace K12.Sports.FitnessImportExport
                                     if (student.Age.月 >= 7)
                                     {
                                         //大於7個月則年齡加一
-                                        student.Age.年++;
+                                        student.Age.鑑測年齡++;
                                     }
                                 }
                             }
@@ -265,13 +265,20 @@ namespace K12.Sports.FitnessImportExport
 
                     StringBuilder sb_name = new StringBuilder();
                     string AgeString = "";
+                    string Age鑑測 = "";
 
                     if (student.Age != null)
+                    {
                         AgeString = string.Format("{0}歲{1}個月又{2}天", student.Age.年, student.Age.月, student.Age.日);
+                        Age鑑測 = "" + student.Age.鑑測年齡;
+                    }
                     else
+                    {
                         AgeString = "無相關資訊";
+                        Age鑑測 = "無相關資訊";
+                    }
 
-                    sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」鑑測年齡「{3}」", student.ClassName, student.SeatNo, student.Name, AgeString));
+                    sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」\n實際年齡「{3}」鑑測年齡「{4}」", student.ClassName, student.SeatNo, student.Name, AgeString, Age鑑測));
 
                     if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
                         sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
@@ -317,6 +324,7 @@ namespace K12.Sports.FitnessImportExport
 
             double a = (測驗日期 - 生日).TotalDays;
             ta.年 = int.Parse(Math.Floor(a / 365).ToString());
+            ta.鑑測年齡 = int.Parse(Math.Floor(a / 365).ToString());
 
             double C = a % 365;
             ta.月 = int.Parse(Math.Floor(C / 30).ToString());
@@ -380,14 +388,14 @@ namespace K12.Sports.FitnessImportExport
 
             if (student.Age != null)
             {
-                if (dic.ContainsKey(student.Age.年))
+                if (dic.ContainsKey(student.Age.鑑測年齡))
                 {
                     int fitParseIntValue;
                     if (int.TryParse(fitValue, out fitParseIntValue))
                     {
-                        if (dic[student.Age.年].ContainsKey(fitParseIntValue))
+                        if (dic[student.Age.鑑測年齡].ContainsKey(fitParseIntValue))
                         {
-                            return dic[student.Age.年][fitParseIntValue];
+                            return dic[student.Age.鑑測年齡][fitParseIntValue];
                         }
                         else
                         {
@@ -406,7 +414,7 @@ namespace K12.Sports.FitnessImportExport
                 else
                 {
                     FitInfo info = new FitInfo(student);
-                    info._info = string.Format("{0}:年齡未落在「13~23歲」範圍內", fitname);
+                    info._info = string.Format("{0}:鑑測年齡未落在「13~23歲」範圍內", fitname);
                     FitInfoList.Add(info);
                 }
             }
