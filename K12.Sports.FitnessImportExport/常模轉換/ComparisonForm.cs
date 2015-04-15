@@ -350,29 +350,6 @@ namespace K12.Sports.FitnessImportExport
                 z = x * 60 + y;
                 return z.ToString();
             }
-            else if (_value.Contains("'")) //3.20 or 200 or 3'20 or 3'20'' or 3'20"
-            {
-                string[] dot = _value.Split('\'');
-                string[] dot2;
-                if (dot[1].Contains("\'"))
-                {
-                    dot2 = dot[1].Split('\'');
-                }
-                else if (dot[1].Contains('\"'))
-                {
-                    dot2 = dot[1].Split('\"');
-                }
-                else
-                {
-                    dot2 = dot[1].Split('\'');
-                }
-
-                int x, y, z;
-                int.TryParse(dot[0], out x); //分
-                int.TryParse(dot2[0], out y); //秒
-                z = x * 60 + y;
-                return z.ToString();
-            }
             else
             {
                 return _value;

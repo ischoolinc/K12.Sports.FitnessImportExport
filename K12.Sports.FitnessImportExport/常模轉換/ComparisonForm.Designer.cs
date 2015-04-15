@@ -130,7 +130,7 @@
             this.lbHelp2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbHelp2.Location = new System.Drawing.Point(22, 83);
             this.lbHelp2.Name = "lbHelp2";
-            this.lbHelp2.Size = new System.Drawing.Size(476, 212);
+            this.lbHelp2.Size = new System.Drawing.Size(476, 194);
             this.lbHelp2.TabIndex = 5;
             this.lbHelp2.Text = resources.GetString("lbHelp2.Text");
             // 

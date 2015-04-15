@@ -22,7 +22,7 @@ namespace K12.Sports.FitnessImportExport.Report
         /// <summary>
         /// 體適能證明單設定檔
         /// </summary>
-        private string CadreConfig = "K12.Sports.FitnessImportExport.FitnessProveSingle.cs";
+        private string FitnessConfig = "K12.Sports.FitnessImportExport.FitnessProve_0415.cs";
 
         private BackgroundWorker BGW = new BackgroundWorker();
 
@@ -58,13 +58,13 @@ namespace K12.Sports.FitnessImportExport.Report
             #region 範本
 
             //整理取得報表範本
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(CadreConfig);
+            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(FitnessConfig);
             Aspose.Words.Document Template;
 
             if (ConfigurationInCadre.Template == null)
             {
                 //如果範本為空,則建立一個預設範本
-                Campus.Report.ReportConfiguration ConfigurationInCadre_1 = new Campus.Report.ReportConfiguration(CadreConfig);
+                Campus.Report.ReportConfiguration ConfigurationInCadre_1 = new Campus.Report.ReportConfiguration(FitnessConfig);
                 ConfigurationInCadre_1.Template = new Campus.Report.ReportTemplate(Properties.Resources.體適能證明單_範本, Campus.Report.TemplateType.Word);
                 Template = ConfigurationInCadre_1.Template.ToDocument();
             }
@@ -107,10 +107,10 @@ namespace K12.Sports.FitnessImportExport.Report
             SerColumn(table, "測驗日期");
 
             SerColumn(table, "身高");
-            SerColumn(table, "身高常模");
+            //SerColumn(table, "身高常模");
 
             SerColumn(table, "體重");
-            SerColumn(table, "體重常模");
+            //SerColumn(table, "體重常模");
 
             SerColumn(table, "坐姿體前彎");
             SerColumn(table, "坐姿體前彎常模");
@@ -165,10 +165,10 @@ namespace K12.Sports.FitnessImportExport.Report
                         row[string.Format("測驗日期{0}", y)] = Fitness.TestDate.ToShortDateString();
 
                         row[string.Format("身高{0}", y)] = Fitness.Height;
-                        row[string.Format("身高常模{0}", y)] = Fitness.HeightDegree;
+                        //row[string.Format("身高常模{0}", y)] = Fitness.HeightDegree;
 
                         row[string.Format("體重{0}", y)] = Fitness.Weight;
-                        row[string.Format("體重常模{0}", y)] = Fitness.WeightDegree;
+                        //row[string.Format("體重常模{0}", y)] = Fitness.WeightDegree;
 
                         row[string.Format("坐姿體前彎{0}", y)] = Fitness.SitAndReach;
                         row[string.Format("坐姿體前彎常模{0}", y)] = Fitness.SitAndReachDegree;
@@ -427,7 +427,7 @@ namespace K12.Sports.FitnessImportExport.Report
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //取得設定檔
-            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(CadreConfig);
+            Campus.Report.ReportConfiguration ConfigurationInCadre = new Campus.Report.ReportConfiguration(FitnessConfig);
             //畫面內容(範本內容,預設樣式
             Campus.Report.TemplateSettingForm TemplateForm;
             if (ConfigurationInCadre.Template != null)

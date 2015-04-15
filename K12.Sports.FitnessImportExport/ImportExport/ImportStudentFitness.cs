@@ -144,11 +144,11 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 身高
                     fitnessRec.Height = Utility.GetIRowValueString(row, "身高");
                     // 身高常模
-                    fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
+                    //fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
                     // 體重
                     fitnessRec.Weight = Utility.GetIRowValueString(row, "體重");
                     // 體重常模
-                    fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
+                    //fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
                     // 坐姿體前彎
                     fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎");
                     // 坐姿體前彎常模
@@ -183,14 +183,14 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     if (_Option.SelectedFields.Contains("身高"))
                         fitnessRec.Height = Utility.GetIRowValueString(row, "身高");
                     // 身高常模
-                    if (_Option.SelectedFields.Contains("身高常模"))
-                        fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
+                    //if (_Option.SelectedFields.Contains("身高常模"))
+                    //    fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
                     // 體重
                     if (_Option.SelectedFields.Contains("體重"))
                         fitnessRec.Weight = Utility.GetIRowValueString(row, "體重");
                     // 體重常模
-                    if (_Option.SelectedFields.Contains("體重常模"))
-                        fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
+                    //if (_Option.SelectedFields.Contains("體重常模"))
+                    //    fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
                     // 坐姿體前彎
                     if (_Option.SelectedFields.Contains("坐姿體前彎"))
                         fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎");
@@ -239,11 +239,9 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             logData.Append("總共匯入").Append((insertCnt + updateCnt)).Append("筆,");
             logData.Append("新增:").Append(insertCnt).Append("筆,");
             logData.Append("更新:").Append(updateCnt).Append("筆");
-            logTransfer.SaveLog("學生.體適能-匯入", "匯入", "student", "", logData);
+            logTransfer.SaveLog("體適能", "匯入", "student", "", logData);
 
             return "";
         }
-
-
     }
 }

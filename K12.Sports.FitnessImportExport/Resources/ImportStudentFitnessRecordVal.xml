@@ -25,15 +25,15 @@
     <Field Required="False" Name="身高">
       <Validate AutoCorrect="False" Description="「身高」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="身高常模">
+    <!--<Field Required="False" Name="身高常模">
       <Validate AutoCorrect="False" Description="「身高常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
-    </Field>
+    </Field>-->
     <Field Required="False" Name="體重">
       <Validate AutoCorrect="False" Description="「體重」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="體重常模">
+    <!--<Field Required="False" Name="體重常模">
       <Validate AutoCorrect="False" Description="「體重常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
-    </Field>
+    </Field>-->
     <Field Required="False" Name="坐姿體前彎">
       <Validate AutoCorrect="False" Description="「坐姿體前彎」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>

@@ -107,7 +107,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(24, 64);
+            this.labelX2.Location = new System.Drawing.Point(24, 69);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(288, 21);
             this.labelX2.TabIndex = 4;

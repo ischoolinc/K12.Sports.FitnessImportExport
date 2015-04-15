@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.lbHeight = new DevComponents.DotNetBar.LabelX();
@@ -71,8 +72,22 @@
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -81,7 +96,7 @@
             this.btnSave.AutoSize = true;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(341, 337);
+            this.btnSave.Location = new System.Drawing.Point(341, 291);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -95,7 +110,7 @@
             this.btnClose.AutoSize = true;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(423, 337);
+            this.btnClose.Location = new System.Drawing.Point(423, 291);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 25);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -112,7 +127,7 @@
             // 
             this.lbHeight.BackgroundStyle.Class = "";
             this.lbHeight.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbHeight.Location = new System.Drawing.Point(19, 125);
+            this.lbHeight.Location = new System.Drawing.Point(19, 84);
             this.lbHeight.Name = "lbHeight";
             this.lbHeight.Size = new System.Drawing.Size(61, 21);
             this.lbHeight.TabIndex = 2;
@@ -125,10 +140,11 @@
             // 
             this.txtHeight.Border.Class = "TextBoxBorder";
             this.txtHeight.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtHeight.Location = new System.Drawing.Point(128, 122);
+            this.txtHeight.Location = new System.Drawing.Point(128, 82);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(118, 25);
             this.txtHeight.TabIndex = 4;
+            this.txtHeight.WatermarkText = "cm";
             // 
             // labelX1
             // 
@@ -138,7 +154,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(273, 124);
+            this.labelX1.Location = new System.Drawing.Point(273, 432);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(104, 23);
             this.labelX1.TabIndex = 2;
@@ -151,7 +167,7 @@
             // 
             this.txtHeightDegree.Border.Class = "TextBoxBorder";
             this.txtHeightDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtHeightDegree.Location = new System.Drawing.Point(380, 123);
+            this.txtHeightDegree.Location = new System.Drawing.Point(380, 431);
             this.txtHeightDegree.Name = "txtHeightDegree";
             this.txtHeightDegree.Size = new System.Drawing.Size(118, 25);
             this.txtHeightDegree.TabIndex = 5;
@@ -165,7 +181,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(19, 156);
+            this.labelX2.Location = new System.Drawing.Point(19, 117);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(58, 21);
             this.labelX2.TabIndex = 2;
@@ -178,10 +194,11 @@
             // 
             this.txtWeight.Border.Class = "TextBoxBorder";
             this.txtWeight.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtWeight.Location = new System.Drawing.Point(128, 153);
+            this.txtWeight.Location = new System.Drawing.Point(128, 114);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(118, 25);
             this.txtWeight.TabIndex = 6;
+            this.txtWeight.WatermarkText = "kg";
             // 
             // labelX3
             // 
@@ -191,7 +208,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(273, 155);
+            this.labelX3.Location = new System.Drawing.Point(273, 463);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(104, 23);
             this.labelX3.TabIndex = 2;
@@ -204,7 +221,7 @@
             // 
             this.txtWeightDegree.Border.Class = "TextBoxBorder";
             this.txtWeightDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtWeightDegree.Location = new System.Drawing.Point(380, 154);
+            this.txtWeightDegree.Location = new System.Drawing.Point(380, 462);
             this.txtWeightDegree.Name = "txtWeightDegree";
             this.txtWeightDegree.Size = new System.Drawing.Size(118, 25);
             this.txtWeightDegree.TabIndex = 7;
@@ -218,7 +235,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(19, 187);
+            this.labelX4.Location = new System.Drawing.Point(19, 147);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(101, 21);
             this.labelX4.TabIndex = 2;
@@ -231,7 +248,7 @@
             // 
             this.txtSitAndReach.Border.Class = "TextBoxBorder";
             this.txtSitAndReach.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSitAndReach.Location = new System.Drawing.Point(128, 184);
+            this.txtSitAndReach.Location = new System.Drawing.Point(128, 145);
             this.txtSitAndReach.Name = "txtSitAndReach";
             this.txtSitAndReach.Size = new System.Drawing.Size(118, 25);
             this.txtSitAndReach.TabIndex = 8;
@@ -244,7 +261,7 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(273, 186);
+            this.labelX5.Location = new System.Drawing.Point(18, 11);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(104, 23);
             this.labelX5.TabIndex = 2;
@@ -257,7 +274,7 @@
             // 
             this.txtSitAndReachDegree.Border.Class = "TextBoxBorder";
             this.txtSitAndReachDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSitAndReachDegree.Location = new System.Drawing.Point(380, 185);
+            this.txtSitAndReachDegree.Location = new System.Drawing.Point(125, 10);
             this.txtSitAndReachDegree.Name = "txtSitAndReachDegree";
             this.txtSitAndReachDegree.Size = new System.Drawing.Size(118, 25);
             this.txtSitAndReachDegree.TabIndex = 9;
@@ -271,7 +288,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(19, 218);
+            this.labelX6.Location = new System.Drawing.Point(19, 179);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(88, 21);
             this.labelX6.TabIndex = 2;
@@ -284,7 +301,7 @@
             // 
             this.txtStandingLongJump.Border.Class = "TextBoxBorder";
             this.txtStandingLongJump.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtStandingLongJump.Location = new System.Drawing.Point(128, 215);
+            this.txtStandingLongJump.Location = new System.Drawing.Point(128, 177);
             this.txtStandingLongJump.Name = "txtStandingLongJump";
             this.txtStandingLongJump.Size = new System.Drawing.Size(118, 25);
             this.txtStandingLongJump.TabIndex = 10;
@@ -297,7 +314,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(273, 217);
+            this.labelX7.Location = new System.Drawing.Point(18, 43);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(104, 23);
             this.labelX7.TabIndex = 2;
@@ -310,7 +327,7 @@
             // 
             this.txtStandingLongJumpDegree.Border.Class = "TextBoxBorder";
             this.txtStandingLongJumpDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtStandingLongJumpDegree.Location = new System.Drawing.Point(380, 216);
+            this.txtStandingLongJumpDegree.Location = new System.Drawing.Point(125, 42);
             this.txtStandingLongJumpDegree.Name = "txtStandingLongJumpDegree";
             this.txtStandingLongJumpDegree.Size = new System.Drawing.Size(118, 25);
             this.txtStandingLongJumpDegree.TabIndex = 11;
@@ -338,7 +355,7 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(19, 249);
+            this.labelX8.Location = new System.Drawing.Point(19, 211);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(82, 21);
             this.labelX8.TabIndex = 2;
@@ -351,7 +368,7 @@
             // 
             this.txtSitUp.Border.Class = "TextBoxBorder";
             this.txtSitUp.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSitUp.Location = new System.Drawing.Point(128, 246);
+            this.txtSitUp.Location = new System.Drawing.Point(128, 209);
             this.txtSitUp.Name = "txtSitUp";
             this.txtSitUp.Size = new System.Drawing.Size(118, 25);
             this.txtSitUp.TabIndex = 12;
@@ -364,7 +381,7 @@
             // 
             this.labelX9.BackgroundStyle.Class = "";
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(273, 248);
+            this.labelX9.Location = new System.Drawing.Point(18, 75);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(104, 23);
             this.labelX9.TabIndex = 2;
@@ -377,7 +394,7 @@
             // 
             this.textBoxX10.Border.Class = "TextBoxBorder";
             this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX10.Location = new System.Drawing.Point(380, 216);
+            this.textBoxX10.Location = new System.Drawing.Point(125, 42);
             this.textBoxX10.Name = "textBoxX10";
             this.textBoxX10.Size = new System.Drawing.Size(118, 25);
             this.textBoxX10.TabIndex = 3;
@@ -389,7 +406,7 @@
             // 
             this.txtSitUpDegree.Border.Class = "TextBoxBorder";
             this.txtSitUpDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSitUpDegree.Location = new System.Drawing.Point(380, 247);
+            this.txtSitUpDegree.Location = new System.Drawing.Point(125, 74);
             this.txtSitUpDegree.Name = "txtSitUpDegree";
             this.txtSitUpDegree.Size = new System.Drawing.Size(118, 25);
             this.txtSitUpDegree.TabIndex = 13;
@@ -403,7 +420,7 @@
             // 
             this.labelX11.BackgroundStyle.Class = "";
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(19, 280);
+            this.labelX11.Location = new System.Drawing.Point(19, 243);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(82, 21);
             this.labelX11.TabIndex = 2;
@@ -416,7 +433,7 @@
             // 
             this.txtCardiorespiratory.Border.Class = "TextBoxBorder";
             this.txtCardiorespiratory.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCardiorespiratory.Location = new System.Drawing.Point(128, 277);
+            this.txtCardiorespiratory.Location = new System.Drawing.Point(128, 241);
             this.txtCardiorespiratory.Name = "txtCardiorespiratory";
             this.txtCardiorespiratory.Size = new System.Drawing.Size(118, 25);
             this.txtCardiorespiratory.TabIndex = 14;
@@ -429,7 +446,7 @@
             // 
             this.labelX12.BackgroundStyle.Class = "";
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(273, 279);
+            this.labelX12.Location = new System.Drawing.Point(18, 107);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(104, 23);
             this.labelX12.TabIndex = 2;
@@ -442,7 +459,7 @@
             // 
             this.textBoxX13.Border.Class = "TextBoxBorder";
             this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX13.Location = new System.Drawing.Point(380, 247);
+            this.textBoxX13.Location = new System.Drawing.Point(125, 74);
             this.textBoxX13.Name = "textBoxX13";
             this.textBoxX13.Size = new System.Drawing.Size(118, 25);
             this.textBoxX13.TabIndex = 3;
@@ -454,7 +471,7 @@
             // 
             this.txtCardiorespiratoryDegree.Border.Class = "TextBoxBorder";
             this.txtCardiorespiratoryDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCardiorespiratoryDegree.Location = new System.Drawing.Point(380, 278);
+            this.txtCardiorespiratoryDegree.Location = new System.Drawing.Point(125, 106);
             this.txtCardiorespiratoryDegree.Name = "txtCardiorespiratoryDegree";
             this.txtCardiorespiratoryDegree.Size = new System.Drawing.Size(118, 25);
             this.txtCardiorespiratoryDegree.TabIndex = 15;
@@ -534,7 +551,7 @@
             // 
             this.lbTestDate.BackgroundStyle.Class = "";
             this.lbTestDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTestDate.Location = new System.Drawing.Point(273, 62);
+            this.lbTestDate.Location = new System.Drawing.Point(292, 51);
             this.lbTestDate.Name = "lbTestDate";
             this.lbTestDate.Size = new System.Drawing.Size(64, 23);
             this.lbTestDate.TabIndex = 10;
@@ -553,7 +570,7 @@
             this.dateTimeInput1.ButtonFreeText.Checked = true;
             this.dateTimeInput1.FreeTextEntryMode = true;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(380, 61);
+            this.dateTimeInput1.Location = new System.Drawing.Point(380, 50);
             // 
             // 
             // 
@@ -610,7 +627,7 @@
             // 
             this.lbSemester.BackgroundStyle.Class = "";
             this.lbSemester.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbSemester.Location = new System.Drawing.Point(19, 62);
+            this.lbSemester.Location = new System.Drawing.Point(19, 51);
             this.lbSemester.Name = "lbSemester";
             this.lbSemester.Size = new System.Drawing.Size(70, 23);
             this.lbSemester.TabIndex = 12;
@@ -625,7 +642,7 @@
             this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput1.Location = new System.Drawing.Point(128, 60);
+            this.integerInput1.Location = new System.Drawing.Point(128, 50);
             this.integerInput1.Name = "integerInput1";
             this.integerInput1.ShowUpDown = true;
             this.integerInput1.Size = new System.Drawing.Size(118, 25);
@@ -640,7 +657,7 @@
             // 
             this.labelX16.BackgroundStyle.Class = "";
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(19, 94);
+            this.labelX16.Location = new System.Drawing.Point(296, 84);
             this.labelX16.Name = "labelX16";
             this.labelX16.Size = new System.Drawing.Size(60, 21);
             this.labelX16.TabIndex = 2;
@@ -653,7 +670,7 @@
             // 
             this.txtSchoolCategory.Border.Class = "TextBoxBorder";
             this.txtSchoolCategory.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSchoolCategory.Location = new System.Drawing.Point(128, 91);
+            this.txtSchoolCategory.Location = new System.Drawing.Point(380, 82);
             this.txtSchoolCategory.Name = "txtSchoolCategory";
             this.txtSchoolCategory.Size = new System.Drawing.Size(118, 25);
             this.txtSchoolCategory.TabIndex = 3;
@@ -668,7 +685,7 @@
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labelX17.ForeColor = System.Drawing.Color.Red;
-            this.labelX17.Location = new System.Drawing.Point(60, 62);
+            this.labelX17.Location = new System.Drawing.Point(60, 51);
             this.labelX17.Name = "labelX17";
             this.labelX17.Size = new System.Drawing.Size(14, 23);
             this.labelX17.TabIndex = 14;
@@ -684,7 +701,7 @@
             this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX18.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labelX18.ForeColor = System.Drawing.Color.Red;
-            this.labelX18.Location = new System.Drawing.Point(329, 63);
+            this.labelX18.Location = new System.Drawing.Point(348, 51);
             this.labelX18.Name = "labelX18";
             this.labelX18.Size = new System.Drawing.Size(14, 23);
             this.labelX18.TabIndex = 15;
@@ -700,34 +717,108 @@
             this.labelX15.BackgroundStyle.Class = "";
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.ForeColor = System.Drawing.Color.Red;
-            this.labelX15.Location = new System.Drawing.Point(273, 308);
+            this.labelX15.Location = new System.Drawing.Point(19, 295);
             this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(132, 21);
+            this.labelX15.Size = new System.Drawing.Size(233, 21);
             this.labelX15.TabIndex = 18;
-            this.labelX15.Text = "(常模為請加強~金牌)";
+            this.labelX15.Text = "常模指標：請加強,中等,銅牌,銀牌,金牌";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
+            // errorProvider4
+            // 
+            this.errorProvider4.ContainerControl = this;
+            // 
+            // errorProvider5
+            // 
+            this.errorProvider5.ContainerControl = this;
+            // 
+            // errorProvider6
+            // 
+            this.errorProvider6.ContainerControl = this;
+            // 
+            // groupPanel1
+            // 
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.txtSitAndReachDegree);
+            this.groupPanel1.Controls.Add(this.labelX5);
+            this.groupPanel1.Controls.Add(this.txtStandingLongJumpDegree);
+            this.groupPanel1.Controls.Add(this.txtSitUpDegree);
+            this.groupPanel1.Controls.Add(this.labelX7);
+            this.groupPanel1.Controls.Add(this.textBoxX13);
+            this.groupPanel1.Controls.Add(this.labelX9);
+            this.groupPanel1.Controls.Add(this.txtCardiorespiratoryDegree);
+            this.groupPanel1.Controls.Add(this.textBoxX10);
+            this.groupPanel1.Controls.Add(this.labelX12);
+            this.groupPanel1.Location = new System.Drawing.Point(252, 111);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(258, 165);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.Class = "";
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseDown.Class = "";
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseOver.Class = "";
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 19;
+            this.groupPanel1.Text = "常模";
             // 
             // FrmFitnessRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 370);
+            this.ClientSize = new System.Drawing.Size(524, 322);
+            this.Controls.Add(this.groupPanel1);
+            this.Controls.Add(this.labelX4);
+            this.Controls.Add(this.labelX6);
             this.Controls.Add(this.integerInput1);
             this.Controls.Add(this.txtCardiorespiratory);
-            this.Controls.Add(this.txtSitUp);
-            this.Controls.Add(this.txtStandingLongJump);
-            this.Controls.Add(this.txtSitAndReach);
             this.Controls.Add(this.txtWeight);
+            this.Controls.Add(this.labelX8);
             this.Controls.Add(this.txtSchoolCategory);
+            this.Controls.Add(this.txtSitUp);
             this.Controls.Add(this.txtHeight);
+            this.Controls.Add(this.labelX11);
             this.Controls.Add(this.dateTimeInput1);
-            this.Controls.Add(this.txtCardiorespiratoryDegree);
-            this.Controls.Add(this.txtSitUpDegree);
-            this.Controls.Add(this.txtStandingLongJumpDegree);
-            this.Controls.Add(this.textBoxX13);
-            this.Controls.Add(this.textBoxX10);
-            this.Controls.Add(this.txtSitAndReachDegree);
+            this.Controls.Add(this.txtStandingLongJump);
             this.Controls.Add(this.txtWeightDegree);
             this.Controls.Add(this.txtHeightDegree);
+            this.Controls.Add(this.txtSitAndReach);
             this.Controls.Add(this.labelX15);
             this.Controls.Add(this.labelX18);
             this.Controls.Add(this.labelX17);
@@ -739,15 +830,7 @@
             this.Controls.Add(this.labelX13);
             this.Controls.Add(this.lbClassGradeYear);
             this.Controls.Add(this.labelX10);
-            this.Controls.Add(this.labelX12);
-            this.Controls.Add(this.labelX9);
-            this.Controls.Add(this.labelX7);
-            this.Controls.Add(this.labelX5);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.labelX11);
-            this.Controls.Add(this.labelX8);
-            this.Controls.Add(this.labelX6);
-            this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX16);
@@ -760,6 +843,13 @@
             this.Load += new System.EventHandler(this.FrmFitnessRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,5 +900,12 @@
         private DevComponents.DotNetBar.LabelX labelX17;
         private DevComponents.DotNetBar.LabelX labelX18;
         private DevComponents.DotNetBar.LabelX labelX15;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.ErrorProvider errorProvider4;
+        private System.Windows.Forms.ErrorProvider errorProvider5;
+        private System.Windows.Forms.ErrorProvider errorProvider6;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
     }
 }

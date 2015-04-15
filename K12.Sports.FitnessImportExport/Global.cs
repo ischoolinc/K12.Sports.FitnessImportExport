@@ -30,8 +30,7 @@ namespace K12.Sports.FitnessImportExport
         /// </summary>
         public static readonly string[] _ExcelDataDegreeTitle =
             { "測驗日期", "學校類別", "年級", "班級名稱", "學號/座號",
-                "性別", "身分證字號", "生日", "身高", "身高常模", "體重", "體重常模",
-                "坐姿體前彎", "坐姿體前彎常模", "立定跳遠", "立定跳遠常模", "仰臥起坐", "仰臥起坐常模", "心肺適能", "心肺適能常模" };
+                "性別", "身分證字號", "生日", "身高", "體重", "坐姿體前彎", "坐姿體前彎常模", "立定跳遠", "立定跳遠常模", "仰臥起坐", "仰臥起坐常模", "心肺適能", "心肺適能常模" };
 
         /// <summary>
         /// 所有學生學號與ID的暫存 key:StudentNumber; value:StudentID
@@ -48,6 +47,6 @@ namespace K12.Sports.FitnessImportExport
         /// </summary>
         public static StringBuilder _ErrorMessageList = new StringBuilder();
 
-        
+
     }
 }

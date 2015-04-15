@@ -455,10 +455,10 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     if (isExportDegree == true)
                     {
                         // 身高常模
-                        SetColumnValue("身高常模", fitnessRecord.HeightDegree);
+                        //SetColumnValue("身高常模", fitnessRecord.HeightDegree);
 
                         // 體重常模
-                        SetColumnValue("體重常模", fitnessRecord.WeightDegree);
+                        //SetColumnValue("體重常模", fitnessRecord.WeightDegree);
 
                         // 坐姿體前彎常模
                         SetColumnValue("坐姿體前彎常模", fitnessRecord.SitAndReachDegree);
@@ -500,10 +500,10 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     if (isExportDegree == true)
                     {
                         // 身高常模
-                        SetColumnValue("身高常模", string.Empty);
+                        //SetColumnValue("身高常模", string.Empty);
 
                         // 體重常模
-                        SetColumnValue("體重常模", string.Empty);
+                        //SetColumnValue("體重常模", string.Empty);
 
                         // 坐姿體前彎常模
                         SetColumnValue("坐姿體前彎常模", string.Empty);

@@ -56,6 +56,12 @@ namespace K12.Sports.FitnessImportExport.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!ValueCheckBox())
+            {
+                MsgBox.Show("資料有誤,請修正!!");
+                return;
+            }
+
             SaveFormDataToFitnessRec();
 
             Utility.SetLogData(_LogTransfer, _fitnessRec);
@@ -98,6 +104,89 @@ namespace K12.Sports.FitnessImportExport.Forms
 
             FISCA.Presentation.Controls.MsgBox.Show("儲存完成。");
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private bool ValueCheckBox()
+        {
+            bool checkValue = true;
+
+            if (!CheckTextIsValue2(errorProvider1, txtHeight, "必須是整數或小數點(cm)"))
+                checkValue = false;
+
+            if (!CheckTextIsValue2(errorProvider2, txtWeight, "必須是整數或小數點(kg)"))
+                checkValue = false;
+
+            if (!CheckTextIsValue(errorProvider3, txtSitAndReach, "必須是整數(cm)"))
+                checkValue = false;
+
+            if (!CheckTextIsValue(errorProvider4, txtStandingLongJump, "必須是整數(cm)"))
+                checkValue = false;
+
+            if (!CheckTextIsValue(errorProvider5, txtSitUp, "必須是整數(次)"))
+                checkValue = false;
+
+            if (!CheckTextIsValue2(errorProvider6, txtCardiorespiratory, "必須是整數或小數點"))
+                checkValue = false;
+
+            return checkValue;
+        }
+
+        private bool CheckTextIsValue(ErrorProvider errorProvider, DevComponents.DotNetBar.Controls.TextBoxX SitAndReach, string p)
+        {
+            if (!string.IsNullOrEmpty(SitAndReach.Text))
+            {
+                if (SitAndReach.Text == "免測")
+                {
+                    errorProvider.SetError(SitAndReach, "");
+                    return true;
+                }
+
+                int x;
+                if (!int.TryParse(SitAndReach.Text, out x))
+                {
+                    errorProvider.SetError(SitAndReach, p);
+                    return false;
+                }
+                else
+                {
+                    errorProvider.SetError(SitAndReach, "");
+                    return true;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(SitAndReach, "");
+                return true;
+            }
+        }
+
+        private bool CheckTextIsValue2(ErrorProvider errorProvider, DevComponents.DotNetBar.Controls.TextBoxX respiratory, string p)
+        {
+            if (!string.IsNullOrEmpty(respiratory.Text))
+            {
+                if (respiratory.Text == "免測")
+                {
+                    errorProvider.SetError(respiratory, "");
+                    return true;
+                }
+
+                double x;
+                if (!double.TryParse(respiratory.Text, out x))
+                {
+                    errorProvider.SetError(respiratory, p);
+                    return false;
+                }
+                else
+                {
+                    errorProvider.SetError(respiratory, "");
+                    return true;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(respiratory, "");
+                return true;
+            }
         }
 
         private void LoadDefaultDataToForm()

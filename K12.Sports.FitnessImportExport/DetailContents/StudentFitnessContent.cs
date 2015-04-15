@@ -177,11 +177,11 @@ namespace K12.Sports.FitnessImportExport.DetailContents
             // 身高
             item.SubItems.Add(rec.Height);
             // 身高常模
-            item.SubItems.Add(rec.HeightDegree);
+            //item.SubItems.Add(rec.HeightDegree);
             // 體重
             item.SubItems.Add(rec.Weight);
             // 體重常模
-            item.SubItems.Add(rec.WeightDegree);
+            //item.SubItems.Add(rec.WeightDegree);
             // 坐姿體前彎
             item.SubItems.Add(rec.SitAndReach);
             // 坐姿體前彎常模
