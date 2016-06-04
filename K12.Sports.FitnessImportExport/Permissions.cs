@@ -17,6 +17,10 @@ namespace K12.Sports.FitnessImportExport
 
         public const string 體適能常模轉換 = "K12.Sports.FitnessImportExport.ComparisonForm.cs";
 
+
+        // 2016/6/2 穎驊新增班級體適能通知單
+        public const string KeyClassFitnessInformReport = "K12.Sports.ClassFitnessInformReport.cs";
+
         public static bool 體適能常模轉換權限
         {
              get
@@ -72,5 +76,16 @@ namespace K12.Sports.FitnessImportExport
                 return FISCA.Permission.UserAcl.Current[KeyFitnessProveSingle].Executable;
             }
         }
+
+
+        // 2016/6/2 穎驊新增
+        public static bool IsEnableClassFitnessInformReport
+        {
+            get
+            {
+                return FISCA.Permission.UserAcl.Current[KeyClassFitnessInformReport].Executable;
+            }
+        }
+
     }
 }

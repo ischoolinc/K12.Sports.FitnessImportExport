@@ -32,7 +32,7 @@ namespace K12.Sports.FitnessImportExport
                if (FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Editable || FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Viewable)
                     K12.Presentation.NLDPanels.Student.AddDetailBulider<DetailContents.StudentFitnessContent>();
 
-               RibbonBarItem FitnessBar = NLDPanels.Student.RibbonBarItems["體適能"];
+               RibbonBarItem FitnessBar = NLDPanels.Student.RibbonBarItems["體適能()"];
 
 
                // 加入"匯出"按鈕以及圖示
@@ -103,6 +103,26 @@ namespace K12.Sports.FitnessImportExport
                     }
                };
 
+
+
+
+               FISCA.Presentation.MenuButton ClassFitnessInformReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["成績相關報表"];
+               ClassFitnessInformReport["班級體適能通知單"].Enable = false;
+               ClassFitnessInformReport["班級體適能通知單"].Click += delegate
+               {
+                   if (NLDPanels.Class.SelectedSource.Count > 0)
+                   {
+                       ClassFitnessInformReport CFIR = new ClassFitnessInformReport();
+                       CFIR.ShowDialog();
+
+                   }
+                   else
+                   {
+                       FISCA.Presentation.Controls.MsgBox.Show("請先選擇班級!");
+                   }
+               };
+
+
                NLDPanels.Student.SelectedSourceChanged += delegate
                {
                     bool check = NLDPanels.Student.SelectedSource.Count > 0;
@@ -114,8 +134,22 @@ namespace K12.Sports.FitnessImportExport
                     //匯出體適能
                     btnExport2.Enable = check && Permissions.IsEnableFitnessExport;
 
+                 
+
                     FitnessBar["常模轉換"].Enable = check && Permissions.體適能常模轉換權限;
                };
+
+
+               //2016/6/2 穎驊新增
+               NLDPanels.Class.SelectedSourceChanged += delegate
+               {
+
+                   bool check = NLDPanels.Class.SelectedSource.Count > 0;
+              
+                   ClassFitnessInformReport["班級體適能通知單"].Enable = check && Permissions.IsEnableClassFitnessInformReport;
+
+               };
+
 
                string 體適能證明單 = "ischool/國中系統/學生/報表/體適能/體適能證明單";
                FISCA.Features.Register(體適能證明單, arg =>
@@ -143,6 +177,11 @@ namespace K12.Sports.FitnessImportExport
                // 在權限畫面出現"常模轉換"權限
                Catalog catalog5 = RoleAclSource.Instance["學生"]["功能按鈕"];
                catalog5.Add(new RibbonFeature(Permissions.體適能常模轉換, "常模轉換"));
+
+
+               // 2016//6/2 穎驊新增 ， 在權限畫面出現"班級體適能通知單"權限
+               Catalog catalog6 = RoleAclSource.Instance["班級"]["報表"];
+               catalog6.Add(new RibbonFeature(Permissions.KeyClassFitnessInformReport,"班級體適能通知單"));
           }
 
           private static void CheckUDTExist()
