@@ -105,8 +105,8 @@ namespace K12.Sports.FitnessImportExport
 
 
 
-
-               FISCA.Presentation.MenuButton ClassFitnessInformReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["成績相關報表"];
+               //2016/6/2 穎驊新增
+               FISCA.Presentation.MenuButton ClassFitnessInformReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["學務相關報表"];
                ClassFitnessInformReport["班級體適能通知單"].Enable = false;
                ClassFitnessInformReport["班級體適能通知單"].Click += delegate
                {

@@ -18,14 +18,12 @@ using System.Xml;
 namespace K12.Sports.FitnessImportExport
 {
 
-    // 2016/6/1 穎驊製作體適能班級通知單
+    // 2016/6/1 穎驊製作體適能班級通知單，預計三天內完成
     public partial class ClassFitnessInformReport : BaseForm
     {
 
         public ClassFitnessInformReport()
         {
-
-
             InitializeComponent();
 
             //動態新增學年選擇，從今年(民國)開始算，往過去減5年
@@ -34,12 +32,6 @@ namespace K12.Sports.FitnessImportExport
             {
                 comboBox_ChooseSchoolYear.Items.Add(ThisSchoolYear - i);
             };
-
-
-
-
-
-
         }
 
 
@@ -49,7 +41,7 @@ namespace K12.Sports.FitnessImportExport
 
             if (comboBox_ChooseSchoolYear.SelectedItem == null)
             {
-
+                // 請使用者一定要選擇學年度，否則系統會當機
                 MsgBox.Show("請先選擇學年度");
             }
             else
@@ -203,6 +195,10 @@ namespace K12.Sports.FitnessImportExport
                     }
 
                     #region 自動生成功變數代碼(開發用很方便，平常註解掉)
+
+                    // 雖然已經講過了，但穎驊不得不大力推薦，這~真~的~超~級~好~用~的!!! 原本自己手動改，三個小時還不一全部改得完、正確，
+                    // 用程式自動產生功能變數mailmerge名稱後，十分鐘內就完成&確認檢查完畢了
+
 
                     //Document doc = new Document();
                     //DocumentBuilder bu = new DocumentBuilder(doc);
