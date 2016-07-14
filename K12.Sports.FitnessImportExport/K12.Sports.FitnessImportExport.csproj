@@ -152,6 +152,12 @@
     <Compile Include="ClassFitnessInformReport.Designer.cs">
       <DependentUpon>ClassFitnessInformReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SchoolFitnessStatisticsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchoolFitnessStatisticsReport.Designer.cs">
+      <DependentUpon>SchoolFitnessStatisticsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="常模轉換\TestAge.cs" />
     <Compile Include="常模轉換\InfoForm.cs">
       <SubType>Form</SubType>
@@ -251,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\102學年度體適能資料上傳格式.xls" />
+    <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表.xlsx" />
     <None Include="Resources\班級體適能確認單範本.doc" />
     <None Include="Resources\體適能個人證明單_功能變數總表.doc" />
     <None Include="Resources\體適能證明單_範本.doc" />

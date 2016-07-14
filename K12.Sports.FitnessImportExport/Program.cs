@@ -123,6 +123,23 @@ namespace K12.Sports.FitnessImportExport
                };
 
 
+
+               //2016/7/7 穎驊新增
+               FISCA.Presentation.MenuButton SchoolFitnessStatisticsReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["學務相關報表"];
+               SchoolFitnessStatisticsReport["全校體適能統計百分比報表"].Enable = Permissions.IsEnableSchoolFitnessStatisticsReport;
+               
+               SchoolFitnessStatisticsReport["全校體適能統計百分比報表"].Click += delegate
+               {
+                   
+                   
+                       SchoolFitnessStatisticsReport SFSR = new SchoolFitnessStatisticsReport();
+                       SFSR.ShowDialog();
+
+                   
+                   
+               };
+
+
                NLDPanels.Student.SelectedSourceChanged += delegate
                {
                     bool check = NLDPanels.Student.SelectedSource.Count > 0;
@@ -182,6 +199,11 @@ namespace K12.Sports.FitnessImportExport
                // 2016//6/2 穎驊新增 ， 在權限畫面出現"班級體適能通知單"權限
                Catalog catalog6 = RoleAclSource.Instance["班級"]["報表"];
                catalog6.Add(new RibbonFeature(Permissions.KeyClassFitnessInformReport,"班級體適能通知單"));
+
+
+               // 2016//7/7 穎驊新增 ， 在權限畫面出現"班級體適能通知單"權限
+               Catalog catalog7 = RoleAclSource.Instance["班級"]["報表"];
+               catalog7.Add(new RibbonFeature(Permissions.KeySchoolFitnessStatisticsReport, "全校體適能統計百分比報表"));
           }
 
           private static void CheckUDTExist()

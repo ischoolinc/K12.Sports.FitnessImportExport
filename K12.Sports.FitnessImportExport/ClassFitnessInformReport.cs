@@ -77,7 +77,7 @@ namespace K12.Sports.FitnessImportExport
                     var studentFitnessRecordList = accessHelper.Select<StudentFitnessRecord>(string.Format("ref_student_id in ('{0}') AND school_year = {1}", string.Join("','", studentIDList), schoolYear));
 
                     foreach (var fitnessRec in studentFitnessRecordList)
-                    {
+                    {   
                         dicStudentFitnessRecord.Add(fitnessRec.StudentID, fitnessRec);
                     }
 
