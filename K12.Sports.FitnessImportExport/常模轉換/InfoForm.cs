@@ -82,7 +82,7 @@ namespace K12.Sports.FitnessImportExport
                 dt.Rows.Add(row);
             }
             wb.Worksheets[0].Cells.ImportDataTable(dt, true, "A1");
-            wb.Save(saveFileDialog1.FileName, FileFormatType.Excel2003);
+            wb.Save(saveFileDialog1.FileName, FileFormatType.Xlsx);
             System.Diagnostics.Process.Start(saveFileDialog1.FileName);
         }
     }

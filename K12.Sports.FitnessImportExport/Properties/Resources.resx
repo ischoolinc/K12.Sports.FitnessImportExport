@@ -151,4 +151,13 @@
   <data name="班級體適能確認單範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\班級體適能確認單範本.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="全校體適能中等以上_含中等_各項目百分比統計表" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\全校體適能中等以上(含中等)各項目百分比統計表.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="全校體適能中等以上_含中等_各項目百分比統計表_程式用樣版_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\全校體適能中等以上(含中等)各項目百分比統計表(程式用樣版).xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="體適能資料上傳格式_xlsx版_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\體適能資料上傳格式(xlsx版).xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

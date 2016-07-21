@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Aspose.Cells.dll</HintPath>
+    <Reference Include="Aspose.Cells_201402">
+      <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
@@ -158,6 +157,7 @@
     <Compile Include="SchoolFitnessStatisticsReport.Designer.cs">
       <DependentUpon>SchoolFitnessStatisticsReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="to_be_Improve_counter.cs" />
     <Compile Include="常模轉換\TestAge.cs" />
     <Compile Include="常模轉換\InfoForm.cs">
       <SubType>Form</SubType>
@@ -229,6 +229,9 @@
     <EmbeddedResource Include="ClassFitnessInformReport.resx">
       <DependentUpon>ClassFitnessInformReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SchoolFitnessStatisticsReport.resx">
+      <DependentUpon>SchoolFitnessStatisticsReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="常模轉換\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,10 +260,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\102學年度體適能資料上傳格式.xls" />
+    <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表%28程式用樣版%29.xlsx" />
     <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表.xlsx" />
     <None Include="Resources\班級體適能確認單範本.doc" />
     <None Include="Resources\體適能個人證明單_功能變數總表.doc" />
     <None Include="Resources\體適能證明單_範本.doc" />
+    <None Include="Resources\體適能資料上傳格式%28xlsx版%29.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImportStudentFitnessRecordVal.xml">

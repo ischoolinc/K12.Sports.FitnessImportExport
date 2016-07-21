@@ -124,11 +124,12 @@ namespace K12.Sports.FitnessImportExport
 
 
 
-               //2016/7/7 穎驊新增
-               FISCA.Presentation.MenuButton SchoolFitnessStatisticsReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["學務相關報表"];
-               SchoolFitnessStatisticsReport["全校體適能統計百分比報表"].Enable = Permissions.IsEnableSchoolFitnessStatisticsReport;
+               //2016/7/7 穎驊新增，恩正說把"全校體適能統計百分比報表"功能放在學務作業裡面              
+               FISCA.Presentation.MenuButton SchoolFitnessStatisticsReport = MotherForm.RibbonBarItems["學務作業", "資料統計"]["報表"]["全校體適能統計百分比報表"];
+                            
+               SchoolFitnessStatisticsReport.Enable = Permissions.IsEnableSchoolFitnessStatisticsReport;
                
-               SchoolFitnessStatisticsReport["全校體適能統計百分比報表"].Click += delegate
+               SchoolFitnessStatisticsReport.Click += delegate
                {
                    
                    
@@ -201,8 +202,8 @@ namespace K12.Sports.FitnessImportExport
                catalog6.Add(new RibbonFeature(Permissions.KeyClassFitnessInformReport,"班級體適能通知單"));
 
 
-               // 2016//7/7 穎驊新增 ， 在權限畫面出現"班級體適能通知單"權限
-               Catalog catalog7 = RoleAclSource.Instance["班級"]["報表"];
+               // 2016//7/7 穎驊新增 ， 在權限畫面出現"全校體適能統計百分比報表"權限(而且是在學務作業)
+               Catalog catalog7 = RoleAclSource.Instance["學務作業"]["功能按鈕"];
                catalog7.Add(new RibbonFeature(Permissions.KeySchoolFitnessStatisticsReport, "全校體適能統計百分比報表"));
           }
 

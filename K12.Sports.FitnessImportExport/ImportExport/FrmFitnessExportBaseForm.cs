@@ -42,8 +42,8 @@ namespace K12.Sports.FitnessImportExport.ImportExport
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "另存新檔";
-            saveFileDialog1.FileName = "" + _Title + "(" + integerInput1.Value + "學年度).xls";
-            saveFileDialog1.Filter = "Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+            saveFileDialog1.FileName = "" + _Title + "(" + integerInput1.Value + "學年度).Xlsx";
+            saveFileDialog1.Filter = "Excel (*.Xlsx)|*.Xlsx|所有檔案 (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // 新增背景執行緒來處理資料的匯出
@@ -130,7 +130,16 @@ namespace K12.Sports.FitnessImportExport.ImportExport
 
             // 開起現有的樣板檔案
             Workbook report = new Workbook();
-            MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式);
+
+            // 2016/7/19  穎驊修正，因應使用新的Aspose，存檔都建議使用xlsx，如果還是使用舊資源"102學年度體適能上傳資料格式.xls"，
+            //使用者在存檔的時候，會跳出"存檔類型與副檔名不相同"的錯誤，所以我把舊的檔案複製一份重新存檔成"體適能資料上傳格式_xlsx版_"，以後都會使用這個新檔案
+            // 目前應該是沒有甚麼問題。
+            //MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式);
+
+            MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式_xlsx版_);
+
+
+
             report.Open(ms);
 
             Worksheet sheet = report.Worksheets[0];
@@ -213,8 +222,8 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 {
                     SaveFileDialog sd = new SaveFileDialog();
                     sd.Title = "另存新檔";
-                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".xls";
-                    sd.Filter = "Excel檔案 (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".Xlsx";
+                    sd.Filter = "Excel檔案 (*.Xlsx)|*.Xlsx|所有檔案 (*.*)|*.*";
                     if (sd.ShowDialog() == DialogResult.OK)
                     {
                         try
@@ -229,7 +238,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                         }
                     }
                 }
-                report.Save(path, FileFormatType.Excel2003);
+                report.Save(path, FileFormatType.Xlsx);
                 #endregion
                 if (overLimit)
                     MsgBox.Show("匯出資料已經超過Excel的極限(65536筆)。\n超出的資料無法被匯出。\n\n請減少選取學生人數。");

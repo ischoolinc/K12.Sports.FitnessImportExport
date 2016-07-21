@@ -160,6 +160,26 @@ namespace K12.Sports.FitnessImportExport.Properties {
         /// <summary>
         ///   查詢類型 System.Byte[] 的當地語系化資源。
         /// </summary>
+        internal static byte[] 全校體適能中等以上_含中等_各項目百分比統計表 {
+            get {
+                object obj = ResourceManager.GetObject("全校體適能中等以上_含中等_各項目百分比統計表", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 全校體適能中等以上_含中等_各項目百分比統計表_程式用樣版_ {
+            get {
+                object obj = ResourceManager.GetObject("全校體適能中等以上_含中等_各項目百分比統計表_程式用樣版_", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
         internal static byte[] 班級體適能確認單範本 {
             get {
                 object obj = ResourceManager.GetObject("班級體適能確認單範本", resourceCulture);
@@ -193,6 +213,16 @@ namespace K12.Sports.FitnessImportExport.Properties {
         internal static byte[] 體適能資料上傳格式 {
             get {
                 object obj = ResourceManager.GetObject("體適能資料上傳格式", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 體適能資料上傳格式_xlsx版_ {
+            get {
+                object obj = ResourceManager.GetObject("體適能資料上傳格式_xlsx版_", resourceCulture);
                 return ((byte[])(obj));
             }
         }
