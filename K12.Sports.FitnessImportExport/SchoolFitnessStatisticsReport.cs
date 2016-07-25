@@ -270,9 +270,10 @@ namespace K12.Sports.FitnessImportExport
                     }
 
 
-                    
+                    // 2016/7/22 上一版已在昨天(7/21)早上出去了，今天再做別的東西時發現ReportProgress有點問題，必須要先轉型有浮點數的類型(decimal 、float)算完後，再轉回int
+                    //否則 1 / studentFitnessRecordList.Count 一除下來的型別int 可能永遠都是零。由於此功能在實際功能其實沒甚麼影響，先把Code改好，下次等有需求再更新。
 
-                    progress += ((1 / studentFitnessRecordList.Count) * 60);
+                    progress += (int)(((decimal)1 / studentFitnessRecordList.Count) * 60);
 
                     BGW.ReportProgress(20 + progress);
 
@@ -490,7 +491,7 @@ namespace K12.Sports.FitnessImportExport
 
                 //    cs0[endRow, ColCounter + 3].Value = "無法計算";
 
-                //    cs0[endRow, ColCounter + 4].Value = "無法計算";
+                //    cs0[endRow, ColCounter + 4].Value = "無法計算";                                                                                                                                                                                                                           
 
                 //}
                 
