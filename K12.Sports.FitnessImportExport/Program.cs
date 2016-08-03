@@ -106,9 +106,10 @@ namespace K12.Sports.FitnessImportExport
 
 
                //2016/6/2 穎驊新增
+               //2016/8/3 因應繼斌要求 將"班級體適能通知單" 更名為 "班級體適能確認單"
                FISCA.Presentation.MenuButton ClassFitnessInformReport = K12.Presentation.NLDPanels.Class.RibbonBarItems["資料統計"]["報表"]["學務相關報表"];
-               ClassFitnessInformReport["班級體適能通知單"].Enable = false;
-               ClassFitnessInformReport["班級體適能通知單"].Click += delegate
+               ClassFitnessInformReport["班級體適能確認單"].Enable = false;
+               ClassFitnessInformReport["班級體適能確認單"].Click += delegate
                {
                    if (NLDPanels.Class.SelectedSource.Count > 0)
                    {
@@ -159,12 +160,13 @@ namespace K12.Sports.FitnessImportExport
 
 
                //2016/6/2 穎驊新增
+               //2016/8/3 因應繼斌要求 將"班級體適能通知單" 更名為 "班級體適能確認單"
                NLDPanels.Class.SelectedSourceChanged += delegate
                {
 
                    bool check = NLDPanels.Class.SelectedSource.Count > 0;
-              
-                   ClassFitnessInformReport["班級體適能通知單"].Enable = check && Permissions.IsEnableClassFitnessInformReport;
+
+                   ClassFitnessInformReport["班級體適能確認單"].Enable = check && Permissions.IsEnableClassFitnessInformReport;
 
                };
 
@@ -198,8 +200,9 @@ namespace K12.Sports.FitnessImportExport
 
 
                // 2016//6/2 穎驊新增 ， 在權限畫面出現"班級體適能通知單"權限
+               //2016/8/3 因應繼斌要求 將"班級體適能通知單" 更名為 "班級體適能確認單"
                Catalog catalog6 = RoleAclSource.Instance["班級"]["報表"];
-               catalog6.Add(new RibbonFeature(Permissions.KeyClassFitnessInformReport,"班級體適能通知單"));
+               catalog6.Add(new RibbonFeature(Permissions.KeyClassFitnessInformReport, "班級體適能確認單"));
 
 
                // 2016//7/7 穎驊新增 ， 在權限畫面出現"全校體適能統計百分比報表"權限(而且是在學務作業)

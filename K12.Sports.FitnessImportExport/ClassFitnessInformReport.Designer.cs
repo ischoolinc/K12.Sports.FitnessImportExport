@@ -106,7 +106,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(248, 21);
             this.labelX2.TabIndex = 0;
-            this.labelX2.Text = "本報表將完整全班「體適能」輸出通知單";
+            this.labelX2.Text = "本報表將完整全班「體適能」輸出確認單";
             // 
             // labelX1
             // 
@@ -120,7 +120,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(170, 21);
             this.labelX1.TabIndex = 25;
-            this.labelX1.Text = "列印班級體適能通知單 :";
+            this.labelX1.Text = "列印班級體適能確認單 :";
             // 
             // labelX3
             // 
@@ -184,7 +184,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ClassFitnessInformReport";
-            this.Text = "班級體適能通知單";
+            this.Text = "班級體適能確認單";
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             this.ResumeLayout(false);
