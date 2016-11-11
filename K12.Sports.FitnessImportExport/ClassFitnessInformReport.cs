@@ -77,7 +77,7 @@ namespace K12.Sports.FitnessImportExport
                     var studentFitnessRecordList = accessHelper.Select<StudentFitnessRecord>(string.Format("ref_student_id in ('{0}') AND school_year = {1}", string.Join("','", studentIDList), schoolYear));
 
                     foreach (var fitnessRec in studentFitnessRecordList)
-                    {   
+                    {
                         dicStudentFitnessRecord.Add(fitnessRec.StudentID, fitnessRec);
                     }
 
@@ -113,112 +113,116 @@ namespace K12.Sports.FitnessImportExport
 
                         int studentCounter = 0;
 
-                        foreach (StudentRecord studentRec in classRec.Students){
+                        foreach (StudentRecord studentRec in classRec.Students)
+                        {
 
                             //2016/11/11 穎驊更正，限制抓取"一般"狀態的學生，要不然會在同一班 抓到畢業、休學、刪除的學生資料
                             if (studentRec.Status == StudentRecord.StudentStatus.一般)
                             {
-                                    string col = "";
+                                string col = "";
 
-                                    col = string.Format("姓名{0}", studentCounter);
+                                col = string.Format("姓名{0}", studentCounter);
+                                if (!table.Columns.Contains(col))
+                                    table.Columns.Add(col);
+                                row[col] = studentRec.Name;
+
+                                col = string.Format("座號{0}", studentCounter);
+                                if (!table.Columns.Contains(col))
+                                    table.Columns.Add(col);
+                                row[col] = studentRec.SeatNo;
+
+                                if (dicStudentFitnessRecord.ContainsKey(studentRec.ID))
+                                {
+                                    col = string.Format("測驗日期{0}", studentCounter);
                                     if (!table.Columns.Contains(col))
                                         table.Columns.Add(col);
-                                    row[col] = studentRec.Name;
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].TestDate.ToShortDateString();
 
-                                    col = string.Format("座號{0}", studentCounter);
+                                    col = string.Format("身高{0}", studentCounter);
                                     if (!table.Columns.Contains(col))
                                         table.Columns.Add(col);
-                                    row[col] = studentRec.SeatNo;
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].Height;
 
-                                    if (dicStudentFitnessRecord.ContainsKey(studentRec.ID))
-                                    {
-                                        col = string.Format("測驗日期{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].TestDate.ToShortDateString();
+                                    col = string.Format("體重{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].Weight;
 
-                                        col = string.Format("身高{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].Height;
+                                    col = string.Format("坐姿體前彎{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitAndReach;
 
-                                        col = string.Format("體重{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].Weight;
+                                    col = string.Format("坐姿體前彎常模{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitAndReachDegree;
 
-                                        col = string.Format("坐姿體前彎{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitAndReach;
+                                    col = string.Format("立定跳遠{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].StandingLongJump;
 
-                                        col = string.Format("坐姿體前彎常模{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitAndReachDegree;
+                                    col = string.Format("立定跳遠常模{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].StandingLongJumpDegree;
 
-                                        col = string.Format("立定跳遠{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].StandingLongJump;
+                                    col = string.Format("仰臥起坐{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitUp;
 
-                                        col = string.Format("立定跳遠常模{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].StandingLongJumpDegree;
+                                    col = string.Format("仰臥起坐常模{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitUpDegree;
 
-                                        col = string.Format("仰臥起坐{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitUp;
+                                    col = string.Format("心肺適能{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].Cardiorespiratory;
 
-                                        col = string.Format("仰臥起坐常模{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitUpDegree;
+                                    col = string.Format("心肺適能常模{0}", studentCounter);
+                                    if (!table.Columns.Contains(col))
+                                        table.Columns.Add(col);
+                                    row[col] = dicStudentFitnessRecord[studentRec.ID].CardiorespiratoryDegree;
+                                }
 
-                                        col = string.Format("心肺適能{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].Cardiorespiratory;
-
-                                        col = string.Format("心肺適能常模{0}", studentCounter);
-                                        if (!table.Columns.Contains(col))
-                                            table.Columns.Add(col);
-                                        row[col] = dicStudentFitnessRecord[studentRec.ID].CardiorespiratoryDegree;
-                                    }
-
-                                    studentCounter++;
+                                studentCounter++;
 
                                 //2016/11/11 光棍節，穎驊新增，由於目前Word樣板只支援38個學生，當班級學生數量將會有印不下的問題，
                                 //因此 將第39位後的學生資料，印在第二頁、第三頁...
-                                    if (studentCounter >= 38) 
+                                if (studentCounter >= 38)
+                                {
+                                    studentCounter = 0;
+                                    table.Rows.Add(row);
+
+                                    row = table.NewRow();
+
+                                    row["學年"] = schoolYear;
+
+                                    row["班級"] = classRec.Name;
+
+                                    if (classRec.Teacher != null)
                                     {
-                                        studentCounter = 0;
-                                        table.Rows.Add(row);
-                                        
-                                        row = table.NewRow();
-
-                                        row["學年"] = schoolYear;
-
-                                        row["班級"] = classRec.Name;
-
-                                        if (classRec.Teacher != null)
-                                        {
-                                            row["導師"] = classRec.Teacher.Name;
-                                        }
-                                        //  取得視窗輸入的繳回日期
-                                        row["繳回日期"] = returnDate;
-
-                                        row["製表日期"] = printDate;
-                   
-                                    
+                                        row["導師"] = classRec.Teacher.Name;
                                     }
+                                    //  取得視窗輸入的繳回日期
+                                    row["繳回日期"] = returnDate;
+
+                                    row["製表日期"] = printDate;
+
+
                                 }
                             }
+                        }
                         // 一個row 一班
-                        table.Rows.Add(row);
-
+                        if (studentCounter != 0) 
+                        {
+                            table.Rows.Add(row);
+                        }
+                        
                         classIndex++;
                         BGW.ReportProgress(20 + classIndex * 80 / ClassList.Count);
 
