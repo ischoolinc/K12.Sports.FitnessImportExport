@@ -43,6 +43,16 @@ namespace K12.Sports.FitnessImportExport
         public decimal CardiorespiratoryDegree_total { get; set; }
 
 
+
+        //四個項目(坐姿體前彎、立定跳遠、仰臥起坐、心肺適能)全過(在金牌、銀牌、銅牌、中等、待加強五個評等中至少拿中等)人數
+        public decimal Four_Item_All_Pass_counter { get; set; }
+
+        //四個項目全過總人數
+        public decimal Four_Item_All_Pass_counter_total { get; set; }
+
+
+
+
     }
     
     

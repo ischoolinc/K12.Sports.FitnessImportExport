@@ -166,7 +166,7 @@ namespace K12.Sports.FitnessImportExport
                     
                     //2016/7/21 修正，因為實際拿各個學校資料測試，發現其實真實學校資料都缺蠻多的，會造成錯誤提醒視窗一大包
                     //恩正說學生沒有體適能資料、沒有體適能常模，不是我們的責任，是各個學校應該要自己負責，所以資料不齊者視為"0分"、"缺考"、"不及格"
-                    if (fitnessRec.SitAndReachDegree == "")
+                    else if (fitnessRec.SitAndReachDegree == "")
                     {
                         Error_List.Add("班級:" + studentID_to_className[fitnessRec.StudentID] + "，" + "學生:" + studentID_to_studentName[fitnessRec.StudentID]+"沒有坐姿體前彎常模資料，將不會納入計算，請確認是否忘記常模計算");
 
@@ -194,7 +194,7 @@ namespace K12.Sports.FitnessImportExport
 
                     //2016/7/21 修正，因為實際拿各個學校資料測試，發現其實真實學校資料都缺蠻多的，會造成錯誤提醒視窗一大包
                     //恩正說學生沒有體適能資料、沒有體適能常模，不是我們的責任，是各個學校應該要自己負責，所以資料不齊者視為"0分"、"缺考"、"不及格"
-                    if (fitnessRec.StandingLongJumpDegree == "")
+                    else if (fitnessRec.StandingLongJumpDegree == "")
                     {
 
                         Error_List.Add("班級:" + studentID_to_className[fitnessRec.StudentID] + "，" + "學生:" + studentID_to_studentName[fitnessRec.StudentID] + "沒有立定跳遠常模資料，將不會納入計算，請確認是否忘記常模計算");
@@ -224,7 +224,7 @@ namespace K12.Sports.FitnessImportExport
 
                     //2016/7/21 修正，因為實際拿各個學校資料測試，發現其實真實學校資料都缺蠻多的，會造成錯誤提醒視窗一大包
                     //恩正說學生沒有體適能資料、沒有體適能常模，不是我們的責任，是各個學校應該要自己負責，所以資料不齊者視為"0分"、"缺考"、"不及格"
-                    if (fitnessRec.SitUpDegree == "")
+                    else if (fitnessRec.SitUpDegree == "")
                     {
 
                         Error_List.Add("班級:" + studentID_to_className[fitnessRec.StudentID] + "，" + "學生:" + studentID_to_studentName[fitnessRec.StudentID] + "沒有仰臥起坐常模資料，將不會納入計算，請確認是否忘記常模計算");
@@ -253,7 +253,7 @@ namespace K12.Sports.FitnessImportExport
 
                     //2016/7/21 修正，因為實際拿各個學校資料測試，發現其實真實學校資料都缺蠻多的，會造成錯誤提醒視窗一大包
                     //恩正說學生沒有體適能資料、沒有體適能常模，不是我們的責任，是各個學校應該要自己負責，所以資料不齊者視為"0分"、"缺考"、"不及格"
-                    if (fitnessRec.CardiorespiratoryDegree == "")
+                    else if (fitnessRec.CardiorespiratoryDegree == "")
                     {
 
                         Error_List.Add("班級:" + studentID_to_className[fitnessRec.StudentID] + "，" + "學生:" + studentID_to_studentName[fitnessRec.StudentID] + "沒有心肺適能常模資料，將不會納入計算，請確認是否忘記常模計算");
@@ -269,6 +269,30 @@ namespace K12.Sports.FitnessImportExport
 
                     }
 
+                    //2016/11/11 光棍節，穎驊新增計算班級四個項目(坐姿體前彎、立定跳遠、仰臥起坐、心肺適能)都通過比例(在金牌、銀牌、銅牌、中等、待加強五個評等中至少拿中等)
+
+                    // 四大項目都必須要有常模資料，才會進行計算，否則即使只缺一項資料其他項目都通過，也會將之不算四項目都通過
+                    if (fitnessRec.SitAndReachDegree != "" && fitnessRec.StandingLongJumpDegree != "" && fitnessRec.SitUpDegree != "" && fitnessRec.CardiorespiratoryDegree != "")
+                    {
+                        if (fitnessRec.SitAndReachDegree != "請加強" && fitnessRec.StandingLongJumpDegree != "請加強" && fitnessRec.SitUpDegree != "請加強" && fitnessRec.CardiorespiratoryDegree != "請加強")
+                        {
+
+                            dic_class_fitness_to_be_Improve[studentID_to_className[fitnessRec.StudentID]].Four_Item_All_Pass_counter++;
+                            dic_class_fitness_to_be_Improve[studentID_to_className[fitnessRec.StudentID]].Four_Item_All_Pass_counter_total++;
+
+                        }
+                        else
+                        {
+                            dic_class_fitness_to_be_Improve[studentID_to_className[fitnessRec.StudentID]].Four_Item_All_Pass_counter_total++;
+
+                        }
+
+                    }
+                    else 
+                    {
+                        dic_class_fitness_to_be_Improve[studentID_to_className[fitnessRec.StudentID]].Four_Item_All_Pass_counter_total++;
+                    
+                    }
 
                     // 2016/7/22 上一版已在昨天(7/21)早上出去了，今天再做別的東西時發現ReportProgress有點問題，必須要先轉型有浮點數的類型(decimal 、float)算完後，再轉回int
                     //否則 1 / studentFitnessRecordList.Count 一除下來的型別int 可能永遠都是零。由於此功能在實際功能其實沒甚麼影響，先把Code改好，下次等有需求再更新。
@@ -304,6 +328,9 @@ namespace K12.Sports.FitnessImportExport
                         dic_class_fitness_to_be_Improve[studentID_to_className[stuID]].CardiorespiratoryDegree_failed_counter++;
                         dic_class_fitness_to_be_Improve[studentID_to_className[stuID]].CardiorespiratoryDegree_total++;
 
+
+                        //沒有體適能資料，視為沒通過，在四項全過統計直接加分母總人數就好。
+                        dic_class_fitness_to_be_Improve[studentID_to_className[stuID]].Four_Item_All_Pass_counter_total++;
 
                         Error_List.Add("班級:" + studentID_to_className[stuID] + "，" + "學生:" + studentID_to_studentName[stuID] + "沒有體適能資料 請確認是否忘記輸入");
                                                            
@@ -398,7 +425,7 @@ namespace K12.Sports.FitnessImportExport
                     }
 
 
-                    // 第三欄填仰臥起坐，且分母總數不可為0
+                    // 第四欄填仰臥起坐，且分母總數不可為0
                     if (item.Value.SitUpDegree_total != 0)
                     {
                         cs0[RowCounter, ColCounter + 3].Value = Math.Round((100 - (item.Value.SitUpDegree_failed_counter / item.Value.SitUpDegree_total) * 100), 0, MidpointRounding.AwayFromZero) + "%";
@@ -425,7 +452,7 @@ namespace K12.Sports.FitnessImportExport
                     }
 
 
-                    // 第三欄填心肺適能，且分母總數不可為0
+                    // 第五欄填心肺適能，且分母總數不可為0
                     if (item.Value.CardiorespiratoryDegree_total != 0)
                     {
                         cs0[RowCounter, ColCounter + 4].Value = Math.Round((100 - (item.Value.CardiorespiratoryDegree_failed_counter / item.Value.CardiorespiratoryDegree_total) * 100), 0, MidpointRounding.AwayFromZero) + "%";
@@ -456,6 +483,18 @@ namespace K12.Sports.FitnessImportExport
 
                     }
 
+                    //2016/11/11 光棍節，穎驊新增   第六欄填四項皆通過人數百分比統計，且分母總數不可為0
+                    if (item.Value.Four_Item_All_Pass_counter_total != 0)
+                    {
+                        cs0[RowCounter, ColCounter + 5].Value = Math.Round(( item.Value.Four_Item_All_Pass_counter/ item.Value.Four_Item_All_Pass_counter_total) * 100, 0, MidpointRounding.AwayFromZero) + "%";
+
+
+                        Total_school_to_be_Improve_counter.Four_Item_All_Pass_counter += item.Value.Four_Item_All_Pass_counter;
+
+                        Total_school_to_be_Improve_counter.Four_Item_All_Pass_counter_total += item.Value.Four_Item_All_Pass_counter_total;
+                    }
+
+
                     RowCounter++;
 
                 }
@@ -467,6 +506,10 @@ namespace K12.Sports.FitnessImportExport
                 cs0[endRow, ColCounter + 3].Value = Math.Round((100 - (Total_school_to_be_Improve_counter.SitUpDegree_failed_counter / Total_school_to_be_Improve_counter.SitUpDegree_total) * 100), 0, MidpointRounding.AwayFromZero) + "%";
 
                 cs0[endRow, ColCounter + 4].Value = Math.Round((100 - (Total_school_to_be_Improve_counter.CardiorespiratoryDegree_failed_counter / Total_school_to_be_Improve_counter.CardiorespiratoryDegree_total) * 100), 0, MidpointRounding.AwayFromZero) + "%";
+
+
+                //新增全校四項通過百分比
+                cs0[endRow, ColCounter + 5].Value = Math.Round((Total_school_to_be_Improve_counter.Four_Item_All_Pass_counter / Total_school_to_be_Improve_counter.Four_Item_All_Pass_counter_total* 100), 0, MidpointRounding.AwayFromZero) + "%";
 
 
 
