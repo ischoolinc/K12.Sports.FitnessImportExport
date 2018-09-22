@@ -31,8 +31,8 @@ namespace K12.Sports.FitnessImportExport
                // 把"體適能資料"加入資料項目
                if (FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Editable || FISCA.Permission.UserAcl.Current[Permissions.KeyFitnessContent].Viewable)
                     K12.Presentation.NLDPanels.Student.AddDetailBulider<DetailContents.StudentFitnessContent>();
-
-               RibbonBarItem FitnessBar = NLDPanels.Student.RibbonBarItems["體適能()"];
+            // 2018.09.22 [ischoolKingdom] Vicky依據 [J學務][01] 體適能功能重覆整理、UI調整 項目，將體適能()的"()"去除，統一命名為體適能。
+            RibbonBarItem FitnessBar = NLDPanels.Student.RibbonBarItems["體適能"];
 
 
                // 加入"匯出"按鈕以及圖示

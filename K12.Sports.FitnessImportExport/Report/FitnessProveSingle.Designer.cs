@@ -44,7 +44,7 @@
             this.lbTempAll.BackColor = System.Drawing.Color.Transparent;
             this.lbTempAll.Location = new System.Drawing.Point(96, 161);
             this.lbTempAll.Name = "lbTempAll";
-            this.lbTempAll.Size = new System.Drawing.Size(86, 17);
+            this.lbTempAll.Size = new System.Drawing.Size(112, 22);
             this.lbTempAll.TabIndex = 24;
             this.lbTempAll.TabStop = true;
             this.lbTempAll.Text = "功能變數總表";
@@ -58,7 +58,7 @@
             this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.Location = new System.Drawing.Point(12, 41);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(478, 82);
+            this.groupPanel1.Size = new System.Drawing.Size(546, 82);
             // 
             // 
             // 
@@ -102,7 +102,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Location = new System.Drawing.Point(39, 15);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(395, 21);
+            this.labelX2.Size = new System.Drawing.Size(493, 26);
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "本報表將完整呈現學生「體適能」資料項目上所有的體適能記錄。";
             // 
@@ -111,7 +111,7 @@
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(415, 153);
+            this.btnExit.Location = new System.Drawing.Point(483, 153);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -124,7 +124,7 @@
             this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnPrint.BackColor = System.Drawing.Color.Transparent;
             this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnPrint.Location = new System.Drawing.Point(332, 153);
+            this.btnPrint.Location = new System.Drawing.Point(400, 153);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 25);
             this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -138,7 +138,7 @@
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Location = new System.Drawing.Point(9, 161);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(60, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(78, 22);
             this.linkLabel1.TabIndex = 22;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "設定樣板";
@@ -160,9 +160,9 @@
             // 
             // FitnessProveSingle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 188);
+            this.ClientSize = new System.Drawing.Size(574, 196);
             this.Controls.Add(this.lbTempAll);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.btnExit);
@@ -170,6 +170,8 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.labelX1);
             this.DoubleBuffered = true;
+            this.MaximumSize = new System.Drawing.Size(592, 243);
+            this.MinimumSize = new System.Drawing.Size(592, 243);
             this.Name = "FitnessProveSingle";
             this.Text = "體適能證明單";
             this.Load += new System.EventHandler(this.FitnessProveSingle_Load);
