@@ -22,7 +22,7 @@ namespace K12.Sports.FitnessImportExport
                StringBuilder sb = new StringBuilder();
                sb.Append("select student.id,student.name,student.student_number,student.seat_no,student.birthdate,student.gender,student.ref_class_id,class.class_name from student ");
                sb.Append("left join class on student.ref_class_id=class.id ");
-               sb.Append(string.Format("where student.id in ('{0}') and student.status in (1,2)", string.Join("','", StudentIDList)));
+               sb.Append(string.Format("where student.id in ('{0}')", string.Join("','", StudentIDList)));
 
                DataTable dt = tool._Q.Select(sb.ToString());
                foreach (DataRow row in dt.Rows)
