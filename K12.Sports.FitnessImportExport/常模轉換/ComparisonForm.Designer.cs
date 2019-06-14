@@ -37,7 +37,12 @@
             this.lbHelp2 = new DevComponents.DotNetBar.LabelX();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbHelp1
@@ -49,7 +54,7 @@
             // 
             this.lbHelp1.BackgroundStyle.Class = "";
             this.lbHelp1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbHelp1.Location = new System.Drawing.Point(57, 32);
+            this.lbHelp1.Location = new System.Drawing.Point(158, 19);
             this.lbHelp1.Name = "lbHelp1";
             this.lbHelp1.Size = new System.Drawing.Size(87, 21);
             this.lbHelp1.TabIndex = 0;
@@ -64,7 +69,7 @@
             this.intSchoolYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.intSchoolYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intSchoolYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.intSchoolYear.Location = new System.Drawing.Point(164, 30);
+            this.intSchoolYear.Location = new System.Drawing.Point(276, 17);
             this.intSchoolYear.MaxValue = 999;
             this.intSchoolYear.MinValue = 90;
             this.intSchoolYear.Name = "intSchoolYear";
@@ -80,7 +85,7 @@
             this.btnStart.AutoSize = true;
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
             this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnStart.Location = new System.Drawing.Point(355, 561);
+            this.btnStart.Location = new System.Drawing.Point(361, 558);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 25);
             this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -95,7 +100,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(437, 561);
+            this.btnExit.Location = new System.Drawing.Point(443, 558);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -112,12 +117,18 @@
             // 
             this.cbCover.BackgroundStyle.Class = "";
             this.cbCover.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbCover.Location = new System.Drawing.Point(276, 34);
+            this.cbCover.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.cbCover.Checked = true;
+            this.cbCover.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCover.CheckValue = "Y";
+            this.cbCover.Location = new System.Drawing.Point(20, 480);
             this.cbCover.Name = "cbCover";
-            this.cbCover.Size = new System.Drawing.Size(174, 21);
+            this.cbCover.Size = new System.Drawing.Size(185, 21);
             this.cbCover.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbCover.TabIndex = 4;
-            this.cbCover.Text = "常模欄位有值時進行覆蓋";
+            this.cbCover.Text = "1.常模欄位有值時進行覆蓋";
+            this.cbCover.TextColor = System.Drawing.Color.Red;
+            this.cbCover.CheckedChanged += new System.EventHandler(this.cbCover_CheckedChanged);
             // 
             // lbHelp2
             // 
@@ -128,7 +139,7 @@
             // 
             this.lbHelp2.BackgroundStyle.Class = "";
             this.lbHelp2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbHelp2.Location = new System.Drawing.Point(22, 83);
+            this.lbHelp2.Location = new System.Drawing.Point(20, 50);
             this.lbHelp2.Name = "lbHelp2";
             this.lbHelp2.Size = new System.Drawing.Size(476, 194);
             this.lbHelp2.TabIndex = 5;
@@ -139,7 +150,7 @@
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(19, 569);
+            this.linkLabel2.Location = new System.Drawing.Point(17, 558);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(73, 17);
             this.linkLabel2.TabIndex = 7;
@@ -156,17 +167,117 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(22, 311);
+            this.labelX1.Location = new System.Drawing.Point(16, 263);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(502, 194);
             this.labelX1.TabIndex = 8;
             this.labelX1.Text = resources.GetString("labelX1.Text");
             // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.AutoSize = true;
+            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.Class = "";
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX1.Checked = true;
+            this.checkBoxX1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxX1.CheckValue = "Y";
+            this.checkBoxX1.Location = new System.Drawing.Point(17, 10);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(80, 21);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 9;
+            this.checkBoxX1.Text = "擇優覆蓋";
+            // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.AutoSize = true;
+            this.checkBoxX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.Class = "";
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX2.Location = new System.Drawing.Point(103, 10);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(80, 21);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 10;
+            this.checkBoxX2.Text = "全部覆蓋";
+            // 
+            // checkBoxX3
+            // 
+            this.checkBoxX3.AutoSize = true;
+            this.checkBoxX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.checkBoxX3.BackgroundStyle.Class = "";
+            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX3.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX3.Location = new System.Drawing.Point(20, 507);
+            this.checkBoxX3.Name = "checkBoxX3";
+            this.checkBoxX3.Size = new System.Drawing.Size(158, 21);
+            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX3.TabIndex = 11;
+            this.checkBoxX3.Text = "2.常模欄位有值時略過";
+            this.checkBoxX3.TextColor = System.Drawing.Color.Red;
+            // 
+            // groupPanel1
+            // 
+            this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.checkBoxX2);
+            this.groupPanel1.Controls.Add(this.checkBoxX1);
+            this.groupPanel1.Location = new System.Drawing.Point(225, 480);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(200, 44);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.Class = "";
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseDown.Class = "";
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseOver.Class = "";
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 12;
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 595);
+            this.ClientSize = new System.Drawing.Size(530, 595);
+            this.Controls.Add(this.groupPanel1);
+            this.Controls.Add(this.checkBoxX3);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.lbHelp2);
@@ -180,6 +291,8 @@
             this.Text = "體適能常模轉換";
             this.Load += new System.EventHandler(this.ComparisonForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).EndInit();
+            this.groupPanel1.ResumeLayout(false);
+            this.groupPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +308,9 @@
           private DevComponents.DotNetBar.LabelX lbHelp2;
           private System.Windows.Forms.LinkLabel linkLabel2;
           private DevComponents.DotNetBar.LabelX labelX1;
-     }
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX3;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+    }
 }
