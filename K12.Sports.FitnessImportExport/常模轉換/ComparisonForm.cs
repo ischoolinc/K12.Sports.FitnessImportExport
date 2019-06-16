@@ -22,7 +22,9 @@ namespace K12.Sports.FitnessImportExport
         //事件代碼
         string EventCode = "Fitness.now.Comparison";
 
+        //全部覆蓋
         bool CheckCover = false;
+        //擇優覆蓋
         bool CheckPreferred = false;
 
         List<FitInfo> FitInfoList { get; set; }
@@ -58,8 +60,8 @@ namespace K12.Sports.FitnessImportExport
         {
             if (!BGW.IsBusy)
             {
-                CheckCover = cbCover.Checked;
                 CheckPreferred = checkBoxX1.Checked;
+                CheckCover = checkBoxX2.Checked;
 
                 btnStart.Enabled = false;
                 BGW.RunWorkerAsync();
@@ -198,38 +200,36 @@ namespace K12.Sports.FitnessImportExport
 
                     if (student.Gender == "男")
                     {
-                        if (CheckCover) //進行覆蓋
+                        if (CheckPreferred) //2019/6/14 - 擇優覆蓋
                         {
-                            if (CheckPreferred) //2019/6/14 - 擇優覆蓋
-                            {
-                                //資料是否存在
-                                string SitUpDegreeA = sfr.SitUpDegree.Trim();
-                                string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-                                sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
+                            //資料是否存在
+                            string SitUpDegreeA = sfr.SitUpDegree.Trim();
+                            string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
 
-                                string SitAndReachDegreeA = sfr.SitAndReachDegree.Trim();
-                                string SitAndReachDegreeB = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
-                                sfr.SitAndReachDegree = CompareFitness(SitAndReachDegreeA, SitAndReachDegreeB);
+                            string SitAndReachDegreeA = sfr.SitAndReachDegree.Trim();
+                            string SitAndReachDegreeB = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
+                            sfr.SitAndReachDegree = CompareFitness(SitAndReachDegreeA, SitAndReachDegreeB);
 
-                                string StandingLongJumpDegreeA = sfr.StandingLongJumpDegree.Trim();
-                                string StandingLongJumpDegreeB = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
-                                sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpDegreeA, StandingLongJumpDegreeB);
+                            string StandingLongJumpDegreeA = sfr.StandingLongJumpDegree.Trim();
+                            string StandingLongJumpDegreeB = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
+                            sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpDegreeA, StandingLongJumpDegreeB);
 
-                                string CardiorespiratoryDegreeA = sfr.CardiorespiratoryDegree.Trim();
-                                string CardiorespiratoryDegreeB = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
-                                sfr.CardiorespiratoryDegree = CompareFitness(CardiorespiratoryDegreeA, CardiorespiratoryDegreeB);
-                            }
-                            else
-                            {
-                                //全部覆蓋
-                                sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-                                sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
-                                sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
-                                sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
-                            }
+                            string CardiorespiratoryDegreeA = sfr.CardiorespiratoryDegree.Trim();
+                            string CardiorespiratoryDegreeB = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
+                            sfr.CardiorespiratoryDegree = CompareFitness(CardiorespiratoryDegreeA, CardiorespiratoryDegreeB);
                         }
-                        else //如果有內容,則不予處理
+                        else if (CheckCover)
                         {
+                            //全部覆蓋
+                            sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
+                            sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump.Trim(), "立定跳遠", student, _sc.Boy_立定跳遠);
+                            sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
+                        }
+                        else
+                        {
+                            //如果有內容,則不予處理
                             if (string.IsNullOrEmpty(sfr.SitUpDegree))
                                 sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
 
@@ -247,34 +247,31 @@ namespace K12.Sports.FitnessImportExport
                     }
                     else if (student.Gender == "女")
                     {
-                        if (CheckCover) //進行覆蓋
+                        if (CheckPreferred) //2019/6/14 - 擇優覆蓋
                         {
-                            if (CheckPreferred) //2019/6/14 - 擇優覆蓋
-                            {
-                                //資料是否存在
-                                string SitUpDegreeA = sfr.SitUpDegree.Trim();
-                                string SitUpDegreeB = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
-                                sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
+                            //資料是否存在
+                            string SitUpDegreeA = sfr.SitUpDegree.Trim();
+                            string SitUpDegreeB = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
 
-                                string SitAndReachA = sfr.SitAndReachDegree.Trim();
-                                string SitAndReachB = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
-                                sfr.SitAndReachDegree = CompareFitness(SitAndReachA, SitAndReachB);
+                            string SitAndReachA = sfr.SitAndReachDegree.Trim();
+                            string SitAndReachB = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
+                            sfr.SitAndReachDegree = CompareFitness(SitAndReachA, SitAndReachB);
 
-                                string StandingLongJumpA = sfr.StandingLongJumpDegree.Trim();
-                                string StandingLongJumpB = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
-                                sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpA, StandingLongJumpB);
+                            string StandingLongJumpA = sfr.StandingLongJumpDegree.Trim();
+                            string StandingLongJumpB = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
+                            sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpA, StandingLongJumpB);
 
-                                string CardiorespiratoryA = sfr.CardiorespiratoryDegree.Trim();
-                                string CardiorespiratoryB = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
-                                sfr.CardiorespiratoryDegree = CompareFitness(CardiorespiratoryA, CardiorespiratoryB);
-                            }
-                            else
-                            {
-                                sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
-                                sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
-                                sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
-                                sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
-                            }
+                            string CardiorespiratoryA = sfr.CardiorespiratoryDegree.Trim();
+                            string CardiorespiratoryB = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
+                            sfr.CardiorespiratoryDegree = CompareFitness(CardiorespiratoryA, CardiorespiratoryB);
+                        }
+                        else if (CheckCover)
+                        {
+                            sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
+                            sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
+                            sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
                         }
                         else
                         {
@@ -290,6 +287,7 @@ namespace K12.Sports.FitnessImportExport
                             if (string.IsNullOrEmpty(sfr.CardiorespiratoryDegree))
                                 sfr.CardiorespiratoryDegree = GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能);
                         }
+
 
                         UpdateList.Add(sfr);
                     }
@@ -548,12 +546,6 @@ namespace K12.Sports.FitnessImportExport
         {
             ViewParse vp = new ViewParse();
             vp.ShowDialog();
-        }
-
-        private void cbCover_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxX1.Enabled = cbCover.Checked;
-            checkBoxX2.Enabled = cbCover.Checked;
         }
     }
 }
