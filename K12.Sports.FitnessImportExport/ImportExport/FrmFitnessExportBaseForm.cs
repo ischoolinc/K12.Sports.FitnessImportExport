@@ -326,7 +326,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 {
                      if (columnValue == "免測")
                      {
-                          _ColumnValue[columnName] = "";
+                          _ColumnValue[columnName] = "免測";
                      }
                      else
                      {

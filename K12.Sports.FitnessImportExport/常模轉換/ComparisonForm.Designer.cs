@@ -118,9 +118,10 @@
             this.lbHelp2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbHelp2.Location = new System.Drawing.Point(16, 73);
             this.lbHelp2.Name = "lbHelp2";
-            this.lbHelp2.Size = new System.Drawing.Size(476, 194);
+            this.lbHelp2.Size = new System.Drawing.Size(476, 229);
             this.lbHelp2.TabIndex = 5;
             this.lbHelp2.Text = resources.GetString("lbHelp2.Text");
+            this.lbHelp2.Click += new System.EventHandler(this.LbHelp2_Click);
             // 
             // linkLabel2
             // 
@@ -144,11 +145,12 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(16, 298);
+            this.labelX1.Location = new System.Drawing.Point(16, 302);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(502, 194);
             this.labelX1.TabIndex = 8;
             this.labelX1.Text = resources.GetString("labelX1.Text");
+            this.labelX1.Click += new System.EventHandler(this.LabelX1_Click);
             // 
             // checkBoxX1
             // 
