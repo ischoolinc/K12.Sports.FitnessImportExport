@@ -85,6 +85,11 @@ namespace K12.Sports.FitnessImportExport
             wb.Save(saveFileDialog1.FileName, FileFormatType.Xlsx);
             System.Diagnostics.Process.Start(saveFileDialog1.FileName);
         }
+
+        private void DataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
     public class FitInfo

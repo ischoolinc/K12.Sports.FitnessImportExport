@@ -244,7 +244,7 @@ namespace K12.Sports.FitnessImportExport
                                 sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpDegreeA, StandingLongJumpDegreeB);
                             }
 
-                            if (GetMeValue(sfr.Cardiorespiratory.Trim(), "心肺適能", student, _sc.Boy_心肺適能) == "免測")
+                            if (GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能) == "免測")
                             {
                                 sfr.CardiorespiratoryDegree = "免測";
                             }
@@ -321,7 +321,7 @@ namespace K12.Sports.FitnessImportExport
                                 sfr.StandingLongJumpDegree = CompareFitness(StandingLongJumpA, StandingLongJumpB);
                             }
 
-                            if (GetMeValue(sfr.Cardiorespiratory, "心肺適能", student, _sc.Girl_心肺適能) == "免測")
+                            if (GetMeValue(dotorsec(sfr.Cardiorespiratory), "心肺適能", student, _sc.Girl_心肺適能) == "免測")
                             {
                                 sfr.CardiorespiratoryDegree = "免測";
                             }
@@ -534,19 +534,9 @@ namespace K12.Sports.FitnessImportExport
                     }
                     else
                     {
-                        if (fitname == "心肺適能")
-                        {
-                            FitInfo info = new FitInfo(student);
-                            info._info = string.Format("{0}:「{1}」如因輸入小數點進行分秒換算而跳出此訊息，可忽略。", fitname, fitValue);
-                            FitInfoList.Add(info);
-                        }
-                        else
-                        {
-
                             FitInfo info = new FitInfo(student);
                             info._info = string.Format("{0}:「{1}」並非數字!!", fitname, fitValue);
                             FitInfoList.Add(info);
-                        }
                     }
                 }
                 else
@@ -563,7 +553,7 @@ namespace K12.Sports.FitnessImportExport
                 FitInfoList.Add(info);
             }
 
-            return "免測";
+            return "";
         }
 
         void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

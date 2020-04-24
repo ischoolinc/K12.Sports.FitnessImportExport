@@ -30,13 +30,13 @@
           {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,32 @@
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(827, 335);
             this.dataGridViewX1.TabIndex = 0;
+            this.dataGridViewX1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1_CellContentClick);
+            // 
+            // colClass
+            // 
+            this.colClass.DataPropertyName = "_class";
+            this.colClass.HeaderText = "班級";
+            this.colClass.Name = "colClass";
+            // 
+            // colSeatNo
+            // 
+            this.colSeatNo.DataPropertyName = "_seatno";
+            this.colSeatNo.HeaderText = "座號";
+            this.colSeatNo.Name = "colSeatNo";
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "_name";
+            this.colName.HeaderText = "姓名";
+            this.colName.Name = "colName";
+            // 
+            // colInfo
+            // 
+            this.colInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colInfo.DataPropertyName = "_info";
+            this.colInfo.HeaderText = "資訊";
+            this.colInfo.Name = "colInfo";
             // 
             // linkLabel1
             // 
@@ -111,31 +137,6 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "匯出訊息清單";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // colClass
-            // 
-            this.colClass.DataPropertyName = "_class";
-            this.colClass.HeaderText = "班級";
-            this.colClass.Name = "colClass";
-            // 
-            // colSeatNo
-            // 
-            this.colSeatNo.DataPropertyName = "_seatno";
-            this.colSeatNo.HeaderText = "座號";
-            this.colSeatNo.Name = "colSeatNo";
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "_name";
-            this.colName.HeaderText = "姓名";
-            this.colName.Name = "colName";
-            // 
-            // colInfo
-            // 
-            this.colInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colInfo.DataPropertyName = "_info";
-            this.colInfo.HeaderText = "資訊";
-            this.colInfo.Name = "colInfo";
             // 
             // InfoForm
             // 
