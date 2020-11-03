@@ -58,8 +58,9 @@ namespace K12.Sports.FitnessImportExport
                 
                 FISCA.UDT.AccessHelper accessHelper = new FISCA.UDT.AccessHelper();
 
-                Aspose.Words.Document Template;
-                Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本));
+                //沒任何列印邏輯?? - 先註解掉(by Dylan)
+                //Aspose.Words.Document Template;
+                //Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本1));
                 
               
 

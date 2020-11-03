@@ -1,5 +1,5 @@
-﻿using Aspose.Words;
-using Aspose.Words.Drawing;
+﻿
+using Aspose.Words;
 using FISCA.Presentation.Controls;
 using K12.Data;
 using K12.Sports.FitnessImportExport.DAO;
@@ -60,7 +60,7 @@ namespace K12.Sports.FitnessImportExport
                     FISCA.UDT.AccessHelper accessHelper = new FISCA.UDT.AccessHelper();
 
                     Aspose.Words.Document Template;
-                    Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本));
+                    Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本1));
                     // 取得選取班級
                     List<ClassRecord> ClassList = K12.Data.Class.SelectByIDs(K12.Presentation.NLDPanels.Class.SelectedSource);
                     Dictionary<string, StudentFitnessRecord> dicStudentFitnessRecord = new Dictionary<string, StudentFitnessRecord>();
@@ -312,7 +312,7 @@ namespace K12.Sports.FitnessImportExport
                             {
                                 SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
-                                SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
+                                SaveFileDialog1.Filter = "Word (*.docx)|*.docx|所有檔案 (*.*)|*.*";
                                 SaveFileDialog1.FileName = "班級體適能通知單";
 
                                 if (SaveFileDialog1.ShowDialog() == DialogResult.OK)

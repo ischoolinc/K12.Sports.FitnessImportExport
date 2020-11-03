@@ -130,12 +130,6 @@
   <data name="paste_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paste_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="體適能個人證明單_功能變數總表" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\體適能個人證明單_功能變數總表.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="體適能證明單_範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\體適能證明單_範本.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="體適能資料上傳格式" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\102學年度體適能資料上傳格式.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -148,9 +142,6 @@
   <data name="Sports_Fitness_Comparison_103" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sports.Fitness.Comparison_103.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="班級體適能確認單範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\班級體適能確認單範本.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="全校體適能中等以上_含中等_各項目百分比統計表" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\全校體適能中等以上(含中等)各項目百分比統計表.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -159,5 +150,14 @@
   </data>
   <data name="體適能資料上傳格式_xlsx版_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\體適能資料上傳格式(xlsx版).xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="班級體適能確認單範本1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\班級體適能確認單範本.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="體適能個人證明單_功能變數總表1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\體適能個人證明單_功能變數總表.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="體適能證明單_範本1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\體適能證明單_範本.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

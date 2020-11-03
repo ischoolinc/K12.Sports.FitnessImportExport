@@ -35,9 +35,9 @@
       <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+    <Reference Include="Aspose.Words_201402, Version=14.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Aspose.Words.dll</HintPath>
+      <HintPath>Library\Aspose.Words_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Campus, Version=2.0.0.16, Culture=neutral, processorArchitecture=MSIL">
@@ -55,9 +55,9 @@
       <HintPath>Library\Campus.Import.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Campus.Report, Version=1.0.0.11, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Campus.Report2014, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Campus.Report.dll</HintPath>
+      <HintPath>Library\Campus.Report2014.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Validator, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -151,6 +151,11 @@
     <Compile Include="ClassFitnessInformReport.Designer.cs">
       <DependentUpon>ClassFitnessInformReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SchoolFitnessStatisticsReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,11 +213,6 @@
     <Compile Include="Permissions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Report\FitnessProveSingle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,9 +262,9 @@
     <None Include="Resources\102學年度體適能資料上傳格式.xls" />
     <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表%28程式用樣版%29.xlsx" />
     <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表.xlsx" />
-    <None Include="Resources\班級體適能確認單範本.doc" />
-    <None Include="Resources\體適能個人證明單_功能變數總表.doc" />
-    <None Include="Resources\體適能證明單_範本.doc" />
+    <None Include="Resources\班級體適能確認單範本.docx" />
+    <None Include="Resources\體適能個人證明單_功能變數總表.docx" />
+    <None Include="Resources\體適能證明單_範本.docx" />
     <None Include="Resources\體適能資料上傳格式%28xlsx版%29.xlsx" />
   </ItemGroup>
   <ItemGroup>
@@ -282,8 +282,8 @@
   <ItemGroup>
     <Content Include="Library\Aspose.Cells.dll" />
     <Content Include="Library\Aspose.Cells.xml" />
-    <Content Include="Library\Aspose.Words.dll" />
-    <Content Include="Library\Aspose.Words.xml" />
+    <Content Include="Library\Aspose.Words_201402.dll" />
+    <Content Include="Library\Aspose.Words_201402.xml" />
     <Content Include="Library\Campus.dll" />
     <Content Include="Library\Campus.DocumentValidator.dll" />
     <Content Include="Library\Campus.DocumentValidator.pdb" />
@@ -296,6 +296,8 @@
     <Content Include="Library\Campus.pdb" />
     <Content Include="Library\Campus.Report.dll" />
     <Content Include="Library\Campus.Report.pdb" />
+    <Content Include="Library\Campus.Report2014.dll" />
+    <Content Include="Library\Campus.Report2014.pdb" />
     <Content Include="Library\Campus.Validator.dll" />
     <Content Include="Library\Campus.Validator.pdb" />
     <Content Include="Library\Campus.Validator.xml" />
