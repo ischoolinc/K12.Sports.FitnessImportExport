@@ -78,7 +78,17 @@ namespace K12.Sports.FitnessImportExport
 
                     foreach (var fitnessRec in studentFitnessRecordList)
                     {
-                        dicStudentFitnessRecord.Add(fitnessRec.StudentID, fitnessRec);
+                        //2021/3/16 -  如果沒有新增,避免爆掉
+                        //- By Dylan
+                        if (!dicStudentFitnessRecord.ContainsKey(fitnessRec.StudentID))
+                        {
+                            dicStudentFitnessRecord.Add(fitnessRec.StudentID, fitnessRec);
+                        }
+                        else
+                        {
+                            StudentRecord stud = K12.Data.Student.SelectByID(fitnessRec.StudentID);
+                            MsgBox.Show(string.Format("學生「{0}」體適能資料重複\n(一學年僅會有一筆體適能紀錄)", stud.Name));
+                        }
                     }
 
                     BGW.ReportProgress(20);
