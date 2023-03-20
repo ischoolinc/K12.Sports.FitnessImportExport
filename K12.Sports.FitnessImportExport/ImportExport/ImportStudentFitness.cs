@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Campus.Import;
 using Campus.DocumentValidator;
+using Campus.Import2014;
 
 namespace K12.Sports.FitnessImportExport.ImportExport
 {

@@ -42,8 +42,8 @@ namespace K12.Sports.FitnessImportExport.ImportExport
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "另存新檔";
-            saveFileDialog1.FileName = "" + _Title + "(" + integerInput1.Value + "學年度).Xlsx";
-            saveFileDialog1.Filter = "Excel (*.Xlsx)|*.Xlsx|所有檔案 (*.*)|*.*";
+            saveFileDialog1.FileName = "" + _Title + "(" + integerInput1.Value + "學年度).xlsx";
+            saveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|所有檔案 (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // 新增背景執行緒來處理資料的匯出
@@ -222,8 +222,8 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 {
                     SaveFileDialog sd = new SaveFileDialog();
                     sd.Title = "另存新檔";
-                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".Xlsx";
-                    sd.Filter = "Excel檔案 (*.Xlsx)|*.Xlsx|所有檔案 (*.*)|*.*";
+                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".xlsx";
+                    sd.Filter = "Excel檔案 (*.xlsx)|*.xlsx|所有檔案 (*.*)|*.*";
                     if (sd.ShowDialog() == DialogResult.OK)
                     {
                         try
