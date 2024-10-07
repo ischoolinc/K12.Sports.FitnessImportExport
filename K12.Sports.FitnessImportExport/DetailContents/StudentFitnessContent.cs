@@ -194,10 +194,18 @@ namespace K12.Sports.FitnessImportExport.DetailContents
             item.SubItems.Add(rec.SitUp);
             // 仰臥起坐常模
             item.SubItems.Add(rec.SitUpDegree);
-            // 心肺適能
+            // 心肺適能(心肺耐力)
             item.SubItems.Add(rec.Cardiorespiratory);
-            // 心肺適能常模
+            // 心肺適能常模(心肺耐力)
             item.SubItems.Add(rec.CardiorespiratoryDegree);
+            //  仰臥捲腹
+            item.SubItems.Add(rec.Curl);
+            //  仰臥捲腹常模
+            item.SubItems.Add(rec.CurlDegree);
+            //  漸速耐力跑
+            item.SubItems.Add(rec.Pacer);
+            //  漸速耐力跑常模
+            item.SubItems.Add(rec.PacerDegree);
 
             return item;
         }

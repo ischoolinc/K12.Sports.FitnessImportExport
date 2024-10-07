@@ -45,6 +45,10 @@
             this.btnInsert = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.colCurl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCurlDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPacer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPacerDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvFitnessList
@@ -67,8 +71,13 @@
             this.colSitUp,
             this.colSitUpDegree,
             this.colCardiorespiratory,
-            this.colCardiorespiratoryDegree});
+            this.colCardiorespiratoryDegree,
+            this.colCurl,
+            this.colCurlDegree,
+            this.colPacer,
+            this.colPacerDegree});
             this.lvFitnessList.FullRowSelect = true;
+            this.lvFitnessList.HideSelection = false;
             this.lvFitnessList.Location = new System.Drawing.Point(13, 8);
             this.lvFitnessList.Name = "lvFitnessList";
             this.lvFitnessList.Size = new System.Drawing.Size(524, 120);
@@ -130,12 +139,12 @@
             // 
             // colCardiorespiratory
             // 
-            this.colCardiorespiratory.Text = "心肺適能";
+            this.colCardiorespiratory.Text = "心肺耐力";
             this.colCardiorespiratory.Width = 75;
             // 
             // colCardiorespiratoryDegree
             // 
-            this.colCardiorespiratoryDegree.Text = "心肺適能常模";
+            this.colCardiorespiratoryDegree.Text = "心肺耐力常模";
             this.colCardiorespiratoryDegree.Width = 100;
             // 
             // btnInsert
@@ -174,6 +183,25 @@
             this.btnDelete.Text = "刪除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // colCurl
+            // 
+            this.colCurl.Text = "仰臥捲腹";
+            this.colCurl.Width = 100;
+            // 
+            // colCurlDegree
+            // 
+            this.colCurlDegree.Text = "仰臥捲腹常模";
+            this.colCurlDegree.Width = 100;
+            // 
+            // colPacer
+            // 
+            this.colPacer.Text = "漸速耐力跑";
+            this.colPacer.Width = 100;
+            // 
+            // colPacerDegree
+            // 
+            this.colPacerDegree.Text = "漸速耐力跑常模";
+            // 
             // StudentFitnessContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -207,5 +235,9 @@
         private System.Windows.Forms.ColumnHeader colCardiorespiratory;
         private System.Windows.Forms.ColumnHeader colCardiorespiratoryDegree;
         private System.Windows.Forms.ColumnHeader colSchoolCategory;
+        private System.Windows.Forms.ColumnHeader colCurl;
+        private System.Windows.Forms.ColumnHeader colCurlDegree;
+        private System.Windows.Forms.ColumnHeader colPacer;
+        private System.Windows.Forms.ColumnHeader colPacerDegree;
     }
 }

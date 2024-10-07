@@ -79,6 +79,14 @@
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtCurl = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
+            this.txtPacer = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX20 = new DevComponents.DotNetBar.LabelX();
+            this.txtCurlDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.txtPacerDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX22 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -96,11 +104,11 @@
             this.btnSave.AutoSize = true;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(341, 291);
+            this.btnSave.Location = new System.Drawing.Point(341, 354);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 16;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "儲存";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -110,11 +118,11 @@
             this.btnClose.AutoSize = true;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Location = new System.Drawing.Point(423, 291);
+            this.btnClose.Location = new System.Drawing.Point(423, 354);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 25);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClose.TabIndex = 17;
+            this.btnClose.TabIndex = 13;
             this.btnClose.Text = "取消";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -143,7 +151,7 @@
             this.txtHeight.Location = new System.Drawing.Point(128, 82);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(118, 25);
-            this.txtHeight.TabIndex = 4;
+            this.txtHeight.TabIndex = 3;
             this.txtHeight.WatermarkText = "cm";
             // 
             // labelX1
@@ -197,7 +205,7 @@
             this.txtWeight.Location = new System.Drawing.Point(128, 114);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(118, 25);
-            this.txtWeight.TabIndex = 6;
+            this.txtWeight.TabIndex = 5;
             this.txtWeight.WatermarkText = "kg";
             // 
             // labelX3
@@ -251,7 +259,7 @@
             this.txtSitAndReach.Location = new System.Drawing.Point(128, 145);
             this.txtSitAndReach.Name = "txtSitAndReach";
             this.txtSitAndReach.Size = new System.Drawing.Size(118, 25);
-            this.txtSitAndReach.TabIndex = 8;
+            this.txtSitAndReach.TabIndex = 6;
             // 
             // labelX5
             // 
@@ -277,7 +285,7 @@
             this.txtSitAndReachDegree.Location = new System.Drawing.Point(125, 10);
             this.txtSitAndReachDegree.Name = "txtSitAndReachDegree";
             this.txtSitAndReachDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtSitAndReachDegree.TabIndex = 9;
+            this.txtSitAndReachDegree.TabIndex = 0;
             // 
             // labelX6
             // 
@@ -304,7 +312,7 @@
             this.txtStandingLongJump.Location = new System.Drawing.Point(128, 177);
             this.txtStandingLongJump.Name = "txtStandingLongJump";
             this.txtStandingLongJump.Size = new System.Drawing.Size(118, 25);
-            this.txtStandingLongJump.TabIndex = 10;
+            this.txtStandingLongJump.TabIndex = 7;
             // 
             // labelX7
             // 
@@ -330,7 +338,7 @@
             this.txtStandingLongJumpDegree.Location = new System.Drawing.Point(125, 42);
             this.txtStandingLongJumpDegree.Name = "txtStandingLongJumpDegree";
             this.txtStandingLongJumpDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtStandingLongJumpDegree.TabIndex = 11;
+            this.txtStandingLongJumpDegree.TabIndex = 1;
             // 
             // labelX10
             // 
@@ -343,7 +351,7 @@
             this.labelX10.Location = new System.Drawing.Point(19, 20);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(45, 23);
-            this.labelX10.TabIndex = 4;
+            this.labelX10.TabIndex = 0;
             this.labelX10.Text = "年級";
             // 
             // labelX8
@@ -370,8 +378,9 @@
             this.txtSitUp.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSitUp.Location = new System.Drawing.Point(128, 209);
             this.txtSitUp.Name = "txtSitUp";
+            this.txtSitUp.ReadOnly = true;
             this.txtSitUp.Size = new System.Drawing.Size(118, 25);
-            this.txtSitUp.TabIndex = 12;
+            this.txtSitUp.TabIndex = 8;
             // 
             // labelX9
             // 
@@ -408,8 +417,9 @@
             this.txtSitUpDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSitUpDegree.Location = new System.Drawing.Point(125, 74);
             this.txtSitUpDegree.Name = "txtSitUpDegree";
+            this.txtSitUpDegree.ReadOnly = true;
             this.txtSitUpDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtSitUpDegree.TabIndex = 13;
+            this.txtSitUpDegree.TabIndex = 2;
             // 
             // labelX11
             // 
@@ -424,7 +434,7 @@
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(82, 21);
             this.labelX11.TabIndex = 2;
-            this.labelX11.Text = "心肺適能(秒)";
+            this.labelX11.Text = "心肺耐力(秒)";
             // 
             // txtCardiorespiratory
             // 
@@ -436,7 +446,7 @@
             this.txtCardiorespiratory.Location = new System.Drawing.Point(128, 241);
             this.txtCardiorespiratory.Name = "txtCardiorespiratory";
             this.txtCardiorespiratory.Size = new System.Drawing.Size(118, 25);
-            this.txtCardiorespiratory.TabIndex = 14;
+            this.txtCardiorespiratory.TabIndex = 9;
             // 
             // labelX12
             // 
@@ -450,7 +460,7 @@
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(104, 23);
             this.labelX12.TabIndex = 2;
-            this.labelX12.Text = "心肺適能常模";
+            this.labelX12.Text = "心肺耐力常模";
             // 
             // textBoxX13
             // 
@@ -474,7 +484,7 @@
             this.txtCardiorespiratoryDegree.Location = new System.Drawing.Point(125, 106);
             this.txtCardiorespiratoryDegree.Name = "txtCardiorespiratoryDegree";
             this.txtCardiorespiratoryDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtCardiorespiratoryDegree.TabIndex = 15;
+            this.txtCardiorespiratoryDegree.TabIndex = 3;
             // 
             // lbClassGradeYear
             // 
@@ -673,7 +683,7 @@
             this.txtSchoolCategory.Location = new System.Drawing.Point(380, 82);
             this.txtSchoolCategory.Name = "txtSchoolCategory";
             this.txtSchoolCategory.Size = new System.Drawing.Size(118, 25);
-            this.txtSchoolCategory.TabIndex = 3;
+            this.txtSchoolCategory.TabIndex = 4;
             // 
             // labelX17
             // 
@@ -683,7 +693,7 @@
             // 
             this.labelX17.BackgroundStyle.Class = "";
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelX17.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labelX17.ForeColor = System.Drawing.Color.Red;
             this.labelX17.Location = new System.Drawing.Point(60, 51);
             this.labelX17.Name = "labelX17";
@@ -699,7 +709,7 @@
             // 
             this.labelX18.BackgroundStyle.Class = "";
             this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX18.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelX18.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labelX18.ForeColor = System.Drawing.Color.Red;
             this.labelX18.Location = new System.Drawing.Point(348, 51);
             this.labelX18.Name = "labelX18";
@@ -717,11 +727,11 @@
             this.labelX15.BackgroundStyle.Class = "";
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.ForeColor = System.Drawing.Color.Red;
-            this.labelX15.Location = new System.Drawing.Point(19, 295);
+            this.labelX15.Location = new System.Drawing.Point(19, 358);
             this.labelX15.Name = "labelX15";
             this.labelX15.Size = new System.Drawing.Size(233, 21);
             this.labelX15.TabIndex = 18;
-            this.labelX15.Text = "常模指標：請加強,中等,銅牌,銀牌,金牌";
+            this.labelX15.Text = "常模指標：待加強,中等,銅牌,銀牌,金牌";
             // 
             // errorProvider1
             // 
@@ -752,6 +762,10 @@
             this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.txtPacerDegree);
+            this.groupPanel1.Controls.Add(this.labelX22);
+            this.groupPanel1.Controls.Add(this.txtCurlDegree);
+            this.groupPanel1.Controls.Add(this.labelX21);
             this.groupPanel1.Controls.Add(this.txtSitAndReachDegree);
             this.groupPanel1.Controls.Add(this.labelX5);
             this.groupPanel1.Controls.Add(this.txtStandingLongJumpDegree);
@@ -764,7 +778,7 @@
             this.groupPanel1.Controls.Add(this.labelX12);
             this.groupPanel1.Location = new System.Drawing.Point(252, 111);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(258, 165);
+            this.groupPanel1.Size = new System.Drawing.Size(258, 234);
             // 
             // 
             // 
@@ -798,11 +812,121 @@
             this.groupPanel1.TabIndex = 19;
             this.groupPanel1.Text = "常模";
             // 
+            // txtCurl
+            // 
+            // 
+            // 
+            // 
+            this.txtCurl.Border.Class = "TextBoxBorder";
+            this.txtCurl.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCurl.Location = new System.Drawing.Point(128, 278);
+            this.txtCurl.Name = "txtCurl";
+            this.txtCurl.Size = new System.Drawing.Size(118, 25);
+            this.txtCurl.TabIndex = 10;
+            // 
+            // labelX19
+            // 
+            this.labelX19.AutoSize = true;
+            this.labelX19.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.Class = "";
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Location = new System.Drawing.Point(19, 280);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.Size = new System.Drawing.Size(82, 21);
+            this.labelX19.TabIndex = 20;
+            this.labelX19.Text = "仰臥捲腹(次)";
+            // 
+            // txtPacer
+            // 
+            // 
+            // 
+            // 
+            this.txtPacer.Border.Class = "TextBoxBorder";
+            this.txtPacer.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPacer.Location = new System.Drawing.Point(128, 314);
+            this.txtPacer.Name = "txtPacer";
+            this.txtPacer.Size = new System.Drawing.Size(118, 25);
+            this.txtPacer.TabIndex = 11;
+            // 
+            // labelX20
+            // 
+            this.labelX20.AutoSize = true;
+            this.labelX20.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX20.BackgroundStyle.Class = "";
+            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX20.Location = new System.Drawing.Point(19, 316);
+            this.labelX20.Name = "labelX20";
+            this.labelX20.Size = new System.Drawing.Size(96, 21);
+            this.labelX20.TabIndex = 22;
+            this.labelX20.Text = "漸速耐力跑(趟)";
+            // 
+            // txtCurlDegree
+            // 
+            // 
+            // 
+            // 
+            this.txtCurlDegree.Border.Class = "TextBoxBorder";
+            this.txtCurlDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCurlDegree.Location = new System.Drawing.Point(125, 140);
+            this.txtCurlDegree.Name = "txtCurlDegree";
+            this.txtCurlDegree.Size = new System.Drawing.Size(118, 25);
+            this.txtCurlDegree.TabIndex = 4;
+            // 
+            // labelX21
+            // 
+            this.labelX21.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.Class = "";
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Location = new System.Drawing.Point(18, 141);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(104, 23);
+            this.labelX21.TabIndex = 16;
+            this.labelX21.Text = "仰臥捲腹常模";
+            // 
+            // txtPacerDegree
+            // 
+            // 
+            // 
+            // 
+            this.txtPacerDegree.Border.Class = "TextBoxBorder";
+            this.txtPacerDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPacerDegree.Location = new System.Drawing.Point(125, 172);
+            this.txtPacerDegree.Name = "txtPacerDegree";
+            this.txtPacerDegree.Size = new System.Drawing.Size(118, 25);
+            this.txtPacerDegree.TabIndex = 5;
+            // 
+            // labelX22
+            // 
+            this.labelX22.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX22.BackgroundStyle.Class = "";
+            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX22.Location = new System.Drawing.Point(18, 173);
+            this.labelX22.Name = "labelX22";
+            this.labelX22.Size = new System.Drawing.Size(104, 23);
+            this.labelX22.TabIndex = 18;
+            this.labelX22.Text = "漸速耐力跑常模";
+            // 
             // FrmFitnessRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 322);
+            this.ClientSize = new System.Drawing.Size(524, 393);
+            this.Controls.Add(this.txtPacer);
+            this.Controls.Add(this.labelX20);
+            this.Controls.Add(this.txtCurl);
+            this.Controls.Add(this.labelX19);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX6);
@@ -907,5 +1031,13 @@
         private System.Windows.Forms.ErrorProvider errorProvider5;
         private System.Windows.Forms.ErrorProvider errorProvider6;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPacer;
+        private DevComponents.DotNetBar.LabelX labelX20;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCurl;
+        private DevComponents.DotNetBar.LabelX labelX19;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPacerDegree;
+        private DevComponents.DotNetBar.LabelX labelX22;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCurlDegree;
+        private DevComponents.DotNetBar.LabelX labelX21;
     }
 }

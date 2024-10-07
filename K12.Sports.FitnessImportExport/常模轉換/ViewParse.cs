@@ -90,7 +90,9 @@ namespace K12.Sports.FitnessImportExport
                               row.Cells[1].Value = x;
                               row.Cells[2].Value = p;
                               row.Cells[3].Value = value1.Split(',')[0] + "至" + value1.Split(',')[1];
-                              row.Cells[4].Value = name1;
+
+                        // 請加強改成待加強
+                        row.Cells[4].Value = "待加強";
                               row.Cells[5].Value = value2.Split(',')[0] + "至" + value2.Split(',')[1];
                               row.Cells[6].Value = name2;
                               row.Cells[7].Value = value3.Split(',')[0] + "至" + value3.Split(',')[1];

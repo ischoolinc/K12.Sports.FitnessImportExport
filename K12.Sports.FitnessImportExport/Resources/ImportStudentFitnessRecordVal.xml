@@ -52,12 +52,37 @@
     <Field Required="False" Name="仰臥起坐常模">
       <Validate AutoCorrect="False" Description="「仰臥起坐常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="心肺適能">
+
+	  <!--<Field Required="False" Name="心肺適能">
       <Validate AutoCorrect="False" Description="「心肺適能」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
     <Field Required="False" Name="心肺適能常模">
       <Validate AutoCorrect="False" Description="「心肺適能常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
+	-->
+
+	  <Field Required="False" Name="心肺耐力">
+		  <Validate AutoCorrect="False" Description="「心肺耐力」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+	  <Field Required="False" Name="心肺耐力常模">
+		  <Validate AutoCorrect="False" Description="「心肺耐力常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+
+	  <Field Required="False" Name="仰臥捲腹">
+		  <Validate AutoCorrect="False" Description="「仰臥捲腹」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+	  <Field Required="False" Name="仰臥捲腹常模">
+		  <Validate AutoCorrect="False" Description="「仰臥捲腹常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+
+	  <Field Required="False" Name="漸速耐力跑">
+		  <Validate AutoCorrect="False" Description="「漸速耐力跑」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+	  <Field Required="False" Name="漸速耐力跑常模">
+		  <Validate AutoCorrect="False" Description="「漸速耐力跑常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  </Field>
+
+
   </FieldList>
   <ValidatorList>
     <FieldValidator Name="不可空白" Type="STRINGLENGTH">

@@ -45,6 +45,7 @@ namespace K12.Sports.FitnessImportExport
             BGW.DoWork += BGW_DoWork;
 
             FitnessDic.Add("請加強", 1);
+            FitnessDic.Add("待加強", 1);
             FitnessDic.Add("中等", 2);
             FitnessDic.Add("銅牌", 3);
             FitnessDic.Add("銀牌", 4);
@@ -208,16 +209,17 @@ namespace K12.Sports.FitnessImportExport
                     {
                         if (CheckPreferred) //2019/6/14 - 擇優覆蓋
                         {
- 
+
                             if (GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐) == "免測")
                             {
                                 sfr.SitUpDegree = "免測";
                             }
-                            else {
-                            //資料是否存在
-                            string SitUpDegreeA = sfr.SitUpDegree.Trim();
-                            string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-                            sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
+                            else
+                            {
+                                //資料是否存在
+                                string SitUpDegreeA = sfr.SitUpDegree.Trim();
+                                string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                                sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
                             }
 
 
@@ -254,7 +256,7 @@ namespace K12.Sports.FitnessImportExport
                                 string CardiorespiratoryDegreeB = GetMeValue(dotorsec(sfr.Cardiorespiratory.Trim()), "心肺適能", student, _sc.Boy_心肺適能);
                                 sfr.CardiorespiratoryDegree = CompareFitness(CardiorespiratoryDegreeA, CardiorespiratoryDegreeB);
                             }
-                            
+
                         }
                         else if (CheckCover)
                         {
@@ -442,27 +444,39 @@ namespace K12.Sports.FitnessImportExport
 
         private string CompareFitness(string ValueA, string ValueB)
         {
+            // 因為2024常模要將請加強轉成待加強
             if (FitnessDic.ContainsKey(ValueA) && FitnessDic.ContainsKey(ValueB))
             {
-                
                 //如果新資料大於目前資料
                 if (FitnessDic[ValueA] > FitnessDic[ValueB])
                 {
-                    return ValueA;
+                    if (ValueA == "請加強")
+                        return "待加強";
+                    else
+                        return ValueA;
                 }
                 else
                 {
-                    return ValueB;
+                    if (ValueB == "請加強")
+                        return "待加強";
+                    else
+                        return ValueB;
                 }
             }
             else if (FitnessDic.ContainsKey(ValueA) && !FitnessDic.ContainsKey(ValueB))
             {
-                return ValueA;
+                if (ValueA == "請加強")
+                    return "待加強";
+                else
+                    return ValueA;
             }
             else if (!FitnessDic.ContainsKey(ValueA) && FitnessDic.ContainsKey(ValueB))
             {
                 //舊資料不存在,新資料比較大
-                return ValueB;
+                if (ValueB == "請加強")
+                    return "待加強";
+                else
+                    return ValueB;
             }
 
             return "";
@@ -534,9 +548,9 @@ namespace K12.Sports.FitnessImportExport
                     }
                     else
                     {
-                            FitInfo info = new FitInfo(student);
-                            info._info = string.Format("{0}:「{1}」並非數字!!", fitname, fitValue);
-                            FitInfoList.Add(info);
+                        FitInfo info = new FitInfo(student);
+                        info._info = string.Format("{0}:「{1}」並非數字!!", fitname, fitValue);
+                        FitInfoList.Add(info);
                     }
                 }
                 else

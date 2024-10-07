@@ -128,6 +128,7 @@ namespace K12.Sports.FitnessImportExport.Forms
             if (!CheckTextIsValue2(errorProvider6, txtCardiorespiratory, "必須是整數或小數點"))
                 checkValue = false;
 
+
             return checkValue;
         }
 
@@ -226,6 +227,13 @@ namespace K12.Sports.FitnessImportExport.Forms
             txtCardiorespiratory.Text = _fitnessRec.Cardiorespiratory;
             txtCardiorespiratoryDegree.Text = _fitnessRec.CardiorespiratoryDegree;
 
+            txtCurl.Text = _fitnessRec.Curl;
+            txtCurlDegree.Text = _fitnessRec.CurlDegree;
+
+            txtPacer.Text = _fitnessRec.Pacer;
+            txtPacerDegree.Text = _fitnessRec.PacerDegree;
+            
+
             _LogTransfer.Clear();
             Utility.SetLogData(_LogTransfer, _fitnessRec);
         }
@@ -254,6 +262,13 @@ namespace K12.Sports.FitnessImportExport.Forms
 
             _fitnessRec.Cardiorespiratory = txtCardiorespiratory.Text;
             _fitnessRec.CardiorespiratoryDegree = txtCardiorespiratoryDegree.Text;
+
+            _fitnessRec.Curl = txtCurl.Text;
+            _fitnessRec.CurlDegree = txtCurlDegree.Text;
+
+            _fitnessRec.Pacer = txtPacer.Text;
+            _fitnessRec.PacerDegree = txtPacerDegree.Text;
+            
         }
     }
 }

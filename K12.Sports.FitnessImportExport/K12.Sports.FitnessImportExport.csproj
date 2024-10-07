@@ -52,7 +52,7 @@
       <HintPath>Library\Campus.DocumentValidator.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Campus.Import2014, Version=1.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Campus.Import2014, Version=1.0.9.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Import2014.dll</HintPath>
       <Private>False</Private>
@@ -65,6 +65,11 @@
     <Reference Include="Campus.Validator, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Validator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Validator2014, Version=1.0.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Validator2014.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Windows, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -283,29 +288,22 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Library\Aspose.Cells.dll" />
-    <Content Include="Library\Aspose.Cells.xml" />
+    <Content Include="Library\Aspose.Cells_201402.dll" />
+    <Content Include="Library\Aspose.Cells_201402.xml" />
     <Content Include="Library\Aspose.Words_201402.dll" />
     <Content Include="Library\Aspose.Words_201402.xml" />
-    <Content Include="Library\Campus.dll" />
     <Content Include="Library\Campus.DocumentValidator.dll" />
     <Content Include="Library\Campus.DocumentValidator.pdb" />
     <Content Include="Library\Campus.DocumentValidator.xml" />
-    <Content Include="Library\Campus.Import.dll" />
-    <Content Include="Library\Campus.Import.pdb" />
-    <Content Include="Library\Campus.Import.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Library\Campus.Import2014.dll" />
     <Content Include="Library\Campus.Import2014.pdb" />
-    <Content Include="Library\Campus.pdb" />
-    <Content Include="Library\Campus.Report.dll" />
-    <Content Include="Library\Campus.Report.pdb" />
     <Content Include="Library\Campus.Report2014.dll" />
     <Content Include="Library\Campus.Report2014.pdb" />
     <Content Include="Library\Campus.Validator.dll" />
     <Content Include="Library\Campus.Validator.pdb" />
     <Content Include="Library\Campus.Validator.xml" />
+    <Content Include="Library\Campus.Validator2014.dll" />
+    <Content Include="Library\Campus.Validator2014.pdb" />
     <Content Include="Library\Campus.Windows.dll" />
     <Content Include="Library\Campus.Windows.pdb" />
     <Content Include="Library\Campus.Windows.xml" />
