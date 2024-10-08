@@ -171,6 +171,13 @@
       <DependentUpon>SchoolFitnessStatisticsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="to_be_Improve_counter.cs" />
+    <Compile Include="UDT\FitnessConfigRecord.cs" />
+    <Compile Include="UIForm\SetCardiorespiratoryTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIForm\SetCardiorespiratoryTest.Designer.cs">
+      <DependentUpon>SetCardiorespiratoryTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="常模轉換\TestAge.cs" />
     <Compile Include="常模轉換\InfoForm.cs">
       <SubType>Form</SubType>
@@ -239,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SchoolFitnessStatisticsReport.resx">
       <DependentUpon>SchoolFitnessStatisticsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIForm\SetCardiorespiratoryTest.resx">
+      <DependentUpon>SetCardiorespiratoryTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="常模轉換\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>

@@ -22,6 +22,9 @@ namespace K12.Sports.FitnessImportExport.DAO
 
             // 學生體適能
             Manager.SyncSchema(new StudentFitnessRecord());
+
+            // 體適能設定
+            Manager.SyncSchema(new UDT.FitnessConfigRecord());
         }
 
         /// <summary>

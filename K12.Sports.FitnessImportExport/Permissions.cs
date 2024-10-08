@@ -15,6 +15,8 @@ namespace K12.Sports.FitnessImportExport
 
         public const string KeyFitnessProveSingle = "K12.Sports.Fitness.Report.cs.ProveSingle";
 
+        public const string KeyEnableFitnessTestSetting = "66FE2F2A-9B70-4D3F-860C-20101B471F3E";
+
         public const string 體適能常模轉換 = "K12.Sports.FitnessImportExport.ComparisonForm.cs";
 
 
@@ -91,8 +93,14 @@ namespace K12.Sports.FitnessImportExport
             }
         }
 
-        
-
+        // 體適能設定
+        public static bool IsEnableFitnessTestSetting
+        {
+            get
+            {
+                return FISCA.Permission.UserAcl.Current[KeyEnableFitnessTestSetting].Executable;
+            }
+        }
 
                  // 2016/7/7 穎驊新增
         public static bool IsEnableSchoolFitnessStatisticsReport
