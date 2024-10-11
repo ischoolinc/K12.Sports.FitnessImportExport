@@ -46,13 +46,15 @@
     <Field Required="False" Name="立定跳遠常模">
       <Validate AutoCorrect="False" Description="「立定跳遠常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="仰臥起坐">
+    <!-- <Field Required="False" Name="仰臥起坐">
       <Validate AutoCorrect="False" Description="「仰臥起坐」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
+	
     <Field Required="False" Name="仰臥起坐常模">
       <Validate AutoCorrect="False" Description="「仰臥起坐常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-
+-->
+	  
 	  <!--<Field Required="False" Name="心肺適能">
       <Validate AutoCorrect="False" Description="「心肺適能」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>

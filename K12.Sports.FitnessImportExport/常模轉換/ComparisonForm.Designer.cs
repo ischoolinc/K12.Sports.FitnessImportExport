@@ -84,7 +84,7 @@
             this.btnStart.AutoSize = true;
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
             this.btnStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnStart.Location = new System.Drawing.Point(351, 513);
+            this.btnStart.Location = new System.Drawing.Point(352, 558);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 25);
             this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -99,7 +99,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(433, 513);
+            this.btnExit.Location = new System.Drawing.Point(433, 558);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -118,7 +118,7 @@
             this.lbHelp2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbHelp2.Location = new System.Drawing.Point(16, 73);
             this.lbHelp2.Name = "lbHelp2";
-            this.lbHelp2.Size = new System.Drawing.Size(476, 229);
+            this.lbHelp2.Size = new System.Drawing.Size(447, 246);
             this.lbHelp2.TabIndex = 5;
             this.lbHelp2.Text = resources.GetString("lbHelp2.Text");
             this.lbHelp2.Click += new System.EventHandler(this.LbHelp2_Click);
@@ -128,7 +128,7 @@
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(17, 513);
+            this.linkLabel2.Location = new System.Drawing.Point(17, 558);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(73, 17);
             this.linkLabel2.TabIndex = 7;
@@ -145,7 +145,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(16, 302);
+            this.labelX1.Location = new System.Drawing.Point(16, 339);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(502, 194);
             this.labelX1.TabIndex = 8;
@@ -255,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 550);
+            this.ClientSize = new System.Drawing.Size(520, 595);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.linkLabel2);

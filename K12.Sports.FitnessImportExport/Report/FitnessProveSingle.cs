@@ -127,6 +127,11 @@ namespace K12.Sports.FitnessImportExport.Report
             SerColumn(table, "心肺適能");
             SerColumn(table, "心肺適能常模");
 
+
+
+
+
+
             foreach (string studentID in AllSRSRDic.Keys)
             {
                 StudentRSRecord student = AllSRSRDic[studentID];
