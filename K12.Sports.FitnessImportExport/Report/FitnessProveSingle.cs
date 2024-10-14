@@ -127,10 +127,14 @@ namespace K12.Sports.FitnessImportExport.Report
             SerColumn(table, "心肺適能");
             SerColumn(table, "心肺適能常模");
 
+            SerColumn(table, "心肺耐力");
+            SerColumn(table, "心肺耐力常模");
 
+            SerColumn(table, "仰臥捲腹");
+            SerColumn(table, "仰臥捲腹常模");
 
-
-
+            SerColumn(table, "漸速耐力跑");
+            SerColumn(table, "漸速耐力跑常模");
 
             foreach (string studentID in AllSRSRDic.Keys)
             {
@@ -189,6 +193,16 @@ namespace K12.Sports.FitnessImportExport.Report
 
                         row[string.Format("心肺適能{0}", y)] = Fitness.Cardiorespiratory;
                         row[string.Format("心肺適能常模{0}", y)] = Fitness.CardiorespiratoryDegree;
+
+                        row[string.Format("心肺耐力{0}", y)] = Fitness.Cardiorespiratory;
+                        row[string.Format("心肺耐力常模{0}", y)] = Fitness.CardiorespiratoryDegree;
+
+                        row[string.Format("仰臥捲腹{0}", y)] = Fitness.Curl;
+                        row[string.Format("仰臥捲腹常模{0}", y)] = Fitness.CurlDegree;
+
+                        row[string.Format("漸速耐力跑{0}", y)] = Fitness.Pacer;
+                        row[string.Format("漸速耐力跑常模{0}", y)] = Fitness.PacerDegree;
+
                         y++;
                     }
                 }

@@ -324,14 +324,14 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             {
                 if (_ColumnValue.ContainsKey(columnName))
                 {
-                     if (columnValue == "免測")
-                     {
-                          _ColumnValue[columnName] = "免測";
-                     }
-                     else
-                     {
-                          _ColumnValue[columnName] = columnValue;
-                     }
+                    if (columnValue == "免測")
+                    {
+                        _ColumnValue[columnName] = "免測";
+                    }
+                    else
+                    {
+                        _ColumnValue[columnName] = columnValue;
+                    }
                 }
             }
 
@@ -451,11 +451,17 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 立定跳遠
                     SetColumnValue("立定跳遠", fitnessRecord.StandingLongJump);
 
-                    // 仰臥起坐
-                    SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
+                    //// 仰臥起坐
+                    //SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
 
-                    // 心肺適能
-                    SetColumnValue("心肺適能", fitnessRecord.Cardiorespiratory);
+                    // 心肺適能(心肺耐力)
+                    SetColumnValue("心肺耐力", fitnessRecord.Cardiorespiratory);
+
+                    // 仰臥捲腹
+                    SetColumnValue("仰臥捲腹", fitnessRecord.Curl);
+
+                    // 漸速耐力跑
+                    SetColumnValue("漸速耐力跑", fitnessRecord.Pacer);
 
 
                     // 姓名 for sort
@@ -475,11 +481,17 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                         // 立定跳遠常模
                         SetColumnValue("立定跳遠常模", fitnessRecord.StandingLongJumpDegree);
 
-                        // 仰臥起坐常模
-                        SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
+                        //// 仰臥起坐常模
+                        //SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
 
                         // 心肺適能常模
-                        SetColumnValue("心肺適能常模", fitnessRecord.CardiorespiratoryDegree);
+                        SetColumnValue("心肺耐力常模", fitnessRecord.CardiorespiratoryDegree);
+
+                        // 仰臥捲腹常模
+                        SetColumnValue("仰臥捲腹常模", fitnessRecord.CurlDegree);
+
+                        // 漸速耐力跑常模
+                        SetColumnValue("漸速耐力跑常模", fitnessRecord.PacerDegree);
                     }
                 }
                 else
@@ -496,11 +508,11 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 立定跳遠
                     SetColumnValue("立定跳遠", string.Empty);
 
-                    // 仰臥起坐
-                    SetColumnValue("仰臥起坐", string.Empty);
+                    //// 仰臥起坐
+                    //SetColumnValue("仰臥起坐", string.Empty);
 
                     // 心肺適能
-                    SetColumnValue("心肺適能", string.Empty);
+                    SetColumnValue("心肺耐力", string.Empty);
 
 
                     // 姓名 for sort
@@ -520,11 +532,17 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                         // 立定跳遠常模
                         SetColumnValue("立定跳遠常模", string.Empty);
 
-                        // 仰臥起坐常模
-                        SetColumnValue("仰臥起坐常模", string.Empty);
+                        //// 仰臥起坐常模
+                        //SetColumnValue("仰臥起坐常模", string.Empty);
 
-                        // 心肺適能常模
-                        SetColumnValue("心肺適能常模", string.Empty);
+                        // 心肺耐力常模
+                        SetColumnValue("心肺耐力常模", string.Empty);
+
+                        // 仰臥捲腹常模
+                        SetColumnValue("仰臥捲腹常模", string.Empty);
+
+                        // 漸速耐力跑常模
+                        SetColumnValue("漸速耐力跑常模", string.Empty);
                     }
                 }
             }
