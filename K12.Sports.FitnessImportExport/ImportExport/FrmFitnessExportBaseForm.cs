@@ -179,6 +179,21 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             if (e.Error == null)
             {
                 Workbook report = (Workbook)((object[])e.Result)[0];
+
+                // 2024/10/16討論，需要將心肺耐力欄位改成800/1600公尺跑走
+                if (report != null)
+                {
+                    for (int cidx = 0; cidx <= report.Worksheets[0].Cells.MaxDataColumn; cidx++)
+                    {
+                        if (report.Worksheets[0].Cells[15, cidx].StringValue.Contains("心肺耐力"))
+                        {
+                            string val = report.Worksheets[0].Cells[15, cidx].StringValue.Replace("心肺耐力", "800/1600公尺跑走");
+                            report.Worksheets[0].Cells[15, cidx].PutValue(val);
+                        }
+                    }
+                }
+
+
                 bool overLimit = (bool)((object[])e.Result)[2];
 
                 #region 儲存 Excel

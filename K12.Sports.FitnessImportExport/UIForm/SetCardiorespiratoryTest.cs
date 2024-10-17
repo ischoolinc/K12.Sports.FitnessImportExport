@@ -19,6 +19,9 @@ namespace K12.Sports.FitnessImportExport.UIForm
         FitnessConfigRecord SelectRecord;
         string configItemName = "心肺耐力施測方式";
 
+        // 2024/10/17，經過討論將心肺耐力顯示改成 800/1600公尺跑走
+        string SelItem1Value = "心肺耐力";
+        string SelItem1Display = "800/1600公尺跑走";
 
         public SetCardiorespiratoryTest()
         {
@@ -42,11 +45,11 @@ namespace K12.Sports.FitnessImportExport.UIForm
             }
 
             // 項目名稱
-            cboSelItem.Items.Add("心肺耐力");
+            cboSelItem.Items.Add(SelItem1Display);
             cboSelItem.Items.Add("漸速耐力跑");
             cboSelItem.Items.Add("");
 
-            cboSchoolYear.DropDownStyle = ComboBoxStyle.DropDownList;   
+            cboSchoolYear.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSelItem.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // 取得設定資料
@@ -63,7 +66,11 @@ namespace K12.Sports.FitnessImportExport.UIForm
             {
                 if (fc.SchoolYear == SchoolYear)
                 {
-                    cboSelItem.Text = fc.ItemValue;
+                    if (fc.ItemValue == SelItem1Value)
+                        cboSelItem.Text = SelItem1Display;
+                    else
+                        cboSelItem.Text = fc.ItemValue;
+
                     SelectRecord = fc;
                 }
             }
@@ -113,7 +120,10 @@ namespace K12.Sports.FitnessImportExport.UIForm
                 }
 
                 SelectRecord.SchoolYear = sy;
-                SelectRecord.ItemValue = cboSelItem.Text;
+                if (cboSelItem.Text == SelItem1Display)
+                    SelectRecord.ItemValue = SelItem1Value;
+                else
+                    SelectRecord.ItemValue = cboSelItem.Text;
                 SelectRecord.Save();
                 MsgBox.Show("儲存完成");
                 this.Close();
@@ -129,7 +139,7 @@ namespace K12.Sports.FitnessImportExport.UIForm
 
         private void cboSelItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void cboSchoolYear_SelectedIndexChanged(object sender, EventArgs e)
