@@ -210,20 +210,21 @@ namespace K12.Sports.FitnessImportExport
                         if (CheckPreferred) //2019/6/14 - 擇優覆蓋
                         {
 
-                            // 2024 廢除不計算
-                            //if (GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐) == "免測")
-                            //{
-                            //    sfr.SitUpDegree = "免測";
-                            //}
-                            //else
-                            //{
-                            //    //資料是否存在
-                            //    string SitUpDegreeA = sfr.SitUpDegree.Trim();
-                            //    string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
-                            //    sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
-                            //}
-
-
+                            // 仰臥起坐只轉換 113 學年度以前的資料
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                if (GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐) == "免測")
+                                {
+                                    sfr.SitUpDegree = "免測";
+                                }
+                                else
+                                {
+                                    //資料是否存在
+                                    string SitUpDegreeA = sfr.SitUpDegree.Trim();
+                                    string SitUpDegreeB = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                                    sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
+                                }
+                            }
 
                             if (GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎) == "免測")
                             {
@@ -286,7 +287,10 @@ namespace K12.Sports.FitnessImportExport
                         else if (CheckCover)
                         {
                             //全部覆蓋
-                            //sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            }
 
                             sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
 
@@ -304,8 +308,12 @@ namespace K12.Sports.FitnessImportExport
                         else
                         {
                             ////如果有內容,則不予處理
-                            //if (string.IsNullOrEmpty(sfr.SitUpDegree))
-                            //    sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                if (string.IsNullOrEmpty(sfr.SitUpDegree))
+                                    sfr.SitUpDegree = GetMeValue(sfr.SitUp.Trim(), "仰臥起坐", student, _sc.Boy_仰臥起坐);
+                            }
+
 
                             if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
                                 sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Boy_坐姿體前彎);
@@ -333,17 +341,20 @@ namespace K12.Sports.FitnessImportExport
                         if (CheckPreferred) //2019/6/14 - 擇優覆蓋
                         {
                             //資料是否存在
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                if (GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐) == "免測")
+                                {
+                                    sfr.SitUpDegree = "免測";
+                                }
+                                else
+                                {
+                                    string SitUpDegreeA = sfr.SitUpDegree.Trim();
+                                    string SitUpDegreeB = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                                    sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
+                                }
+                            }
 
-                            //if (GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐) == "免測")
-                            //{
-                            //    sfr.SitUpDegree = "免測";
-                            //}
-                            //else
-                            //{
-                            //    string SitUpDegreeA = sfr.SitUpDegree.Trim();
-                            //    string SitUpDegreeB = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
-                            //    sfr.SitUpDegree = CompareFitness(SitUpDegreeA, SitUpDegreeB);
-                            //}
 
                             if (GetMeValue(sfr.SitAndReach.Trim(), "坐姿體前彎", student, _sc.Girl_坐姿體前彎) == "免測")
                             {
@@ -406,7 +417,11 @@ namespace K12.Sports.FitnessImportExport
                         }
                         else if (CheckCover)
                         {
-                            //sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            }
+
 
                             sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
                             sfr.StandingLongJumpDegree = GetMeValue(sfr.StandingLongJump, "立定跳遠", student, _sc.Girl_立定跳遠);
@@ -417,8 +432,12 @@ namespace K12.Sports.FitnessImportExport
                         }
                         else
                         {
-                            //if (string.IsNullOrEmpty(sfr.SitUpDegree))
-                            //    sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            if (sfr.SchoolYear <= 112)
+                            {
+                                if (string.IsNullOrEmpty(sfr.SitUpDegree))
+                                    sfr.SitUpDegree = GetMeValue(sfr.SitUp, "仰臥起坐", student, _sc.Girl_仰臥起坐);
+                            }
+
 
                             if (string.IsNullOrEmpty(sfr.SitAndReachDegree))
                                 sfr.SitAndReachDegree = GetMeValue(sfr.SitAndReach, "坐姿體前彎", student, _sc.Girl_坐姿體前彎);
@@ -487,8 +506,12 @@ namespace K12.Sports.FitnessImportExport
 
                     sb_name.AppendLine(string.Format("班級「{0}」座號「{1}」學生「{2}」\n實際年齡「{3}」鑑測年齡「{4}」", student.ClassName, student.SeatNo, student.Name, AgeString, Age鑑測));
 
-                    //if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
-                    //    sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
+                    if (sfr1.SchoolYear <= 112)
+                    {
+                        if (sfr1.SitUpDegree != sfr_log.SitUpDegree)
+                            sb_123.AppendLine(string.Format("仰臥起坐「{0}」由「{1}」換算為「{2}」", sfr1.SitUp, sfr_log.SitUpDegree, sfr1.SitUpDegree));
+                    }
+
 
                     if (sfr1.SitAndReachDegree != sfr_log.SitAndReachDegree)
                         sb_123.AppendLine(string.Format("坐姿體前彎「{0}」由「{1}」換算為「{2}」", sfr1.SitAndReach, sfr_log.SitAndReachDegree, sfr1.SitAndReachDegree));
@@ -497,14 +520,14 @@ namespace K12.Sports.FitnessImportExport
                         sb_123.AppendLine(string.Format("立定跳遠「{0}」由「{1}」換算為「{2}」", sfr1.StandingLongJump, sfr_log.StandingLongJumpDegree, sfr1.StandingLongJumpDegree));
 
                     if (sfr1.CardiorespiratoryDegree != sfr_log.CardiorespiratoryDegree)
-                        sb_123.AppendLine(string.Format("心肺耐力「{0}」由「{1}」換算為「{2}」", sfr1.Cardiorespiratory, sfr_log.CardiorespiratoryDegree, sfr1.CardiorespiratoryDegree));
+                        sb_123.AppendLine(string.Format("800/1600公尺跑走「{0}」由「{1}」換算為「{2}」", sfr1.Cardiorespiratory, sfr_log.CardiorespiratoryDegree, sfr1.CardiorespiratoryDegree));
 
                     if (sfr1.CurlDegree != sfr_log.CurlDegree)
                         sb_123.AppendLine(string.Format("仰臥捲腹「{0}」由「{1}」換算為「{2}」", sfr1.Curl, sfr_log.CurlDegree, sfr1.CurlDegree));
 
                     if (sfr1.PacerDegree != sfr_log.PacerDegree)
                         sb_123.AppendLine(string.Format("漸速耐力跑「{0}」由「{1}」換算為「{2}」", sfr1.Pacer, sfr_log.PacerDegree, sfr1.PacerDegree));
-                    
+
                     sb_123.AppendLine("");
 
                     sbLog.AppendLine(sb_name.ToString() + sb_123.ToString());

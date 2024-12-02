@@ -281,6 +281,8 @@
     <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表%28程式用樣版%29.xlsx" />
     <None Include="Resources\全校體適能中等以上%28含中等%29各項目百分比統計表.xlsx" />
     <None Include="Resources\班級體適能確認單範本.docx" />
+    <None Include="Resources\班級體適能確認單範本113a.docx" />
+    <None Include="Resources\班級體適能確認單範本113b.docx" />
     <None Include="Resources\體適能個人證明單_功能變數總表.docx" />
     <None Include="Resources\體適能證明單_範本.docx" />
     <None Include="Resources\體適能資料上傳格式%28xlsx版%29.xlsx" />

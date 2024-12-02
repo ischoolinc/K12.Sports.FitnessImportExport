@@ -46,9 +46,9 @@ namespace K12.Sports.FitnessImportExport
                 rowList = GetRow("男", "仰臥起坐", 10, Boy_仰臥起坐);
                 dataGridViewX1.Rows.AddRange(rowList.ToArray());
 
-                // 2024 改名 心肺耐力
+                // 2024 改名 800/1600公尺跑走
                 XmlNode Boy_心肺適能 = xml.SelectSingleNode("boy/心肺適能");
-                rowList = GetRow("男", "心肺耐力", 10, Boy_心肺適能);
+                rowList = GetRow("男", "800/1600公尺跑走", 10, Boy_心肺適能);
                 dataGridViewX1.Rows.AddRange(rowList.ToArray());
 
                 // 2024 新增：
@@ -74,9 +74,9 @@ namespace K12.Sports.FitnessImportExport
                 rowList = GetRow("女", "仰臥起坐", 10, Girl_仰臥起坐);
                 dataGridViewX1.Rows.AddRange(rowList.ToArray());
 
-                // 改名 心肺耐力
+                // 改名 800/1600公尺跑走
                 XmlNode Girl_心肺適能 = xml.SelectSingleNode("girl/心肺適能");
-                rowList = GetRow("女", "心肺耐力", 10, Girl_心肺適能);
+                rowList = GetRow("女", "800/1600公尺跑走", 10, Girl_心肺適能);
                 dataGridViewX1.Rows.AddRange(rowList.ToArray());
 
                 // 2024 新增：

@@ -79,14 +79,14 @@
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtPacerDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX22 = new DevComponents.DotNetBar.LabelX();
+            this.txtCurlDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.txtCurl = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.txtPacer = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
-            this.txtCurlDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
-            this.txtPacerDegree = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX22 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -378,7 +378,6 @@
             this.txtSitUp.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSitUp.Location = new System.Drawing.Point(128, 209);
             this.txtSitUp.Name = "txtSitUp";
-            this.txtSitUp.ReadOnly = true;
             this.txtSitUp.Size = new System.Drawing.Size(118, 25);
             this.txtSitUp.TabIndex = 8;
             // 
@@ -417,24 +416,23 @@
             this.txtSitUpDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSitUpDegree.Location = new System.Drawing.Point(125, 74);
             this.txtSitUpDegree.Name = "txtSitUpDegree";
-            this.txtSitUpDegree.ReadOnly = true;
             this.txtSitUpDegree.Size = new System.Drawing.Size(118, 25);
             this.txtSitUpDegree.TabIndex = 2;
             // 
             // labelX11
             // 
-            this.labelX11.AutoSize = true;
             this.labelX11.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX11.BackgroundStyle.Class = "";
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(19, 243);
+            this.labelX11.Location = new System.Drawing.Point(22, 239);
             this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(82, 21);
+            this.labelX11.Size = new System.Drawing.Size(88, 32);
             this.labelX11.TabIndex = 2;
-            this.labelX11.Text = "心肺耐力(秒)";
+            this.labelX11.Text = "800/1600公尺跑走(秒)";
+            this.labelX11.WordWrap = true;
             // 
             // txtCardiorespiratory
             // 
@@ -456,11 +454,12 @@
             // 
             this.labelX12.BackgroundStyle.Class = "";
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(18, 107);
+            this.labelX12.Location = new System.Drawing.Point(18, 99);
             this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(104, 23);
+            this.labelX12.Size = new System.Drawing.Size(89, 39);
             this.labelX12.TabIndex = 2;
-            this.labelX12.Text = "心肺耐力常模";
+            this.labelX12.Text = "800/1600公尺跑走常模";
+            this.labelX12.WordWrap = true;
             // 
             // textBoxX13
             // 
@@ -812,6 +811,58 @@
             this.groupPanel1.TabIndex = 19;
             this.groupPanel1.Text = "常模";
             // 
+            // txtPacerDegree
+            // 
+            // 
+            // 
+            // 
+            this.txtPacerDegree.Border.Class = "TextBoxBorder";
+            this.txtPacerDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPacerDegree.Location = new System.Drawing.Point(125, 172);
+            this.txtPacerDegree.Name = "txtPacerDegree";
+            this.txtPacerDegree.Size = new System.Drawing.Size(118, 25);
+            this.txtPacerDegree.TabIndex = 5;
+            // 
+            // labelX22
+            // 
+            this.labelX22.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX22.BackgroundStyle.Class = "";
+            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX22.Location = new System.Drawing.Point(18, 173);
+            this.labelX22.Name = "labelX22";
+            this.labelX22.Size = new System.Drawing.Size(104, 23);
+            this.labelX22.TabIndex = 18;
+            this.labelX22.Text = "漸速耐力跑常模";
+            // 
+            // txtCurlDegree
+            // 
+            // 
+            // 
+            // 
+            this.txtCurlDegree.Border.Class = "TextBoxBorder";
+            this.txtCurlDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCurlDegree.Location = new System.Drawing.Point(125, 140);
+            this.txtCurlDegree.Name = "txtCurlDegree";
+            this.txtCurlDegree.Size = new System.Drawing.Size(118, 25);
+            this.txtCurlDegree.TabIndex = 4;
+            // 
+            // labelX21
+            // 
+            this.labelX21.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.Class = "";
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Location = new System.Drawing.Point(18, 141);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(104, 23);
+            this.labelX21.TabIndex = 16;
+            this.labelX21.Text = "仰臥捲腹常模";
+            // 
             // txtCurl
             // 
             // 
@@ -865,58 +916,6 @@
             this.labelX20.Size = new System.Drawing.Size(96, 21);
             this.labelX20.TabIndex = 22;
             this.labelX20.Text = "漸速耐力跑(趟)";
-            // 
-            // txtCurlDegree
-            // 
-            // 
-            // 
-            // 
-            this.txtCurlDegree.Border.Class = "TextBoxBorder";
-            this.txtCurlDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCurlDegree.Location = new System.Drawing.Point(125, 140);
-            this.txtCurlDegree.Name = "txtCurlDegree";
-            this.txtCurlDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtCurlDegree.TabIndex = 4;
-            // 
-            // labelX21
-            // 
-            this.labelX21.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX21.BackgroundStyle.Class = "";
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Location = new System.Drawing.Point(18, 141);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(104, 23);
-            this.labelX21.TabIndex = 16;
-            this.labelX21.Text = "仰臥捲腹常模";
-            // 
-            // txtPacerDegree
-            // 
-            // 
-            // 
-            // 
-            this.txtPacerDegree.Border.Class = "TextBoxBorder";
-            this.txtPacerDegree.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPacerDegree.Location = new System.Drawing.Point(125, 172);
-            this.txtPacerDegree.Name = "txtPacerDegree";
-            this.txtPacerDegree.Size = new System.Drawing.Size(118, 25);
-            this.txtPacerDegree.TabIndex = 5;
-            // 
-            // labelX22
-            // 
-            this.labelX22.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX22.BackgroundStyle.Class = "";
-            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX22.Location = new System.Drawing.Point(18, 173);
-            this.labelX22.Name = "labelX22";
-            this.labelX22.Size = new System.Drawing.Size(104, 23);
-            this.labelX22.TabIndex = 18;
-            this.labelX22.Text = "漸速耐力跑常模";
             // 
             // FrmFitnessRecord
             // 

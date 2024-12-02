@@ -42,13 +42,13 @@
             this.colSitUpDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCardiorespiratory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCardiorespiratoryDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnInsert = new DevComponents.DotNetBar.ButtonX();
-            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.colCurl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCurlDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPacer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPacerDegree = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnInsert = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
             // 
             // lvFitnessList
@@ -139,13 +139,32 @@
             // 
             // colCardiorespiratory
             // 
-            this.colCardiorespiratory.Text = "心肺耐力";
+            this.colCardiorespiratory.Text = "800/1600公尺跑走";
             this.colCardiorespiratory.Width = 75;
             // 
             // colCardiorespiratoryDegree
             // 
-            this.colCardiorespiratoryDegree.Text = "心肺耐力常模";
+            this.colCardiorespiratoryDegree.Text = "800/1600公尺跑走常模";
             this.colCardiorespiratoryDegree.Width = 100;
+            // 
+            // colCurl
+            // 
+            this.colCurl.Text = "仰臥捲腹";
+            this.colCurl.Width = 100;
+            // 
+            // colCurlDegree
+            // 
+            this.colCurlDegree.Text = "仰臥捲腹常模";
+            this.colCurlDegree.Width = 100;
+            // 
+            // colPacer
+            // 
+            this.colPacer.Text = "漸速耐力跑";
+            this.colPacer.Width = 100;
+            // 
+            // colPacerDegree
+            // 
+            this.colPacerDegree.Text = "漸速耐力跑常模";
             // 
             // btnInsert
             // 
@@ -182,25 +201,6 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "刪除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // colCurl
-            // 
-            this.colCurl.Text = "仰臥捲腹";
-            this.colCurl.Width = 100;
-            // 
-            // colCurlDegree
-            // 
-            this.colCurlDegree.Text = "仰臥捲腹常模";
-            this.colCurlDegree.Width = 100;
-            // 
-            // colPacer
-            // 
-            this.colPacer.Text = "漸速耐力跑";
-            this.colPacer.Width = 100;
-            // 
-            // colPacerDegree
-            // 
-            this.colPacerDegree.Text = "漸速耐力跑常模";
             // 
             // StudentFitnessContent
             // 

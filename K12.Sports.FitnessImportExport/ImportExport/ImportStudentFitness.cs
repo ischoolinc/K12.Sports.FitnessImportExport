@@ -162,16 +162,21 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 仰臥起坐常模
                     fitnessRec.SitUpDegree = Utility.GetIRowValueString(row, "仰臥起坐常模");
                   
+                    //// 心肺適能，改名　心肺耐力
+                    //fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "心肺耐力");
+                    //// 心肺適能常模，改名心肺耐力常模
+                    //fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "心肺耐力常模");
+
                     // 心肺適能，改名　心肺耐力
-                    fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "心肺耐力");
+                    fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走");
                     // 心肺適能常模，改名心肺耐力常模
-                    fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "心肺耐力常模");
+                    fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "800/1600公尺跑走常模");
 
                     // 仰臥捲腹
                     fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹");
 
                     // 仰臥捲腹常模
-                    fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹常模");
+                    fitnessRec.CurlDegree = Utility.GetIRowValueString(row, "仰臥捲腹常模");
 
                     // 漸速耐力跑
                     fitnessRec.Pacer = Utility.GetIRowValueString(row, "漸速耐力跑");
@@ -225,11 +230,11 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     if (_Option.SelectedFields.Contains("仰臥起坐常模"))
                         fitnessRec.SitUpDegree = Utility.GetIRowValueString(row, "仰臥起坐常模");
                     // 心肺適能，改名心肺耐力
-                    if (_Option.SelectedFields.Contains("心肺耐力"))
-                        fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "心肺耐力");
+                    if (_Option.SelectedFields.Contains("800/1600公尺跑走"))
+                        fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走");
                     // 心肺適能常模，改名心肺耐力常模
-                    if (_Option.SelectedFields.Contains("心肺耐力常模"))
-                        fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "心肺耐力常模");
+                    if (_Option.SelectedFields.Contains("800/1600公尺跑走常模"))
+                        fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "800/1600公尺跑走常模");
 
                     // 仰臥捲腹
                     if (_Option.SelectedFields.Contains("仰臥捲腹"))

@@ -63,11 +63,11 @@
     </Field>
 	-->
 
-	  <Field Required="False" Name="心肺耐力">
-		  <Validate AutoCorrect="False" Description="「心肺耐力」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  <Field Required="False" Name="800/1600公尺跑走">
+		  <Validate AutoCorrect="False" Description="「800/1600公尺跑走」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
-	  <Field Required="False" Name="心肺耐力常模">
-		  <Validate AutoCorrect="False" Description="「心肺耐力常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
+	  <Field Required="False" Name="800/1600公尺跑走常模">
+		  <Validate AutoCorrect="False" Description="「800/1600公尺跑走常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 
 	  <Field Required="False" Name="仰臥捲腹">

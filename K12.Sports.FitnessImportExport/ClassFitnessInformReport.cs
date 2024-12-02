@@ -1,8 +1,10 @@
 ﻿
+using Aspose.Cells.Pivot;
 using Aspose.Words;
 using FISCA.Presentation.Controls;
 using K12.Data;
 using K12.Sports.FitnessImportExport.DAO;
+using K12.Sports.FitnessImportExport.UDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,13 +56,53 @@ namespace K12.Sports.FitnessImportExport
                 BackgroundWorker BGW = new BackgroundWorker();
                 BGW.WorkerReportsProgress = true;
 
-                BGW.DoWork += delegate(object sender, DoWorkEventArgs e)
+                BGW.DoWork += delegate (object sender, DoWorkEventArgs e)
                 {
                     #region DoWork
                     FISCA.UDT.AccessHelper accessHelper = new FISCA.UDT.AccessHelper();
 
-                    Aspose.Words.Document Template;
-                    Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本1));
+                    // ischool_fitness_config 體適能設定檔
+                    string ItemValue = "";
+                    // 取得設定檔內資料
+                    List<FitnessConfigRecord> FitnessConfigRecordList = accessHelper.Select<FitnessConfigRecord>("school_year = " + schoolYear);
+
+                    if (FitnessConfigRecordList.Count > 0)
+                    {
+                        ItemValue = FitnessConfigRecordList[0].ItemValue;
+                    }
+
+
+                    Aspose.Words.Document Template = null;
+
+                    // 經過繼斌確認 113前使用舊樣板
+
+                    int sc = 113;
+                    int.TryParse(schoolYear, out sc);
+
+                    if (sc < 113)
+                    {
+                        Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本1));
+                    }
+                    else
+                    {
+                        if (ItemValue == "")
+                        {
+                            e.Cancel = true;
+                        }
+                        else
+                        {
+                            if (ItemValue == "心肺耐力")
+                                Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本113a));
+
+                            if (ItemValue == "漸速耐力跑")
+                                Template = new Aspose.Words.Document(new MemoryStream(Properties.Resources.班級體適能確認單範本113b));
+
+
+                        }
+
+                    }
+
+
                     // 取得選取班級
                     List<ClassRecord> ClassList = K12.Data.Class.SelectByIDs(K12.Presentation.NLDPanels.Class.SelectedSource);
                     Dictionary<string, StudentFitnessRecord> dicStudentFitnessRecord = new Dictionary<string, StudentFitnessRecord>();
@@ -69,7 +111,8 @@ namespace K12.Sports.FitnessImportExport
                     {
                         foreach (var studentRec in classrecord.Students)
                         {
-                            studentIDList.Add(studentRec.ID);
+                            if (studentRec.Status == StudentRecord.StudentStatus.一般 || studentRec.Status == StudentRecord.StudentStatus.輟學)
+                                studentIDList.Add(studentRec.ID);
                         }
                     }
                     BGW.ReportProgress(10);
@@ -178,25 +221,62 @@ namespace K12.Sports.FitnessImportExport
                                         table.Columns.Add(col);
                                     row[col] = dicStudentFitnessRecord[studentRec.ID].StandingLongJumpDegree;
 
-                                    col = string.Format("仰臥起坐{0}", studentCounter);
-                                    if (!table.Columns.Contains(col))
-                                        table.Columns.Add(col);
-                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitUp;
+                                    if (sc < 113)
+                                    {
+                                        col = string.Format("仰臥起坐{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitUp;
 
-                                    col = string.Format("仰臥起坐常模{0}", studentCounter);
-                                    if (!table.Columns.Contains(col))
-                                        table.Columns.Add(col);
-                                    row[col] = dicStudentFitnessRecord[studentRec.ID].SitUpDegree;
+                                        col = string.Format("仰臥起坐常模{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].SitUpDegree;
+                                    }
+                                    else
+                                    {
+                                        // 113 學年度新增 仰臥捲腹
+                                        col = string.Format("仰臥捲腹{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].Curl;
 
-                                    col = string.Format("心肺適能{0}", studentCounter);
-                                    if (!table.Columns.Contains(col))
-                                        table.Columns.Add(col);
-                                    row[col] = dicStudentFitnessRecord[studentRec.ID].Cardiorespiratory;
+                                        col = string.Format("仰臥捲腹常模{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].CurlDegree;
 
-                                    col = string.Format("心肺適能常模{0}", studentCounter);
-                                    if (!table.Columns.Contains(col))
-                                        table.Columns.Add(col);
-                                    row[col] = dicStudentFitnessRecord[studentRec.ID].CardiorespiratoryDegree;
+                                        if (ItemValue == "心肺耐力")
+                                        {
+                                            col = string.Format("心肺適能{0}", studentCounter);
+                                            if (!table.Columns.Contains(col))
+                                                table.Columns.Add(col);
+                                            row[col] = dicStudentFitnessRecord[studentRec.ID].Cardiorespiratory;
+
+                                            col = string.Format("心肺適能常模{0}", studentCounter);
+                                            if (!table.Columns.Contains(col))
+                                                table.Columns.Add(col);
+                                            row[col] = dicStudentFitnessRecord[studentRec.ID].CardiorespiratoryDegree;
+                                        }
+
+                                        if (ItemValue == "漸速耐力跑")
+                                        {
+                                            col = string.Format("漸速耐力跑{0}", studentCounter);
+                                            if (!table.Columns.Contains(col))
+                                                table.Columns.Add(col);
+                                            row[col] = dicStudentFitnessRecord[studentRec.ID].Pacer;
+
+                                            col = string.Format("漸速耐力跑常模{0}", studentCounter);
+                                            if (!table.Columns.Contains(col))
+                                                table.Columns.Add(col);
+                                            row[col] = dicStudentFitnessRecord[studentRec.ID].PacerDegree;
+                                        }
+
+                                    }
+
+
+
+
                                 }
 
                                 studentCounter++;
@@ -228,11 +308,11 @@ namespace K12.Sports.FitnessImportExport
                             }
                         }
                         // 一個row 一班
-                        if (studentCounter != 0) 
+                        if (studentCounter != 0)
                         {
                             table.Rows.Add(row);
                         }
-                        
+
                         classIndex++;
                         BGW.ReportProgress(20 + classIndex * 80 / ClassList.Count);
 
@@ -300,12 +380,12 @@ namespace K12.Sports.FitnessImportExport
                     #endregion
                 };
 
-                BGW.ProgressChanged += delegate(object sender, ProgressChangedEventArgs e)
+                BGW.ProgressChanged += delegate (object sender, ProgressChangedEventArgs e)
                 {
                     FISCA.Presentation.MotherForm.SetStatusBarMessage("班級體適能通知單產生中...", e.ProgressPercentage);
                 };
 
-                BGW.RunWorkerCompleted += delegate(object sender, RunWorkerCompletedEventArgs e)
+                BGW.RunWorkerCompleted += delegate (object sender, RunWorkerCompletedEventArgs e)
                 {
                     #region RunWorkerCompleted
                     if (e.Cancelled)

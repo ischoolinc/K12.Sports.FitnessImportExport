@@ -80,7 +80,7 @@
             this.Column13});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -143,9 +143,11 @@
             // 
             // Column11
             // 
+            this.Column11.FillWeight = 130F;
             this.Column11.HeaderText = "項目";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
+            this.Column11.Width = 130;
             // 
             // Column4
             // 
@@ -252,18 +254,18 @@
           private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
           private DevComponents.DotNetBar.ButtonX buttonX1;
           private DevComponents.DotNetBar.LabelX labelX1;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-          private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-     }
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+    }
 }
