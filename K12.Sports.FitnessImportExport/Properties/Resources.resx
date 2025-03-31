@@ -157,13 +157,13 @@
   <data name="體適能個人證明單_功能變數總表1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\體適能個人證明單_功能變數總表.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="體適能證明單_範本1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\體適能證明單_範本.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="班級體適能確認單範本113a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\班級體適能確認單範本113a.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="班級體適能確認單範本113b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\班級體適能確認單範本113b.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="體適能證明單_範本_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\體適能證明單(範本) .docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

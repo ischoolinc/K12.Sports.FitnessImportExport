@@ -221,9 +221,9 @@ namespace K12.Sports.FitnessImportExport.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] 體適能證明單_範本1 {
+        internal static byte[] 體適能證明單_範本_ {
             get {
-                object obj = ResourceManager.GetObject("體適能證明單_範本1", resourceCulture);
+                object obj = ResourceManager.GetObject("體適能證明單_範本_", resourceCulture);
                 return ((byte[])(obj));
             }
         }

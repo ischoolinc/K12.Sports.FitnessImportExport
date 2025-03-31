@@ -68,7 +68,7 @@ namespace K12.Sports.FitnessImportExport.Report
             {
                 //如果範本為空,則建立一個預設範本
                 ReportConfiguration ConfigurationInCadre_1 = new ReportConfiguration(FitnessConfig);
-                ConfigurationInCadre_1.Template = new ReportTemplate(Properties.Resources.體適能證明單_範本1, TemplateType.docx);
+                ConfigurationInCadre_1.Template = new ReportTemplate(Properties.Resources.體適能證明單_範本_, TemplateType.docx);
                 Template = ConfigurationInCadre_1.Template.ToDocument();
             }
             else
@@ -380,12 +380,12 @@ namespace K12.Sports.FitnessImportExport.Report
             TemplateSettingForm TemplateForm;
             if (ConfigurationInCadre.Template != null)
             {
-                TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.體適能證明單_範本1, TemplateType.docx));
+                TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.體適能證明單_範本_, TemplateType.docx));
             }
             else
             {
-                ConfigurationInCadre.Template = new ReportTemplate(Properties.Resources.體適能證明單_範本1, TemplateType.docx);
-                TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.體適能證明單_範本1, TemplateType.docx));
+                ConfigurationInCadre.Template = new ReportTemplate(Properties.Resources.體適能證明單_範本_, TemplateType.docx);
+                TemplateForm = new TemplateSettingForm(ConfigurationInCadre.Template, new ReportTemplate(Properties.Resources.體適能證明單_範本_, TemplateType.docx));
             }
 
             //預設名稱
