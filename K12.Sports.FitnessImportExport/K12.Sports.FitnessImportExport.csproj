@@ -286,6 +286,7 @@
     <None Include="Resources\體適能個人證明單_功能變數總表.docx" />
     <None Include="Resources\體適能證明單%28範本%29 .docx" />
     <None Include="Resources\體適能資料上傳格式%28xlsx版%29.xlsx" />
+    <None Include="Resources\體適能資料上傳格式%28xlsx版%29_範本_20250630.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImportStudentFitnessRecordVal.xml">

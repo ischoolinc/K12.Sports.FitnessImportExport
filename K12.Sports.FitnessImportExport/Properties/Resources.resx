@@ -166,4 +166,7 @@
   <data name="體適能證明單_範本_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\體適能證明單(範本) .docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="體適能資料上傳格式_xlsx版__範本_20250630" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\體適能資料上傳格式(xlsx版)_範本_20250630.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

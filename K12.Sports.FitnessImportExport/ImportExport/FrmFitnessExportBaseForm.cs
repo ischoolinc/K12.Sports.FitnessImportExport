@@ -136,7 +136,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             // 目前應該是沒有甚麼問題。
             //MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式);
 
-            MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式_xlsx版_);
+            MemoryStream ms = new MemoryStream(Properties.Resources.體適能資料上傳格式_xlsx版__範本_20250630);
 
 
 
@@ -405,12 +405,12 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 if (fitnessRecord != null)
                 {
                     // 測驗日期
-                    SetColumnValue("測驗日期", Utility.ConvertDateTimeToChineseDateTime(fitnessRecord.TestDate));
+                    SetColumnValue("*測驗日期（民國年月份日期）", Utility.ConvertDateTimeToChineseDateTime(fitnessRecord.TestDate));
                 }
                 else
                 {
                     // 測驗日期
-                    SetColumnValue("測驗日期", string.Empty);
+                    SetColumnValue("*測驗日期（民國年月份日期）", string.Empty);
                 }
 
                 // 學校類別
@@ -419,91 +419,74 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 // 年級
                 if (studentRecord.Class_Grade_Year == "1")
                 {
-                    SetColumnValue("年級", "7");
+                    SetColumnValue("*年級", "7");
                 }
                 else if (studentRecord.Class_Grade_Year == "2")
                 {
-                    SetColumnValue("年級", "8");
+                    SetColumnValue("*年級", "8");
                 }
                 else if (studentRecord.Class_Grade_Year == "3")
                 {
-                    SetColumnValue("年級", "9");
+                    SetColumnValue("*年級", "9");
                 }
                 else
                 {
-                    SetColumnValue("年級", studentRecord.Class_Grade_Year);
+                    SetColumnValue("*年級", studentRecord.Class_Grade_Year);
                 }
 
                 // 班級名稱
-                SetColumnValue("班級名稱", studentRecord.Class_Class_Name);
-
-                // 班級序號 for sort
-                SetOthersValue("班級序號", studentRecord.Class_Display_Order);
+                SetColumnValue("*班級名稱（需與系統設定一致）", studentRecord.Class_Class_Name);
 
                 // 學號/座號
-                SetColumnValue("學號/座號", studentRecord.Student_Student_Number);
+                SetColumnValue("*學號", studentRecord.Student_Student_Number);
 
                 // 性別
-                SetColumnValue("性別", studentRecord.Student_Gender);
+                SetColumnValue("*性別（男：1、女：2）", studentRecord.Student_Gender);
 
                 // 身分證字號
-                SetColumnValue("身分證字號", studentRecord.Student_ID_Number);
+                SetColumnValue("*身分證字號", studentRecord.Student_ID_Number);
 
                 // 生日
-                SetColumnValue("生日", studentRecord.Student_Birthday);
+                SetColumnValue("*生日（民國年月份日期）", studentRecord.Student_Birthday);
 
                 if (fitnessRecord != null)
                 {
                     // 身高
-                    SetColumnValue("身高", fitnessRecord.Height);
+                    SetColumnValue("*身高（公分）", fitnessRecord.Height);
 
                     // 體重
-                    SetColumnValue("體重", fitnessRecord.Weight);
+                    SetColumnValue("*體重（公斤）", fitnessRecord.Weight);
 
                     // 坐姿體前彎
-                    SetColumnValue("坐姿體前彎", fitnessRecord.SitAndReach);
+                    SetColumnValue("坐姿體前彎（公分）", fitnessRecord.SitAndReach);
 
                     // 立定跳遠
-                    SetColumnValue("立定跳遠", fitnessRecord.StandingLongJump);
-
-                    //// 仰臥起坐
-                    //SetColumnValue("仰臥起坐", fitnessRecord.SitUp);
-
-                    // 心肺適能(心肺耐力)
-                    SetColumnValue("心肺耐力", fitnessRecord.Cardiorespiratory);
+                    SetColumnValue("立定跳遠（公分）", fitnessRecord.StandingLongJump);
 
                     // 仰臥捲腹
-                    SetColumnValue("仰臥捲腹", fitnessRecord.Curl);
+                    SetColumnValue("仰臥捲腹（次數）", fitnessRecord.Curl);
+
+                    SetColumnValue("800/1600公尺跑走（分.秒）", fitnessRecord.Cardiorespiratory);
 
                     // 漸速耐力跑
-                    SetColumnValue("漸速耐力跑", fitnessRecord.Pacer);
-
+                    SetColumnValue("漸速耐力跑（總趟數）", fitnessRecord.Pacer);
 
                     // 姓名 for sort
                     SetOthersValue("姓名", studentRecord.Student_Name);
 
                     if (isExportDegree == true)
                     {
-                        // 身高常模
-                        //SetColumnValue("身高常模", fitnessRecord.HeightDegree);
-
-                        // 體重常模
-                        //SetColumnValue("體重常模", fitnessRecord.WeightDegree);
-
                         // 坐姿體前彎常模
                         SetColumnValue("坐姿體前彎常模", fitnessRecord.SitAndReachDegree);
 
                         // 立定跳遠常模
                         SetColumnValue("立定跳遠常模", fitnessRecord.StandingLongJumpDegree);
 
-                        //// 仰臥起坐常模
-                        //SetColumnValue("仰臥起坐常模", fitnessRecord.SitUpDegree);
-
-                        // 心肺適能常模
-                        SetColumnValue("心肺耐力常模", fitnessRecord.CardiorespiratoryDegree);
-
                         // 仰臥捲腹常模
                         SetColumnValue("仰臥捲腹常模", fitnessRecord.CurlDegree);
+
+                        // 心肺適能常模
+                        SetColumnValue("800/1600公尺跑走常模", fitnessRecord.CardiorespiratoryDegree);
 
                         // 漸速耐力跑常模
                         SetColumnValue("漸速耐力跑常模", fitnessRecord.PacerDegree);
@@ -512,49 +495,42 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 else
                 {
                     // 身高
-                    SetColumnValue("身高", string.Empty);
+                    SetColumnValue("*身高（公分）", string.Empty);
 
                     // 體重
-                    SetColumnValue("體重", string.Empty);
+                    SetColumnValue("*體重（公斤）", string.Empty);
 
                     // 坐姿體前彎
-                    SetColumnValue("坐姿體前彎", string.Empty);
+                    SetColumnValue("坐姿體前彎（公分）", string.Empty);
 
                     // 立定跳遠
-                    SetColumnValue("立定跳遠", string.Empty);
+                    SetColumnValue("立定跳遠（公分）", string.Empty);
 
                     //// 仰臥起坐
-                    //SetColumnValue("仰臥起坐", string.Empty);
+                    SetColumnValue("仰臥捲腹（次數）", string.Empty);
 
                     // 心肺適能
-                    SetColumnValue("心肺耐力", string.Empty);
+                    SetColumnValue("800/1600公尺跑走（分.秒）", string.Empty);
 
+                    // 漸速耐力跑
+                    SetColumnValue("漸速耐力跑常模", string.Empty);
 
                     // 姓名 for sort
                     SetOthersValue("姓名", studentRecord.Student_Name);
 
                     if (isExportDegree == true)
                     {
-                        // 身高常模
-                        //SetColumnValue("身高常模", string.Empty);
-
-                        // 體重常模
-                        //SetColumnValue("體重常模", string.Empty);
-
                         // 坐姿體前彎常模
                         SetColumnValue("坐姿體前彎常模", string.Empty);
 
                         // 立定跳遠常模
                         SetColumnValue("立定跳遠常模", string.Empty);
 
-                        //// 仰臥起坐常模
-                        //SetColumnValue("仰臥起坐常模", string.Empty);
-
                         // 心肺耐力常模
-                        SetColumnValue("心肺耐力常模", string.Empty);
+                        SetColumnValue("仰臥捲腹常模", string.Empty);
 
                         // 仰臥捲腹常模
-                        SetColumnValue("仰臥捲腹常模", string.Empty);
+                        SetColumnValue("800/1600公尺跑走常模", string.Empty);
 
                         // 漸速耐力跑常模
                         SetColumnValue("漸速耐力跑常模", string.Empty);

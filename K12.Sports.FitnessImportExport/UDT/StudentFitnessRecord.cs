@@ -106,13 +106,13 @@ namespace K12.Sports.FitnessImportExport.DAO
         public string SitUpDegree { get; set; }
 
         /// <summary>
-        ///  心肺適能(心肺耐力)
+        ///  心肺適能(心肺耐力) / 800/1600公尺跑走
         /// </summary>
         [Field(Field = "cardiorespiratory", Indexed = false)]
         public string Cardiorespiratory { get; set; }
 
         /// <summary>
-        ///  心肺適能常模(心肺耐力)
+        ///  心肺適能常模(心肺耐力) / 800/1600公尺跑走
         /// </summary>
         [Field(Field = "cardiorespiratory_degree", Indexed = false)]
         public string CardiorespiratoryDegree { get; set; }
