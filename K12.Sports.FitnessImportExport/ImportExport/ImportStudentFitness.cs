@@ -51,7 +51,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             Dictionary<string, string> SchoolYearDic = new Dictionary<string, string>();
             foreach (IRowStream row in Rows)
             {
-                string IDNumber = Utility.GetIRowValueString(row, "身分證字號");
+                string IDNumber = Utility.GetIRowValueString(row, "*身分證字號");
                 string SchoolYear = Utility.GetIRowValueString(row, "學年度");
                 
                 if (string.IsNullOrEmpty(IDNumber)) continue;
@@ -90,9 +90,9 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 this.ImportProgress = totalCount;
                 bool isInsert = true;   // 用來判斷此筆資料是否要新增
                 DAO.StudentFitnessRecord fitnessRec = new DAO.StudentFitnessRecord();
-                string IDNumber = Utility.GetIRowValueString(row, "身分證字號");
+                string IDNumber = Utility.GetIRowValueString(row, "*身分證字號");
                 int? SchoolYear = Utility.GetIRowValueInt(row, "學年度");
-                DateTime? TestDate = Utility.GetIRowValueDateTime(row, "測驗日期");
+                DateTime? TestDate = Utility.GetIRowValueDateTime(row, "*測驗日期（民國年月份日期）");
 
                 // 如果"學號"或"學年度"或"測驗日期"沒有資料, 換到下一筆
                 if(string.IsNullOrEmpty(IDNumber)) continue;
@@ -142,19 +142,19 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 學校類別
                     fitnessRec.SchoolCategory = Utility.GetIRowValueString(row, "學校類別");
                     // 身高
-                    fitnessRec.Height = Utility.GetIRowValueString(row, "身高");
+                    fitnessRec.Height = Utility.GetIRowValueString(row, "*身高（公分）");
                     // 身高常模
                     //fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
                     // 體重
-                    fitnessRec.Weight = Utility.GetIRowValueString(row, "體重");
+                    fitnessRec.Weight = Utility.GetIRowValueString(row, "*體重（公斤）");
                     // 體重常模
                     //fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
                     // 坐姿體前彎
-                    fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎");
+                    fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎（公分）");
                     // 坐姿體前彎常模
                     fitnessRec.SitAndReachDegree = Utility.GetIRowValueString(row, "坐姿體前彎常模");
                     // 立定跳遠
-                    fitnessRec.StandingLongJump = Utility.GetIRowValueString(row, "立定跳遠");
+                    fitnessRec.StandingLongJump = Utility.GetIRowValueString(row, "立定跳遠（公分）");
                     // 立定跳遠常模
                     fitnessRec.StandingLongJumpDegree = Utility.GetIRowValueString(row, "立定跳遠常模");
                     // 仰臥起坐
@@ -168,18 +168,18 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     //fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "心肺耐力常模");
 
                     // 心肺適能，改名　心肺耐力
-                    fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走");
+                    fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走（分.秒）");
                     // 心肺適能常模，改名心肺耐力常模
                     fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "800/1600公尺跑走常模");
 
                     // 仰臥捲腹
-                    fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹");
+                    fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹（次數）");
 
                     // 仰臥捲腹常模
                     fitnessRec.CurlDegree = Utility.GetIRowValueString(row, "仰臥捲腹常模");
 
                     // 漸速耐力跑
-                    fitnessRec.Pacer = Utility.GetIRowValueString(row, "漸速耐力跑");
+                    fitnessRec.Pacer = Utility.GetIRowValueString(row, "漸速耐力跑（總趟數）");
 
                     // 漸速耐力跑常模
                     fitnessRec.PacerDegree = Utility.GetIRowValueString(row, "漸速耐力跑常模");
@@ -194,32 +194,32 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // "學號/座號", "學年度" 無法更新
 
                     // 測驗日期
-                    if (_Option.SelectedFields.Contains("測驗日期"))
-                        fitnessRec.TestDate = DateTime.Parse(Utility.GetIRowValueString(row, "測驗日期"));
+                    if (_Option.SelectedFields.Contains("*測驗日期（民國年月份日期）"))
+                        fitnessRec.TestDate = DateTime.Parse(Utility.GetIRowValueString(row, "*測驗日期（民國年月份日期）"));
                     // 學校類別
                     if (_Option.SelectedFields.Contains("學校類別"))
                         fitnessRec.SchoolCategory = Utility.GetIRowValueString(row, "學校類別");
                     // 身高
-                    if (_Option.SelectedFields.Contains("身高"))
-                        fitnessRec.Height = Utility.GetIRowValueString(row, "身高");
+                    if (_Option.SelectedFields.Contains("*身高（公分）"))
+                        fitnessRec.Height = Utility.GetIRowValueString(row, "*身高（公分）");
                     // 身高常模
                     //if (_Option.SelectedFields.Contains("身高常模"))
                     //    fitnessRec.HeightDegree = Utility.GetIRowValueString(row, "身高常模");
                     // 體重
-                    if (_Option.SelectedFields.Contains("體重"))
-                        fitnessRec.Weight = Utility.GetIRowValueString(row, "體重");
+                    if (_Option.SelectedFields.Contains("*體重（公斤）"))
+                        fitnessRec.Weight = Utility.GetIRowValueString(row, "*體重（公斤）");
                     // 體重常模
                     //if (_Option.SelectedFields.Contains("體重常模"))
                     //    fitnessRec.WeightDegree = Utility.GetIRowValueString(row, "體重常模");
                     // 坐姿體前彎
-                    if (_Option.SelectedFields.Contains("坐姿體前彎"))
-                        fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎");
+                    if (_Option.SelectedFields.Contains("坐姿體前彎（公分）"))
+                        fitnessRec.SitAndReach = Utility.GetIRowValueString(row, "坐姿體前彎（公分）");
                     // 坐姿體前彎常模
                     if (_Option.SelectedFields.Contains("坐姿體前彎常模"))
                         fitnessRec.SitAndReachDegree = Utility.GetIRowValueString(row, "坐姿體前彎常模");
                     // 立定跳遠
-                    if (_Option.SelectedFields.Contains("立定跳遠"))
-                        fitnessRec.StandingLongJump = Utility.GetIRowValueString(row, "立定跳遠");
+                    if (_Option.SelectedFields.Contains("立定跳遠（公分）"))
+                        fitnessRec.StandingLongJump = Utility.GetIRowValueString(row, "立定跳遠（公分）");
                     // 立定跳遠常模
                     if (_Option.SelectedFields.Contains("立定跳遠常模"))
                         fitnessRec.StandingLongJumpDegree = Utility.GetIRowValueString(row, "立定跳遠常模");
@@ -230,23 +230,23 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     if (_Option.SelectedFields.Contains("仰臥起坐常模"))
                         fitnessRec.SitUpDegree = Utility.GetIRowValueString(row, "仰臥起坐常模");
                     // 心肺適能，改名心肺耐力
-                    if (_Option.SelectedFields.Contains("800/1600公尺跑走"))
-                        fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走");
+                    if (_Option.SelectedFields.Contains("800/1600公尺跑走（分.秒）"))
+                        fitnessRec.Cardiorespiratory = Utility.GetIRowValueString(row, "800/1600公尺跑走（分.秒）");
                     // 心肺適能常模，改名心肺耐力常模
                     if (_Option.SelectedFields.Contains("800/1600公尺跑走常模"))
                         fitnessRec.CardiorespiratoryDegree = Utility.GetIRowValueString(row, "800/1600公尺跑走常模");
 
                     // 仰臥捲腹
-                    if (_Option.SelectedFields.Contains("仰臥捲腹"))
-                        fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹");
+                    if (_Option.SelectedFields.Contains("仰臥捲腹（次數）"))
+                        fitnessRec.Curl = Utility.GetIRowValueString(row, "仰臥捲腹（次數）");
 
                     // 仰臥捲腹常模
                     if (_Option.SelectedFields.Contains("仰臥捲腹常模"))
                         fitnessRec.CurlDegree = Utility.GetIRowValueString(row, "仰臥捲腹常模");
 
                     // 漸速耐力跑
-                    if (_Option.SelectedFields.Contains("漸速耐力跑"))
-                        fitnessRec.Pacer = Utility.GetIRowValueString(row, "漸速耐力跑");
+                    if (_Option.SelectedFields.Contains("漸速耐力跑（總趟數）"))
+                        fitnessRec.Pacer = Utility.GetIRowValueString(row, "漸速耐力跑（總趟數）");
 
                     // 漸速耐力跑常模
                     if (_Option.SelectedFields.Contains("漸速耐力跑常模"))

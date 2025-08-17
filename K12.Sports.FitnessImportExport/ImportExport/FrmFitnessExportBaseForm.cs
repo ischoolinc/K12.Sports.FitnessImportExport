@@ -506,7 +506,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                     // 立定跳遠
                     SetColumnValue("立定跳遠（公分）", string.Empty);
 
-                    //// 仰臥起坐
+                    //// 仰臥捲腹
                     SetColumnValue("仰臥捲腹（次數）", string.Empty);
 
                     // 心肺適能

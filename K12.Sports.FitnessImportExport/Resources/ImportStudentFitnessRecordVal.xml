@@ -4,7 +4,7 @@
   <DuplicateDetection>
     <Detector Name="PrimaryKey1">
       <Field Name="學年度" />
-      <Field Name="身分證字號" />
+      <Field Name="*身分證字號" />
     </Detector>
   </DuplicateDetection>
   <FieldList>
@@ -12,35 +12,35 @@
       <Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
       <Validate AutoCorrect="False" Description="「學年度」請輸入數字。" ErrorType="Error" Validator="Integer3000" When="" />
     </Field>
-    <Field Required="True" Name="測驗日期">
+    <Field Required="True" Name="*測驗日期（民國年月份日期）">
       <Validate AutoCorrect="False" Description="「測驗日期」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
       <Validate AutoCorrect="True" Description="「測驗日期」格式錯誤。" ErrorType="Error" Validator="合法日期" When=""/>
     </Field>
-    <Field Required="True" Name="身分證字號">
+    <Field Required="True" Name="*身分證字號">
       <Validate AutoCorrect="False" Description="「身分證字號」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
     </Field>
     <Field Required="False" Name="學校類別">
       <Validate AutoCorrect="False" Description="「學校類別」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="身高">
+    <Field Required="False" Name="*身高（公分）">
       <Validate AutoCorrect="False" Description="「身高」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
     <!--<Field Required="False" Name="身高常模">
       <Validate AutoCorrect="False" Description="「身高常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>-->
-    <Field Required="False" Name="體重">
+    <Field Required="False" Name="*體重（公斤）">
       <Validate AutoCorrect="False" Description="「體重」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
     <!--<Field Required="False" Name="體重常模">
       <Validate AutoCorrect="False" Description="「體重常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>-->
-    <Field Required="False" Name="坐姿體前彎">
+    <Field Required="False" Name="坐姿體前彎（公分）">
       <Validate AutoCorrect="False" Description="「坐姿體前彎」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
     <Field Required="False" Name="坐姿體前彎常模">
       <Validate AutoCorrect="False" Description="「坐姿體前彎常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
-    <Field Required="False" Name="立定跳遠">
+    <Field Required="False" Name="立定跳遠（公分）">
       <Validate AutoCorrect="False" Description="「立定跳遠」空白。" ErrorType="Warning" Validator="不可空白" When="" />
     </Field>
     <Field Required="False" Name="立定跳遠常模">
@@ -63,21 +63,21 @@
     </Field>
 	-->
 
-	  <Field Required="False" Name="800/1600公尺跑走">
+	  <Field Required="False" Name="800/1600公尺跑走（分.秒）">
 		  <Validate AutoCorrect="False" Description="「800/1600公尺跑走」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 	  <Field Required="False" Name="800/1600公尺跑走常模">
 		  <Validate AutoCorrect="False" Description="「800/1600公尺跑走常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 
-	  <Field Required="False" Name="仰臥捲腹">
+	  <Field Required="False" Name="仰臥捲腹（次數）">
 		  <Validate AutoCorrect="False" Description="「仰臥捲腹」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 	  <Field Required="False" Name="仰臥捲腹常模">
 		  <Validate AutoCorrect="False" Description="「仰臥捲腹常模」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 
-	  <Field Required="False" Name="漸速耐力跑">
+	  <Field Required="False" Name="漸速耐力跑（總趟數）">
 		  <Validate AutoCorrect="False" Description="「漸速耐力跑」空白。" ErrorType="Warning" Validator="不可空白" When="" />
 	  </Field>
 	  <Field Required="False" Name="漸速耐力跑常模">
