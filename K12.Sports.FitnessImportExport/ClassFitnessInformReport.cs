@@ -232,6 +232,22 @@ namespace K12.Sports.FitnessImportExport
                                         if (!table.Columns.Contains(col))
                                             table.Columns.Add(col);
                                         row[col] = dicStudentFitnessRecord[studentRec.ID].SitUpDegree;
+
+                                        //2025/11/27 - Dylan
+                                        //依據需求新增 113以下的學年期
+                                        //應該藥可以列印出心肺適能
+                                        //https://3.basecamp.com/4399967/buckets/15852426/todos/9284194570
+                                        col = string.Format("心肺適能{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].Cardiorespiratory;
+
+
+                                        col = string.Format("心肺適能常模{0}", studentCounter);
+                                        if (!table.Columns.Contains(col))
+                                            table.Columns.Add(col);
+                                        row[col] = dicStudentFitnessRecord[studentRec.ID].CardiorespiratoryDegree;
+
                                     }
                                     else
                                     {
