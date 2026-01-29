@@ -286,16 +286,14 @@ namespace K12.Sports.FitnessImportExport.ImportExport
         /// </summary>
         private int SortData(ExcelRowRecord obj1, ExcelRowRecord obj2)
         {
-            string seatno1 = obj1.GetColumnValue("年級").PadLeft(1, '0');       // 年級
-            seatno1 += obj1.GetOthersValue("班級序號").PadLeft(3, '0');         // 班級序號
-            seatno1 += obj1.GetColumnValue("班級名稱").PadLeft(20, '0');        // 班級名稱
-            seatno1 += obj1.GetColumnValue("學號/座號").PadLeft(15, '0');       // 學號
+            string seatno1 = obj1.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
+            seatno1 += obj1.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
+            seatno1 += obj1.GetOthersValue("*學號").PadLeft(20, '0');            // 學號
             seatno1 += obj1.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
 
-            string seatno2 = obj2.GetColumnValue("年級").PadLeft(1, '0');       // 年級
-            seatno2 += obj2.GetOthersValue("班級序號").PadLeft(3, '0');         // 班級序號
-            seatno2 += obj2.GetColumnValue("班級名稱").PadLeft(20, '0');        // 班級名稱
-            seatno2 += obj2.GetColumnValue("學號/座號").PadLeft(15, '0');       // 學號
+            string seatno2 = obj2.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
+            seatno2 += obj2.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
+            seatno2 += obj2.GetOthersValue("*學號").PadLeft(20, '0');            // 學號
             seatno2 += obj2.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
 
             return seatno1.CompareTo(seatno2);
