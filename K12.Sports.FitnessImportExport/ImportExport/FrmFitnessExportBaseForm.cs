@@ -255,8 +255,7 @@ namespace K12.Sports.FitnessImportExport.ImportExport
                 }
                 report.Save(path, FileFormatType.Xlsx);
                 #endregion
-                if (overLimit)
-                    MsgBox.Show("匯出資料已經超過Excel的極限(65536筆)。\n超出的資料無法被匯出。\n\n請減少選取學生人數。");
+;
                 System.Diagnostics.Process.Start(path);
             }
             else
@@ -275,28 +274,6 @@ namespace K12.Sports.FitnessImportExport.ImportExport
             {
                 sheet.Cells[RowIndex, columnIndex++].PutValue(rec.GetColumnValue(columnName));
             }
-        }
-
-        #endregion
-
-        #region 排序的方法
-
-        /// <summary>
-        /// 排序:年級/班級序號/班級名稱/學號/姓名
-        /// </summary>
-        private int SortData(ExcelRowRecord obj1, ExcelRowRecord obj2)
-        {
-            string seatno1 = obj1.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
-            seatno1 += obj1.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
-            seatno1 += obj1.GetOthersValue("*學號").PadLeft(20, '0');            // 學號
-            seatno1 += obj1.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
-
-            string seatno2 = obj2.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
-            seatno2 += obj2.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
-            seatno2 += obj2.GetOthersValue("*學號").PadLeft(20, '0');            // 學號
-            seatno2 += obj2.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
-
-            return seatno1.CompareTo(seatno2);
         }
 
         #endregion
@@ -538,5 +515,22 @@ namespace K12.Sports.FitnessImportExport.ImportExport
         }
         #endregion
 
+        /// <summary>
+        /// 排序:年級/班級序號/班級名稱/學號/姓名
+        /// </summary>
+        private int SortData(ExcelRowRecord obj1, ExcelRowRecord obj2)
+        {
+            string seatno1 = obj1.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
+            seatno1 += obj1.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
+            seatno1 += obj1.GetColumnValue("*學號").PadLeft(20, '0');            // 學號
+            seatno1 += obj1.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
+
+            string seatno2 = obj2.GetColumnValue("*年級").PadLeft(1, '0');       // 年級
+            seatno2 += obj2.GetColumnValue("*班級名稱（需與系統設定一致）").PadLeft(20, '0');        // 班級名稱
+            seatno2 += obj2.GetColumnValue("*學號").PadLeft(20, '0');            // 學號
+            seatno2 += obj2.GetOthersValue("姓名").PadLeft(10, '0');            // 姓名
+
+            return seatno1.CompareTo(seatno2);
+        }
     }
 }
